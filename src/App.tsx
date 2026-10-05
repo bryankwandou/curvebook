@@ -5,6 +5,7 @@ import { feeLabel, fmt, presetStats, type PresetStats } from './lib/stats'
 import { deployedConfig } from './lib/registry'
 import { CurveChart, type Series } from './components/CurveChart'
 import { ForkButton, LaunchForm, PoolFeed } from './components/Actions'
+import proof from '../devnet-proof.json'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -227,6 +228,46 @@ function Builder() {
   )
 }
 
+function DevnetProof() {
+  const dn = (kind: string, id: string) => `https://solscan.io/${kind}/${id}?cluster=devnet`
+  return (
+    <section className="detail" id="proof">
+      <p className="eyebrow">On-chain run · devnet · same DBC program id</p>
+      <h2>Config → launch → buy, end to end</h2>
+      <p className="lede">
+        Each SOL preset was deployed, a token was launched on it, and {proof.runs[0].buySol} SOL was bought. The same buy moved Early Discovery about half as far:
+        its 25% opening fee keeps a quarter of the input.
+      </p>
+      <div className="panel">
+        <table className="pools">
+          <thead>
+            <tr>
+              <th>Preset</th>
+              <th>Pool</th>
+              <th>Transactions</th>
+              <th>Curve progress after buy</th>
+            </tr>
+          </thead>
+          <tbody>
+            {proof.runs.map((r) => (
+              <tr key={r.pool}>
+                <td>{PRESETS.find((p) => p.id === r.preset)?.name}</td>
+                <td>
+                  <a href={dn('account', r.pool)}>{r.pool.slice(0, 8)}…</a>
+                </td>
+                <td>
+                  <a href={dn('tx', r.createConfig)}>config</a> · <a href={dn('tx', r.createPool)}>launch</a> · <a href={dn('tx', r.buy)}>buy</a>
+                </td>
+                <td>{(r.curveProgress * 100).toFixed(3)}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )
+}
+
 export default function App() {
   const [selected, setSelected] = useState(PRESETS[1].id)
   const all = useMemo(() => PRESETS.map((p) => ({ p, r: presetStats(p) })), [])
@@ -244,6 +285,7 @@ export default function App() {
         <nav>
           <a href="#presets">Presets</a>
           <a href="#builder">Builder</a>
+          <a href="#proof">On-chain</a>
           <a href="https://github.com/bryankwandou/curvebook">GitHub</a>
         </nav>
         <WalletMultiButton />
@@ -299,6 +341,7 @@ export default function App() {
 
         <Detail p={chosen} />
         <Builder />
+        <DevnetProof />
       </main>
 
       <footer>

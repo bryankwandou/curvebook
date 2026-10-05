@@ -1,0 +1,7 @@
+{
+  "name": "curvebook demo",
+  "symbol": "CBK",
+  "description": "Devnet demo token launched on a curvebook preset (Meteora Dynamic Bonding Curve).",
+  "image": "https://curvebook-kappa.vercel.app/favicon.svg",
+  "external_url": "https://curvebook-kappa.vercel.app"
+}
