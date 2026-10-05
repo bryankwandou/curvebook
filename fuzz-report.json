@@ -1,0 +1,29 @@
+{
+  "ranAt": "2026-10-05T15:41:16.250Z",
+  "seed": 1,
+  "cases": 5000,
+  "ms": 74265,
+  "validCases": 4726,
+  "passedAllInvariants": 4725,
+  "rejectedBySdkValidator": 1,
+  "invalidCases": 274,
+  "invalidCorrectlyRejected": 274,
+  "invariantFailures": 0,
+  "checks": [
+    "SDK validateConfigParameters accepts the config",
+    "price, sold and raised never decrease along the curve",
+    "curve graduates within 0.1% of migrationQuoteThreshold",
+    "sold share of supply is between 0 and 100%",
+    "start price × supply within 1% of start market cap",
+    "graduation/start price within 2% of the market-cap ratio",
+    "author + creator fee share = 100% − protocol fee",
+    "graduation market cap <= start market cap is rejected"
+  ],
+  "sdkRejections": [
+    {
+      "error": "Invalid pool fees",
+      "count": 1
+    }
+  ],
+  "failures": []
+}

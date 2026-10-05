@@ -52,6 +52,37 @@ For every preset this:
 
 Last run: all 4 pass, 132–134k CU each.
 
+### 5,000 randomized curve tests
+
+```bash
+N=5000 SEED=1 npx tsx scripts/fuzz-curves.ts
+```
+
+This builds random configs (shape, quote, market caps, supply, fee schedule, fee split) through the
+same `buildPreset → validateConfigParameters → sampleCurve` path the app uses, and checks each one:
+price, sold and raised never fall; graduation lands within 0.1% of the migration threshold; start
+price matches the start market cap; the graduation multiple matches the market-cap ratio; fee shares
+sum to 100% minus the protocol fee. One case in twenty is deliberately broken (graduation at or
+below the start) and must be rejected.
+
+Last run (seed 1): 5,000 cases, 4,725 valid configs passed every invariant, 274 of 274 broken ones were
+rejected, and the SDK validator refused 1 ("Invalid pool fees"). 0 failures. Full output: [fuzz-report.json](fuzz-report.json).
+This is offline SDK math, not mainnet transactions.
+
+## Mainnet configs (live)
+
+Created 2026-10-05 by `scripts/deploy-configs.ts`. Each is a DBC config account owned by
+`dbcij3LWUppWqq96dh6gJWwBifmcGfLSB5D4DuSMaqN`, fee claimer `GNuQ8FoXKAsq1i5QaT3o3Cjtevo7MAyRsAKiWB4Z2as8`.
+
+| Preset | Config | createConfig |
+| --- | --- | --- |
+| flat-fair | [7Cybv7xU…](https://solscan.io/account/7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK) | [tx](https://solscan.io/tx/2dPGvjmAGEjmXdan3LQ9WTBDXpXatDjhk8wKjPkvkB8gDwbvKiNndre7DyBSytwmEMurb7WuggQjX7xuYmQWwgVT) |
+| early-discovery | [FnKvUoL1…](https://solscan.io/account/FnKvUoL12VZacUE2k4EwhFXHn2xxhoG1wvQYsfgBSsLT) | [tx](https://solscan.io/tx/2DcGSrPZ3a7WhqzEFLS9eQDx184rvaPxkdsanrYL4QLreLU2CiRnd7yoEiuXUMQkFdRFDoCF9ZUzyEQsJNv2HBKa) |
+| long-curve | [6aHuAvXw…](https://solscan.io/account/6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93) | [tx](https://solscan.io/tx/4BAY6KjyytTGNsuoirHwNHz6Aq1DLaZKbvFHAsLiP298PsuWcy4TbP6ey7x4bXtdLd264BDTyEsM5PD4PoDTL1sT) |
+| stock-pair-usdc | [4i2iNBaH…](https://solscan.io/account/4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU) | [tx](https://solscan.io/tx/2kx3rPKoDfyi7qTceiFB94mpYHMtxfh85aRYhFiDgRq6VLqJqPUC9VzmvM4QhN73kCHQh1g2mggH669Y425JEws) |
+
+No mainnet token has been launched on them yet.
+
 ## Devnet run (end to end)
 
 Same DBC program id as mainnet. `scripts/devnet-proof.ts` deployed each SOL preset, launched a token on it, and bought 0.2 SOL of it (2026-10-05):
