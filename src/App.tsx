@@ -6,6 +6,7 @@ import { deployedConfig } from './lib/registry'
 import { CurveChart, type Series } from './components/CurveChart'
 import { ForkButton, LaunchForm, PoolFeed } from './components/Actions'
 import proof from '../devnet-proof.json'
+import fuzz from '../fuzz-report.json'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -228,10 +229,62 @@ function Builder() {
   )
 }
 
+function MainnetProof() {
+  const mn = (kind: string, id: string) => `https://solscan.io/${kind}/${id}`
+  return (
+    <section className="detail" id="proof">
+      <p className="eyebrow">Live on mainnet · DBC program dbcij3LW…</p>
+      <h2>The four official configs</h2>
+      <p className="lede">
+        Every preset is a live DBC config account on Solana mainnet, owned by the DBC program. Launching on one pays its fee claimer. Pools appear in the feed above as
+        they are created.
+      </p>
+      <div className="panel">
+        <table className="pools">
+          <thead>
+            <tr>
+              <th>Preset</th>
+              <th>Config account</th>
+              <th>createConfig tx</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PRESETS.map((p) => {
+              const d = deployedConfig(p.id)
+              return d ? (
+                <tr key={p.id}>
+                  <td>{p.name}</td>
+                  <td>
+                    <a href={mn('account', d.config)}>{d.config.slice(0, 8)}…</a>
+                  </td>
+                  <td>
+                    <a href={mn('tx', d.signature)}>{d.signature.slice(0, 8)}…</a>
+                  </td>
+                </tr>
+              ) : null
+            })}
+          </tbody>
+        </table>
+      </div>
+      <h3>{fuzz.cases.toLocaleString('en-US')} randomized curve tests, {fuzz.invariantFailures} failures</h3>
+      <p className="lede">
+        <code>scripts/fuzz-curves.ts</code> builds {fuzz.cases.toLocaleString('en-US')} random configs (seed {fuzz.seed}) through the same SDK path as the app and checks each
+        one: {fuzz.passedAllInvariants.toLocaleString('en-US')} valid configs passed every invariant, all {fuzz.invalidCorrectlyRejected} deliberately broken ones were rejected,
+        and the SDK validator refused {fuzz.rejectedBySdkValidator}. This is offline SDK math, not mainnet transactions.
+      </p>
+      <ul className="lede">
+        {fuzz.checks.map((c) => (
+          <li key={c}>{c}</li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 function DevnetProof() {
   const dn = (kind: string, id: string) => `https://solscan.io/${kind}/${id}?cluster=devnet`
   return (
-    <section className="detail" id="proof">
+    <section className="detail" id="devnet">
       <p className="eyebrow">On-chain run · devnet · same DBC program id</p>
       <h2>Config → launch → buy, end to end</h2>
       <p className="lede">
@@ -341,6 +394,7 @@ export default function App() {
 
         <Detail p={chosen} />
         <Builder />
+        <MainnetProof />
         <DevnetProof />
       </main>
 

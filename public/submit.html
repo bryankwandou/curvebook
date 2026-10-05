@@ -47,7 +47,7 @@ Four presets ship today:
 
 The pay-to-use model runs on DBC's own fee-claimer rail. Launching on an official preset pays the preset author the pool-creation fee and the author share of trading fees. A launchpad can also deploy the identical curve under its own wallet with one createConfig and keep those fees itself. A Builder lets anyone tune shape, market caps, fee decay and fee split, validated live with the SDK's validateConfigParameters.
 
-Each preset passes the SDK validator, and its createConfig is simulated against the mainnet DBC program (132–134k CU). The full flow has run on devnet against the same program: createConfig, createPool and a 0.2 SOL buy for every SOL preset, with all signatures on the site. The same buy moved Early Discovery half as far because its 25% opening fee kept a quarter of the input, which shows the anti-snipe fee working. Graduation migrates to DAMM v2 with 100% of the LP permanently locked.`],
+All four preset configs are live on Solana mainnet (config accounts owned by the DBC program, links on the site). A 5,000-case randomized test runs random configs through the same SDK path and checks curve invariants: 0 failures, and every deliberately broken config was rejected. The full flow has also run on devnet against the same program: createConfig, createPool and a 0.2 SOL buy for every SOL preset, with all signatures on the site. The same buy moved Early Discovery half as far because its 25% opening fee kept a quarter of the input, which shows the anti-snipe fee working. Graduation migrates to DAMM v2 with 100% of the LP permanently locked.`],
   ['Project Github Link', 'https://github.com/bryankwandou/curvebook'],
   ['Project Website', SITE],
   ['Project X Link', '', 'Your X profile link.'],
@@ -55,7 +55,7 @@ Each preset passes the SDK validator, and its createConfig is simulated against 
   ["Did you submit this project to the official Crypto World's Fair Hackathon on Colosseum? (Yes/No)", 'No', 'curvebook is not a Colosseum project. Do not link Commish here.'],
   ['Link to Colosseum project', '', 'Leave empty.'],
   ["Link to your project's Colosseum profile", '', 'Optional: your own Colosseum profile link, or leave empty.'],
-  ['Anything Else?', `Repo is public. \`npx tsx scripts/verify-presets.ts\` re-runs the SDK validator and the mainnet createConfig simulation for every preset. \`scripts/devnet-proof.ts\` runs config → launch → buy on devnet; results are on ${SITE}/#proof and in devnet-proof.json. \`scripts/deploy-configs.ts\` creates the official mainnet configs, which turns on the launch form and live pool feed. Mainnet configs are not created yet. Demo video (mp4): ${SITE}/demo.mp4`],
+  ['Anything Else?', `Repo is public. \`npx tsx scripts/verify-presets.ts\` re-runs the SDK validator and the mainnet createConfig simulation for every preset. \`scripts/devnet-proof.ts\` runs config → launch → buy on devnet; results are on ${SITE}/#proof and in devnet-proof.json. Mainnet configs (created by \`scripts/deploy-configs.ts\`): flat-fair 7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK, early-discovery FnKvUoL12VZacUE2k4EwhFXHn2xxhoG1wvQYsfgBSsLT, long-curve 6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93, stock-pair-usdc 4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU. \`N=5000 npx tsx scripts/fuzz-curves.ts\` reproduces the 5,000-case test (fuzz-report.json). Demo video (mp4): ${SITE}/x-demo.mp4`],
 ]
 const root = document.getElementById('fields')
 for (const [label, value, note] of F) {
