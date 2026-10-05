@@ -83,6 +83,27 @@ Created 2026-10-05 by `scripts/deploy-configs.ts`. Each is a DBC config account 
 
 No mainnet token has been launched on them yet.
 
+### Launch + first buy, simulated on mainnet
+
+```bash
+RPC=https://your-mainnet-rpc npx tsx scripts/mainnet-sim.ts
+```
+
+Builds the real `createPoolWithFirstBuy` transaction for each live config and runs it through
+`simulateTransaction` against the mainnet DBC program (unsigned, never sent, no token created), then
+decodes the simulated pool account. Last run ([mainnet-sim.json](mainnet-sim.json)):
+
+| Preset | Result | First buy | Author: creation fee (after 10% protocol) | Author: trading fee |
+| --- | --- | --- | --- | --- |
+| Flat Fair Launch | ok, 153k CU | 1 SOL | 0.009 SOL | 0.004 SOL |
+| Early Discovery | ok, 161k CU | 1 SOL | 0.018 SOL | 0.12 SOL |
+| Long Curve | ok, 147k CU | 1 SOL | 0.009 SOL | 0.0048 SOL |
+| Stock Pair (USDC) | ok, 107k CU | none (launch only) | 0.009 SOL | 0 |
+
+One config costs 0.00597 SOL of rent. The author's share of a single launch's creation fee covers it;
+one Early Discovery launch with a 1 SOL first buy pays the author 0.138 SOL. These are simulated
+numbers, not realized revenue.
+
 ## Devnet run (end to end)
 
 Same DBC program id as mainnet. `scripts/devnet-proof.ts` deployed each SOL preset, launched a token on it, and bought 0.2 SOL of it (2026-10-05):

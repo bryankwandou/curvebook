@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { PROTOCOL_POOL_CREATION_FEE_PERCENT } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { PRESETS, type Preset, type Shape } from './lib/presets'
 import { feeLabel, fmt, presetStats, type PresetStats } from './lib/stats'
@@ -7,6 +8,7 @@ import { CurveChart, type Series } from './components/CurveChart'
 import { ForkButton, LaunchForm, PoolFeed } from './components/Actions'
 import proof from '../devnet-proof.json'
 import fuzz from '../fuzz-report.json'
+import sim from '../mainnet-sim.json'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -262,6 +264,41 @@ function MainnetProof() {
                   </td>
                 </tr>
               ) : null
+            })}
+          </tbody>
+        </table>
+      </div>
+      <h3>Launch + first buy on each live config, simulated on mainnet</h3>
+      <p className="lede">
+        <code>scripts/mainnet-sim.ts</code> builds the real launch-with-first-buy transaction for each live config and runs it through <code>simulateTransaction</code> against the
+        mainnet DBC program (unsigned, never sent, no token created). The fee columns come from the simulated pool state: what the preset author earns from one launch.
+        One config costs {(0.00597408).toFixed(4)} SOL of rent, so the author's share of the first launch's pool-creation fee (0.009–0.018 SOL) already covers it.
+      </p>
+      <div className="panel">
+        <table className="pools">
+          <thead>
+            <tr>
+              <th>Preset</th>
+              <th>Result</th>
+              <th>First buy</th>
+              <th>Author: creation fee (after 10% protocol)</th>
+              <th>Author: trading fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sim.runs.map((r) => {
+              const p = PRESETS.find((x) => x.id === r.preset)!
+              return (
+                <tr key={r.preset}>
+                  <td>{p.name}</td>
+                  <td>{r.ok ? `ok · ${(r.computeUnits / 1000).toFixed(0)}k CU` : 'failed'}</td>
+                  <td>{r.buy}</td>
+                  <td>{+(r.poolCreationFeeHeldSol * (1 - PROTOCOL_POOL_CREATION_FEE_PERCENT / 100)).toFixed(4)} SOL</td>
+                  <td>
+                    {r.authorTradingFee} {p.quote}
+                  </td>
+                </tr>
+              )
             })}
           </tbody>
         </table>
