@@ -1,0 +1,39 @@
+{
+  "cluster": "devnet",
+  "ranAt": "2026-10-05T11:27:11.390Z",
+  "runs": [
+    {
+      "preset": "flat-fair",
+      "config": "8XiUu7Nt21181RQ9K1azjhQDpDuMxNAqT6sCRnDZsm1J",
+      "pool": "4jvG4i3ji9cr6GMNEx74DKvsT2vBw9K43YMVp2LgbHmq",
+      "mint": "37zoYcKMmmg6Nv8L9J73o2PfuFbUSBRE7DxtS7SEicMA",
+      "createConfig": "4FEbdcJHCrZRbvNEAC3dzVb6wYthv3u2X6cAPHjNe7apTEzh5ZdBck4KB3pFHKpZSNFGXUM5spY1hpgdWCFdUcH5",
+      "createPool": "2M3fpusoVoMN2QFRyUiqv8JHifWYMx8pL9vXoV494S6mDjqRmqsgeBN3kNReprG4iY3xZ6wBvsEZPEdhBk8e3L3n",
+      "buy": "32bKFqhtY8kvdMrAn6PWHkjzbyt85rggss4A2RsHyLZJDeH7TJGLM8DMeVcL1GnuRmk9aTTXtGHFDcRfjjnodz4y",
+      "buySol": 0.2,
+      "curveProgress": 0.0021358262234236402
+    },
+    {
+      "preset": "early-discovery",
+      "config": "4sx3GyTC56f7GM9wyg9hejtG6K9ABEKNBn2D4ZCzLBqd",
+      "pool": "5W1qvM5z3vYV2C89DCpkN8opVamdDetj9SQ4efEzZF5m",
+      "mint": "7b5QRNXiBDxdu3aFmxJ4nb7pejnwVsFTMFJ8zbH4GG3t",
+      "createConfig": "Cy6kw2LPqSpfuT7oxzBivPybkmSvYFsUiAyHF1dCD1mDATTrW7FumKhyJKgc34MkeZaawT2mDCSpp3v7i1x4syh",
+      "createPool": "2zXLkDsJ7ixhfUbeqUuvGFC8HhcmBFoMeMZyx7Lx6zshftmGkhhWHHAXo444j6rJ4P1QE29ovvpcU34gFERFh7N9",
+      "buy": "4tnZK2yUXxkP8byZCtDMBZ4ZXH6Au3qkWEvKgQwJSrDwMTiStn5WNUFDWvsFVR3SJVQ997MN44yJdBEuTwnSn1kR",
+      "buySol": 0.2,
+      "curveProgress": 0.0011380570774600373
+    },
+    {
+      "preset": "long-curve",
+      "config": "CuVMJWyg6GsSAQhocQ6FW6od2mwvRRMszZnL2CVf5jvr",
+      "pool": "GhgXtytHyg44vo7YysNZeVqd2vx6cXy9kCZ2s2tY38ZQ",
+      "mint": "3dSx6TkA3HaLDp3K7374Nfw6Q1kEPuYoXTtWDHjB4ADn",
+      "createConfig": "23ZD1HsGvRY3vXnRaWwMRzqdZFmiJ5ABfVdUVvtwiW2NpoqiSXEhvyj8c4k3qv1BPAB1wPx9UdX2AaFT4AGK1TPk",
+      "createPool": "4denBKpmVFpSZaPHYSchGxPdLMYnpRgfcwYjxw5PJa5KDXJiuvitareAvvQoG14Y88TWrzzpFwv1DMZF6okk3FYo",
+      "buy": "26VZY7TvFn6q7SkjGUDenDjWjv6LbHWEC4knHUBYnB4FmAjs3HdnopT1TEQzZacSBrM2AX1poFLSyGeNsHttEZws",
+      "buySol": 0.2,
+      "curveProgress": 0.002527729052854831
+    }
+  ]
+}

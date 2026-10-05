@@ -52,6 +52,20 @@ For every preset this:
 
 Last run: all 4 pass, 132–134k CU each.
 
+## Devnet run (end to end)
+
+Same DBC program id as mainnet. `scripts/devnet-proof.ts` deployed each SOL preset, launched a token on it, and bought 0.2 SOL of it (2026-10-05):
+
+| Preset | Config | Pool | createConfig | createPool | Buy | Curve progress |
+| --- | --- | --- | --- | --- | --- | --- |
+| flat-fair | [8XiUu7Nt…](https://solscan.io/account/8XiUu7Nt21181RQ9K1azjhQDpDuMxNAqT6sCRnDZsm1J?cluster=devnet) | [4jvG4i3j…](https://solscan.io/account/4jvG4i3ji9cr6GMNEx74DKvsT2vBw9K43YMVp2LgbHmq?cluster=devnet) | [tx](https://solscan.io/tx/4FEbdcJHCrZRbvNEAC3dzVb6wYthv3u2X6cAPHjNe7apTEzh5ZdBck4KB3pFHKpZSNFGXUM5spY1hpgdWCFdUcH5?cluster=devnet) | [tx](https://solscan.io/tx/2M3fpusoVoMN2QFRyUiqv8JHifWYMx8pL9vXoV494S6mDjqRmqsgeBN3kNReprG4iY3xZ6wBvsEZPEdhBk8e3L3n?cluster=devnet) | [tx](https://solscan.io/tx/32bKFqhtY8kvdMrAn6PWHkjzbyt85rggss4A2RsHyLZJDeH7TJGLM8DMeVcL1GnuRmk9aTTXtGHFDcRfjjnodz4y?cluster=devnet) | 0.214% |
+| early-discovery | [4sx3GyTC…](https://solscan.io/account/4sx3GyTC56f7GM9wyg9hejtG6K9ABEKNBn2D4ZCzLBqd?cluster=devnet) | [5W1qvM5z…](https://solscan.io/account/5W1qvM5z3vYV2C89DCpkN8opVamdDetj9SQ4efEzZF5m?cluster=devnet) | [tx](https://solscan.io/tx/Cy6kw2LPqSpfuT7oxzBivPybkmSvYFsUiAyHF1dCD1mDATTrW7FumKhyJKgc34MkeZaawT2mDCSpp3v7i1x4syh?cluster=devnet) | [tx](https://solscan.io/tx/2zXLkDsJ7ixhfUbeqUuvGFC8HhcmBFoMeMZyx7Lx6zshftmGkhhWHHAXo444j6rJ4P1QE29ovvpcU34gFERFh7N9?cluster=devnet) | [tx](https://solscan.io/tx/4tnZK2yUXxkP8byZCtDMBZ4ZXH6Au3qkWEvKgQwJSrDwMTiStn5WNUFDWvsFVR3SJVQ997MN44yJdBEuTwnSn1kR?cluster=devnet) | 0.114% |
+| long-curve | [CuVMJWyg…](https://solscan.io/account/CuVMJWyg6GsSAQhocQ6FW6od2mwvRRMszZnL2CVf5jvr?cluster=devnet) | [GhgXtytH…](https://solscan.io/account/GhgXtytHyg44vo7YysNZeVqd2vx6cXy9kCZ2s2tY38ZQ?cluster=devnet) | [tx](https://solscan.io/tx/23ZD1HsGvRY3vXnRaWwMRzqdZFmiJ5ABfVdUVvtwiW2NpoqiSXEhvyj8c4k3qv1BPAB1wPx9UdX2AaFT4AGK1TPk?cluster=devnet) | [tx](https://solscan.io/tx/4denBKpmVFpSZaPHYSchGxPdLMYnpRgfcwYjxw5PJa5KDXJiuvitareAvvQoG14Y88TWrzzpFwv1DMZF6okk3FYo?cluster=devnet) | [tx](https://solscan.io/tx/26VZY7TvFn6q7SkjGUDenDjWjv6LbHWEC4knHUBYnB4FmAjs3HdnopT1TEQzZacSBrM2AX1poFLSyGeNsHttEZws?cluster=devnet) | 0.253% |
+
+The same buy moved Early Discovery about half as far: its 25% opening fee keeps a quarter of the input,
+and its graduation threshold is higher (0.2 × 0.75 / 131.8 SOL = 0.114%). That is the anti-snipe fee doing its job.
+The USDC preset is skipped on devnet because mainnet USDC has no mint there.
+
 ## Deploy the official configs
 
 ```bash
