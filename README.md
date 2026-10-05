@@ -1,6 +1,6 @@
 # curvebook
 
-Launch-curve presets for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc).
+Launch-curve presets for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc). Live: https://curvebook-kappa.vercel.app
 Pick a curve, launch a token on it, or deploy it as your own config inside your launchpad.
 
 A DBC config holds a lot of decisions: curve shape, fee schedule, quote token, graduation threshold,
