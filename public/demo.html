@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>curvebook demo</title>
+<meta name="description" content="2-minute demo of curvebook: launch-curve presets for Meteora Dynamic Bonding Curve." />
+<meta property="og:title" content="curvebook demo" />
+<meta property="og:image" content="https://curvebook-kappa.vercel.app/demo-poster.jpg" />
+<meta property="og:video" content="https://curvebook-kappa.vercel.app/demo.mp4" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<style>
+  :root { --bg:#f6f4ef; --surface:#fff; --ink:#17171a; --muted:#5d5d66; --line:#e2ded5; --accent:#e8590c; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111114; --surface:#1a1a1f; --ink:#ececf1; --muted:#9a9aa6; --line:#2c2c33; --accent:#ff8a3d; } }
+  * { box-sizing: border-box }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 Inter,system-ui,-apple-system,'Segoe UI',sans-serif }
+  main { max-width:1000px; margin:0 auto; padding:40px 16px 64px }
+  .eyebrow { text-transform:uppercase; font-size:12px; letter-spacing:.08em; color:var(--accent); font-weight:650; margin:0 0 8px }
+  h1 { font-size:clamp(28px,5vw,40px); letter-spacing:-.02em; margin:0 0 12px; line-height:1.15 }
+  p { color:var(--muted); max-width:65ch }
+  video { width:100%; border-radius:14px; border:1px solid var(--line); background:#000; display:block; margin:24px 0 }
+  .links { display:flex; flex-wrap:wrap; gap:10px }
+  .links a { color:var(--ink); text-decoration:none; border:1px solid var(--line); background:var(--surface); padding:10px 16px; border-radius:10px; font-weight:600 }
+  .links a.primary { background:var(--accent); border-color:var(--accent); color:#fff }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Meteora DBC track · Crypto World's Fair</p>
+  <h1>curvebook: launch-curve presets for Meteora DBC</h1>
+  <p>Compare tuned Dynamic Bonding Curve configs, launch a token on one, or deploy the identical curve under your own launchpad wallet. Every preset is validated by the DBC SDK and its createConfig is simulated against the mainnet program. The full flow (config, launch, buy) has run on devnet.</p>
+  <video src="/demo.mp4" poster="/demo-poster.jpg" controls playsinline preload="metadata"></video>
+  <div class="links">
+    <a class="primary" href="/">Open the app</a>
+    <a href="/#proof">On-chain run</a>
+    <a href="https://github.com/bryankwandou/curvebook">GitHub</a>
+    <a href="/demo.mp4" download>Download video (mp4)</a>
+  </div>
+</main>
+</body>
+</html>
