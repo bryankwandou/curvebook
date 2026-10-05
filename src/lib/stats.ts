@@ -31,6 +31,9 @@ export function presetStats(p: Preset): StatsResult {
   if (hit) return hit
   let res: StatsResult
   try {
+    // the curve builder only fails with raw BN errors on these, so say it plainly first
+    if (!(p.initialMarketCap > 0)) throw new Error('Start market cap must be above zero.')
+    if (!(p.migrationMarketCap > p.initialMarketCap)) throw new Error('Graduation market cap must be above the start market cap: the curve has to go up.')
     const params = buildPreset(p)
     validateConfigParameters({ ...params, leftoverReceiver: PLACEHOLDER })
     const points = sampleCurve({
