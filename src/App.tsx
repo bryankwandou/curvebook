@@ -1,3 +1,4 @@
+import scan from '../graduated-configs.json'
 import { Inspector } from './components/Inspector'
 import { useMemo, useState } from 'react'
 import { PROTOCOL_POOL_CREATION_FEE_PERCENT } from '@meteora-ag/dynamic-bonding-curve-sdk'
@@ -412,6 +413,9 @@ function DevnetProof() {
   )
 }
 
+// pools from the scanned top configs that barely move price or graduate on dust: listings, not price discovery
+const nearFlat = scan.configs.filter((c) => c.multiplier <= 1.25 || c.threshold < 0.01).reduce((n, c) => n + c.graduatedPools, 0)
+
 export default function App() {
   const [selected, setSelected] = useState(PRESETS[1].id)
   const all = useMemo(() => PRESETS.map((p) => ({ p, r: presetStats(p) })), [])
@@ -428,8 +432,8 @@ export default function App() {
         </a>
         <nav>
           <a href="#presets">Presets</a>
-          <a href="#builder">Builder</a>
           <a href="#inspect">Inspector</a>
+          <a href="#builder">Builder</a>
           <a href="#proof">On-chain</a>
           <a href="https://github.com/bryankwandou/curvebook">GitHub</a>
         </nav>
@@ -439,11 +443,15 @@ export default function App() {
       <main>
         <section className="hero">
           <div>
-            <p className="eyebrow">Launch-curve presets for Meteora Dynamic Bonding Curve</p>
-            <h1>Pick a curve. Launch on it. Or fork it into your launchpad.</h1>
+            <p className="eyebrow">Launch-curve data and presets for Meteora Dynamic Bonding Curve</p>
+            <h1>Know what a launch curve does before you launch on it.</h1>
             <p className="lede">
-              Every preset is a complete DBC config: curve shape, fee schedule, quote token, graduation threshold and DAMM v2 migration. Each one is validated by the
-              SDK and simulated against the mainnet program before it is listed.
+              Of the latest {scan.graduatedPools.toLocaleString('en-US')} DBC graduations on mainnet, {nearFlat.toLocaleString('en-US')} came from configs that move price{' '}
+              1.2x or less or graduate at under 0.01 SOL: direct listings, not price discovery. curvebook reads any DBC config from mainnet and shows what its curve,
+              fees and LP lock actually do, then offers presets tuned for real price discovery, each live on mainnet and checked against the program.
+            </p>
+            <p className="lede">
+              <a href="#inspect">Inspect a config</a> · <a href="#presets">Browse presets</a>
             </p>
           </div>
           <div className="panel">
@@ -485,8 +493,8 @@ export default function App() {
         </section>
 
         <Detail p={chosen} />
-        <Builder />
         <Inspector />
+        <Builder />
         <MainnetProof />
         <DevnetProof />
       </main>
