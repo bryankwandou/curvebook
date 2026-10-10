@@ -36,8 +36,16 @@ const SITE = 'https://curvebook-kappa.vercel.app'
 const F = [
   ['Link to Your Submission', SITE + '/demo', 'Demo video page, with links to the app, the on-chain run and GitHub.'],
   ['Tweet Link', '', 'Optional. Leave empty, or paste your own announcement tweet.'],
+  ['Tweet text (not a form field)', `curvebook: a preset marketplace for @MeteoraAG Dynamic Bonding Curve configs.
+
+4 launch curves live on Solana mainnet (flat fair, anti-snipe, long curve, USDC stock pair), first token launched on one.
+
+Pick a curve. Launch on it. Or fork it.
+https://curvebook-kappa.vercel.app/demo`, 'Post this on X with the button, then paste the tweet URL into Tweet Link above. Attach demo.mp4 for an inline video if you can.', 'x'],
   ['Project Name', 'curvebook'],
-  ['Project Description', `curvebook is a preset marketplace for Meteora Dynamic Bonding Curve configs. Most launchpads copy one pump-style curve and never touch the rest of DBC. curvebook packages tuned configs (curve shape, fee schedule, quote token, graduation threshold, LP split, DAMM v2 migration) as presets you can compare on one chart and adopt in a single transaction.
+  ['Project Description', `Live on Solana mainnet: 4 preset configs owned by the DBC program, and a first token (CBK) launched on one of them.
+
+curvebook is a preset marketplace for Meteora Dynamic Bonding Curve configs. Most launchpads copy one pump-style curve and never touch the rest of DBC. curvebook packages tuned configs (curve shape, fee schedule, quote token, graduation threshold, LP split, DAMM v2 migration) as presets you can compare on one chart and adopt in a single transaction.
 
 Four presets ship today:
 - Flat Fair Launch (SOL): equal liquidity in all 16 segments, 5x from open to graduation, so early snipers get no 10x edge.
@@ -74,6 +82,11 @@ for (const [label, value, note] of F) {
       catch { const r = document.createRange(); r.selectNodeContents(v); getSelection().removeAllRanges(); getSelection().addRange(r); b.textContent = 'Selected: Ctrl+C' }
     }
     el.querySelector('.head').appendChild(b)
+  }
+  if (value && F.find((f) => f[0] === label)[3] === 'x') {
+    const a = document.createElement('a'); a.href = 'https://x.com/intent/post?text=' + encodeURIComponent(value); a.target = '_blank'; a.rel = 'noopener'
+    a.textContent = 'Post on X'; a.style.cssText = 'margin-left:8px;font-size:13px;font-weight:600;color:var(--accent)'
+    el.querySelector('.head').appendChild(a)
   }
   if (note) { const n = document.createElement('div'); n.className = 'note'; n.textContent = note; el.appendChild(n) }
   root.appendChild(el)
