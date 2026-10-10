@@ -27,7 +27,12 @@ The numbers come from walking each curve segment by segment with the SDK's own d
 Shapes come from `buildCurveWithLiquidityWeights` with 16 exponential weights (1.25^i).
 Thin liquidity makes the price move faster per token sold.
 
-## How the marketplace works
+**What Stock Pair does not do.** It is a narrow USDC price band with a low fee, nothing more. It has no oracle or
+reference price, so nothing ties the token to the underlying share; it does not pause when the stock market closes;
+it knows nothing about redemption, transfer restrictions or issuer rules. It suits a token whose fair value is already
+roughly known and that needs a calm first market, not price discovery for an unknown asset.
+
+## Using a preset
 
 DBC already has the payment rail: the wallet that creates a config is its **fee claimer**.
 
@@ -40,6 +45,10 @@ DBC already has the payment rail: the wallet that creates a config is its **fee 
 
 After graduation the pool migrates to DAMM v2. 100% of the LP is permanently locked, split 50/50
 between the preset author and the creator.
+
+Nothing stops anyone from copying a preset's parameters into their own config: every config is public on chain, and
+the Inspector makes reading one easy. The author fee only applies to launches on the official configs. curvebook's
+value is the checks and the data, not exclusive access to four curves.
 
 ## Verification
 
@@ -73,6 +82,20 @@ Last run (seed 1): 5,000 cases, 4,725 valid configs passed every invariant, 274 
 rejected, and the SDK validator refused 1 ("Invalid pool fees"). 0 failures. Full output: [fuzz-report.json](fuzz-report.json).
 This is offline SDK math, not mainnet transactions.
 
+| Randomized (seeded, log-uniform where it spans orders of magnitude) | Range |
+| --- | --- |
+| quote | SOL (75%) or USDC |
+| start market cap | 5–5,000 SOL or 1,000–5,000,000 USDC |
+| graduation / start market cap | 1.2–40x (5% of cases: 0.2–1x, must be rejected) |
+| supply | 1M, 10M, 100M or 1B |
+| shape | flat, early, long |
+| start fee | 0.25–50%; half the cases decay to a lower end fee over 12 s–1 h |
+| creator share of fees, pool-creation fee | 0–100%; 0–0.05 SOL |
+
+Not covered: execution on chain (the program, not the SDK, is the final word; the four live configs are covered by the
+mainnet simulation and read-back instead), slippage for a given trade size, supplies above 1B or below 1M, Token-2022
+base tokens, and the rate-limiter fee mode.
+
 ## Mainnet configs (live)
 
 Created 2026-10-05 by `scripts/deploy-configs.ts`. Each is a DBC config account owned by
@@ -100,6 +123,21 @@ Within seconds a third-party wallet bought and sold on the pool, so the live cur
 `KEYPAIR=... npx tsx scripts/devnet-graduate.ts` runs the full lifecycle on one pool: createConfig → createPool → one buy that fills the curve to 100% → `migrateToDammV2` → read-back.
 The curve is Flat Fair with both market caps divided by 150 (graduation threshold 0.62 SOL) so it fits a devnet budget; shape, fees, LP split and migration settings are unchanged.
 Result ([devnet-graduation.json](devnet-graduation.json)): the DBC pool is marked migrated, DAMM v2 pool `5hiCfh8heVN8G14pJtHTU4pF3y5M46SeS81tB8y8qbSS` is owned by the DAMM v2 program, and both LP positions hold 0 unlocked and 0 vesting liquidity: 100% permanently locked.
+
+### How the LP lock holds
+
+"Permanently locked" is the DAMM v2 position field `permanent_locked_liquidity`. In the DAMM v2 program
+([MeteoraAg/damm-v2](https://github.com/MeteoraAg/damm-v2), main at `a85c9266`, read 2026-10-10):
+
+- `remove_liquidity` and `remove_all_liquidity` only take from `unlocked_liquidity`
+  (`require!(liquidity_delta <= position.unlocked_liquidity)` in `ix_remove_liquidity.rs`);
+- the only code that lowers `permanent_locked_liquidity` is position splitting (`state/pool.rs`), which adds the
+  same amount to the second position's `permanent_locked_liquidity`: locked liquidity can move, never leave;
+- `close_position` requires an empty position, and no admin or operator instruction touches liquidity.
+
+The remaining trust is the program itself: DAMM v2 and DBC are upgradeable, both by `JADaUV8kvDpDbJr55wxXJHVaBS3VCj8thZZHjfeuCVLd`
+(read from the program data accounts on mainnet, 2026-10-10). An upgrade could change these rules; that holds for every
+DAMM v2 pool, not just curvebook's.
 
 ### Read-back check
 

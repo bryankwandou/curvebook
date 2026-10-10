@@ -85,7 +85,8 @@ test('public/submit.html: script parses, description ≤ 3000, tweet ≤ 280', (
   const F: [string, string][] = new Function('document', 'navigator', 'getSelection', js.replace('const root', 'return F;const root'))()
   const field = (name: string) => F.find((f) => f[0].startsWith(name))![1]
   assert.ok(field('Project Description').length <= 3000, `description ${field('Project Description').length}`)
-  assert.ok(field('Tweet text').replace(/https:\S+/g, 'x'.repeat(23)).length <= 280, 'tweet too long')
+  // every tweet with a Post on X button fits, counting each URL as 23 characters the way X does
+  for (const f of F as string[][]) if (f[3] === 'x') assert.ok(f[1].replace(/https:\S+/g, 'x'.repeat(23)).length <= 280, `tweet too long: ${f[0]}`)
 })
 
 // 5. risk flags: each rule fires on a config built to trip it, and a clean config gets none

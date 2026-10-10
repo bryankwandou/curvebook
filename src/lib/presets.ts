@@ -89,7 +89,7 @@ export const PRESETS: Preset[] = [
   {
     id: 'stock-pair-usdc',
     name: 'Stock Pair (USDC)',
-    tagline: 'USDC-quoted, narrow price band, low fee. Built for thinly traded tokenized equities that need price discovery around a known reference.',
+    tagline: 'USDC-quoted, narrow 1.8x band, low fee: a calm first market for a token whose value is roughly known. No oracle, so nothing ties it to a reference price.',
     shape: 'flat',
     quote: 'USDC',
     initialMarketCap: 50_000,
@@ -100,7 +100,7 @@ export const PRESETS: Preset[] = [
     feeDurationSec: 0,
     creatorFeePct: 50,
     poolCreationFeeSol: 0.01,
-    bestFor: 'xStocks / tokenized-equity companion launches paired against USDC',
+    bestFor: 'USDC-paired tokens with a roughly known value (e.g. companions to tokenized equities); not for discovering an unknown price',
   },
 ]
 
