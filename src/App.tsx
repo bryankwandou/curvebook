@@ -1,4 +1,4 @@
-import scan from '../graduated-configs.json'
+import scanBundled from '../graduated-configs.json'
 import { Inspector } from './components/Inspector'
 import { useMemo, useState } from 'react'
 import { PROTOCOL_POOL_CREATION_FEE_PERCENT } from '@meteora-ag/dynamic-bonding-curve-sdk'
@@ -14,7 +14,8 @@ import fuzz from '../fuzz-report.json'
 import sim from '../mainnet-sim.json'
 import launch from '../mainnet-launch.json'
 import verify from '../mainnet-verify.json'
-import poolState from '../mainnet-pool-state.json'
+import poolStateBundled from '../mainnet-pool-state.json'
+import { useLive } from './lib/live'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -238,6 +239,7 @@ function Builder() {
 }
 
 function MainnetProof() {
+  const poolState = useLive('mainnet-pool-state.json', poolStateBundled)
   const mn = (kind: string, id: string) => `https://solscan.io/${kind}/${id}`
   return (
     <section className="detail" id="proof">
@@ -417,6 +419,7 @@ export default function App() {
   const [selected, setSelected] = useState(PRESETS[1].id)
   const all = useMemo(() => PRESETS.map((p) => ({ p, r: presetStats(p) })), [])
   const chosen = PRESETS.find((p) => p.id === selected)!
+  const scan = useLive('graduated-configs.json', scanBundled)
 
   return (
     <>

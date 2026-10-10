@@ -6,6 +6,7 @@ import { inspectConfig, type Inspection } from '../lib/inspect'
 import { PRESETS } from '../lib/presets'
 import { fmt, presetStats } from '../lib/stats'
 import { CurveChart, type Series } from './CurveChart'
+import { useLive } from '../lib/live'
 
 interface ScanRow {
   config: string
@@ -19,19 +20,22 @@ interface ScanRow {
   closest: string
   closestGap: number
 }
-const scan = scanJson as unknown as {
+type Scan = {
+  ranAt: string
   graduatedPools: number
   distinctConfigs: number
   window: { from: string; to: string }
   classification: { all: { graduations: number; listings: number; undecoded: number } }
   configs: ScanRow[]
 }
+const scanBundled = scanJson as unknown as Scan
 
 const short = (k: string) => `${k.slice(0, 4)}…${k.slice(-4)}`
 const sol = (kind: string, id: string) => `https://solscan.io/${kind}/${id}`
 
 export function Inspector() {
   const { connection } = useConnection()
+  const scan = useLive('graduated-configs.json', scanBundled)
   const [address, setAddress] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -165,7 +169,7 @@ export function Inspector() {
         finds the DBC config named by each migrate instruction, and decodes every config: {scan.graduatedPools.toLocaleString('en-US')} graduated pools across{' '}
         {scan.distinctConfigs} configs, {scan.window.from.slice(0, 10)} to {scan.window.to.slice(0, 10)}. {scan.classification.all.listings.toLocaleString('en-US')} of them came from
         configs where price moves 1.25x or less or that graduate on under 0.01 of the quote token ({scan.classification.all.undecoded} could not be decoded). Busy
-        migration configs cover days and quiet ones months, so this is a sample, not a time series. Top configs below; Click a row to inspect it.
+        migration configs cover days and quiet ones months, so this is a sample, not a time series. The scan reruns daily in GitHub Actions; this copy is from {scan.ranAt.slice(0, 10)}. Top configs below; click a row to inspect it.
       </p>
       <div className="panel scroll-x">
         <table className="pools">
