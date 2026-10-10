@@ -462,17 +462,23 @@ export default function App() {
                   {pct.n(safety.lpMostlyWithdrawable)} ({pct.of(safety.lpMostlyWithdrawable, grads.graduations)}) came from configs that leave half or more of the graduation LP
                   withdrawable by the launchpad or creator. Since then, {pct.of(hit.lostHalfOrMore, hit.graduations)} of those pools have lost half or more of the liquidity
                   they graduated with; on configs that lock all of it, {pct.of(control.lostHalfOrMore, control.graduations)}.{' '}
+                  {outcomes.pulls && (
+                    <>
+                      In at least {outcomes.pulls.within10Minutes} DAMM v2 pools the liquidity was removed within 10 minutes of graduating (<a href="#timing">timing</a>).{' '}
+                    </>
+                  )}
                 </>
               )}
               By our thresholds (price moves 1.25x or less, or graduation needs under 0.01 of the quote token), {pct.of(grads.listings, grads.graduations)} were direct listings
               rather than price discovery; that share depends on the thresholds, see <a href="#method">the method</a>.
             </p>
             <p className="lede">
-              curvebook checks any DBC config from mainnet for mint authority, LP lock, fee traps, creator vesting and sniper advantage: in the browser, from a terminal, or
-              in a launchpad's CI. Its four presets pass every check and are live on mainnet.
+              curvebook checks any DBC token, pool or config on mainnet for mint authority, LP lock, fee traps, creator vesting and sniper advantage, and shows how much of
+              a graduated pool's liquidity is already gone: in the browser, through a free JSON API and badge for trading terminals, or in a launchpad's CI. Its four
+              presets pass every check and are live on mainnet.
             </p>
             <p className="lede">
-              <a href="#inspect">Check a config</a> · <a href="#presets">Browse presets</a>
+              <a href="#inspect">Check a token</a> · <a href="#api">API and badge</a> · <a href="#presets">Browse presets</a>
             </p>
           </div>
           <div className="panel">
