@@ -91,6 +91,12 @@ mint [9yVLMokY…](https://solscan.io/token/9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FK
 Curve progress 2.08% right after our buy, total cost 0.0421 SOL ([mainnet-launch.json](mainnet-launch.json)).
 Within seconds a third-party wallet bought and sold on the pool, so the live curve reads lower. Those trades paid 0.016 SOL in fees to the preset author. `npx tsx scripts/pool-state.ts` reads the pool back ([mainnet-pool-state.json](mainnet-pool-state.json)).
 
+### Graduation to DAMM v2 (devnet)
+
+`KEYPAIR=... npx tsx scripts/devnet-graduate.ts` runs the full lifecycle on one pool: createConfig → createPool → one buy that fills the curve to 100% → `migrateToDammV2` → read-back.
+The curve is Flat Fair with both market caps divided by 150 (graduation threshold 0.62 SOL) so it fits a devnet budget; shape, fees, LP split and migration settings are unchanged.
+Result ([devnet-graduation.json](devnet-graduation.json)): the DBC pool is marked migrated, DAMM v2 pool `5hiCfh8heVN8G14pJtHTU4pF3y5M46SeS81tB8y8qbSS` is owned by the DAMM v2 program, and both LP positions hold 0 unlocked and 0 vesting liquidity: 100% permanently locked.
+
 ### Read-back check
 
 `npx tsx scripts/verify-mainnet.ts` reads each config account from mainnet (read-only) and compares it field by field with its preset:

@@ -1,0 +1,41 @@
+{
+  "cluster": "devnet",
+  "ranAt": "2026-10-10T08:08:40.901Z",
+  "preset": "flat-fair, market caps / 150",
+  "migrationQuoteThresholdSol": 0.618027808,
+  "config": "91Dh86SMNXyoEBsbeKHNyj3GkqDNym9HwbrDhAt6NCyX",
+  "pool": "3zAGQ3mVC1uW3qqzAXAogxe1ypc9wZ1ncPJKPLJwR3VU",
+  "mint": "82RpqeVfT5CJgkybNksTEohoEWcDLd1C8ccEcng3qBv6",
+  "createConfig": "5H1Vrw95NDjbDRQzgkGVBAupfbsUSHXsDdZrXZPqSAUn5qdjRbhYzuxWZsdqVd55qHhigkjEFm6V3ijRmX7arbKv",
+  "createPool": "5pczyxBUMZxjTLsL3aYnVPCJNqxeeoM6m9cobKvWTeoQMeE4QSitmxcsQZVia3tDKxWXoXbQLSNhrUi4KH6ZJy7C",
+  "buy": "5RStBBruTKJV2THL4KAdh5hExmVax13X6ok5YhcMuFYzgTPjM88VTdskJjyBqMAKskLk1ceErK34TRhyNiuzUVYE",
+  "curveProgress": 1,
+  "migrateToDammV2": "2Pt9y7zJXyNb94aLv7WRvR9DxjPsv4EhkTkTBLTTUfTNbQ6jhGTiGJSXc63Lu7HsHuXEPuJ3z8YqtfvAT9m4DCJB",
+  "isMigrated": true,
+  "dammV2": {
+    "program": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+    "ownerMatches": true,
+    "config": "Hv8Lmzmnju6m7kcokVKvwqz7QPmdX9XfKjJsXz8RXcjp",
+    "pool": "5hiCfh8heVN8G14pJtHTU4pF3y5M46SeS81tB8y8qbSS",
+    "liquidity": "8045320641772890351480638665876",
+    "permanentLockLiquidity": "8045320641772890351480638665876",
+    "positions": [
+      {
+        "position": "BwBY6drpe8kxzKHLULdGvJPiBxNY2d8k5upkx3gfwu18",
+        "nftMint": "8j6U154jvpkVZn2AiBSB1ch5zFw1dN88b35XeeV9HkxG",
+        "unlockedLiquidity": "0",
+        "vestedLiquidity": "0",
+        "permanentLockedLiquidity": "4022660324147400193849486718198"
+      },
+      {
+        "position": "Ag1VTJRNQvFWh13Z4zzwmkdgcbMCeqGg7i1G4RnT4ihB",
+        "nftMint": "8HQuUfsYthshSrx5euKpihyUCzkg48uVi8KCiBt2YJYx",
+        "unlockedLiquidity": "0",
+        "vestedLiquidity": "0",
+        "permanentLockedLiquidity": "4022660317625490157631151947678"
+      }
+    ]
+  },
+  "allLpPermanentlyLocked": true,
+  "spentSol": 0.686078274
+}

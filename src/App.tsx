@@ -7,6 +7,7 @@ import { deployedConfig } from './lib/registry'
 import { CurveChart, type Series } from './components/CurveChart'
 import { ForkButton, LaunchForm, PoolFeed } from './components/Actions'
 import proof from '../devnet-proof.json'
+import grad from '../devnet-graduation.json'
 import fuzz from '../fuzz-report.json'
 import sim from '../mainnet-sim.json'
 import launch from '../mainnet-launch.json'
@@ -373,6 +374,34 @@ function DevnetProof() {
                   <a href={dn('tx', r.createConfig)}>config</a> · <a href={dn('tx', r.createPool)}>launch</a> · <a href={dn('tx', r.buy)}>buy</a>
                 </td>
                 <td>{(r.curveProgress * 100).toFixed(3)}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h3>Graduation: DBC → DAMM v2, end to end</h3>
+      <p className="lede">
+        <code>scripts/devnet-graduate.ts</code> runs the whole lifecycle on one pool: the Flat Fair curve with both market caps divided by 150 (threshold{' '}
+        {grad.migrationQuoteThresholdSol.toFixed(2)} SOL, so it fits a devnet budget; shape, fees and LP split unchanged), one buy that fills the curve to{' '}
+        {(grad.curveProgress * 100).toFixed(0)}%, then <code>migrateToDammV2</code>. Read back afterwards: the DBC pool is marked migrated, the new pool is owned by the
+        DAMM v2 program, and {grad.allLpPermanentlyLocked ? 'both LP positions are 100% permanently locked (0 unlocked, 0 vesting)' : 'LP lock check failed'}.
+      </p>
+      <div className="panel">
+        <table className="pools">
+          <tbody>
+            <tr><td>DBC pool (migrated)</td><td><a href={dn('account', grad.pool)}>{grad.pool.slice(0, 8)}…</a></td></tr>
+            <tr><td>DAMM v2 pool</td><td><a href={dn('account', grad.dammV2.pool)}>{grad.dammV2.pool.slice(0, 8)}…</a></td></tr>
+            <tr>
+              <td>Transactions</td>
+              <td>
+                <a href={dn('tx', grad.createConfig)}>config</a> · <a href={dn('tx', grad.createPool)}>launch</a> · <a href={dn('tx', grad.buy)}>buy to 100%</a> ·{' '}
+                <a href={dn('tx', grad.migrateToDammV2)}>migrate to DAMM v2</a>
+              </td>
+            </tr>
+            {grad.dammV2.positions.map((x, i) => (
+              <tr key={x.position}>
+                <td>LP position {i + 1}</td>
+                <td><a href={dn('account', x.position)}>{x.position.slice(0, 8)}…</a> · permanently locked</td>
               </tr>
             ))}
           </tbody>
