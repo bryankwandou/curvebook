@@ -79,7 +79,10 @@ export function Inspector() {
     history.replaceState(null, '', `?config=${encodeURIComponent(a)}#inspect`)
     setBusy(true)
     setError('')
+    // clear the previous report at once, so it is never shown under the new address
     setStatus(null)
+    setTarget(null)
+    setResult(null)
     const id = ++runId.current
     try {
       const feed = feedConnection(connection)

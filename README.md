@@ -190,7 +190,8 @@ live pool feed for each preset.
 
 ## Config inspector
 
-The site's Inspector (`#inspect`) reads any DBC config from mainnet and decodes it in the browser with
+The site's Inspector (`#inspect`) takes a token, a DBC pool or a config (`src/lib/target.ts` resolves the first two to
+their config), reads the config from mainnet and decodes it in the browser with
 `src/lib/inspect.ts`: it walks the curve with the SDK math, reads the fee schedule, migration option, LP split and
 lock, token vesting and fee claimer, and finds the closest curvebook preset by comparing curve shape (price multiple
 at each tenth of the raise). On the four official configs it returns each preset exactly.
