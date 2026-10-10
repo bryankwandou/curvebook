@@ -15,6 +15,7 @@ const SOL_PAYER = new PublicKey(process.env.SIM_PAYER ?? '9WzDXwBbmkg8ZTbNMqUxvQ
 const BUY = { SOL: 1_000_000_000, USDC: 1_000_000_000 } // 1 SOL, or 1,000 USDC
 
 const connection = new Connection(process.env.RPC ?? 'https://api.mainnet-beta.solana.com', 'confirmed')
+console.log(`cluster mainnet-beta  slot ${await connection.getSlot()}`)
 if ((await connection.getGenesisHash()) !== MAINNET_GENESIS) throw new Error('RPC is not mainnet')
 const client = new DynamicBondingCurveClient(connection, 'confirmed')
 const { program } = createDbcProgram(connection, 'confirmed')
@@ -94,6 +95,8 @@ for (const p of PRESETS) {
   console.log(JSON.stringify(row))
 }
 
+console.log(`
+${rows.filter((r) => r.ok).length} of ${rows.length} launches succeed against the mainnet DBC program (simulateTransaction, not sent)`)
 writeFileSync(
   new URL('../mainnet-sim.json', import.meta.url),
   JSON.stringify({ cluster: 'mainnet-beta', mode: 'simulateTransaction (unsigned, not sent)', ranAt: new Date().toISOString(), payer: SOL_PAYER.toBase58(), runs: rows }, null, 2) + '\n',

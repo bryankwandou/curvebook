@@ -1,0 +1,50 @@
+{
+  "cluster": "mainnet-beta",
+  "mode": "read-only (getTransaction + getAccountInfo)",
+  "ranAt": "2026-10-10T02:31:30.123Z",
+  "slot": 455091155,
+  "configs": [
+    {
+      "preset": "flat-fair",
+      "config": "7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK",
+      "signature": "2dPGvjmAGEjmXdan3LQ9WTBDXpXatDjhk8wKjPkvkB8gDwbvKiNndre7DyBSytwmEMurb7WuggQjX7xuYmQWwgVT",
+      "createdSlot": 453621947,
+      "blockTime": 1791214747,
+      "rentLamports": 5974080,
+      "checks": 20,
+      "failed": []
+    },
+    {
+      "preset": "early-discovery",
+      "config": "FnKvUoL12VZacUE2k4EwhFXHn2xxhoG1wvQYsfgBSsLT",
+      "signature": "2DcGSrPZ3a7WhqzEFLS9eQDx184rvaPxkdsanrYL4QLreLU2CiRnd7yoEiuXUMQkFdRFDoCF9ZUzyEQsJNv2HBKa",
+      "createdSlot": 453621950,
+      "blockTime": 1791214747,
+      "rentLamports": 5974080,
+      "checks": 20,
+      "failed": []
+    },
+    {
+      "preset": "long-curve",
+      "config": "6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93",
+      "signature": "4BAY6KjyytTGNsuoirHwNHz6Aq1DLaZKbvFHAsLiP298PsuWcy4TbP6ey7x4bXtdLd264BDTyEsM5PD4PoDTL1sT",
+      "createdSlot": 453621953,
+      "blockTime": 1791214748,
+      "rentLamports": 5974080,
+      "checks": 20,
+      "failed": []
+    },
+    {
+      "preset": "stock-pair-usdc",
+      "config": "4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU",
+      "signature": "2kx3rPKoDfyi7qTceiFB94mpYHMtxfh85aRYhFiDgRq6VLqJqPUC9VzmvM4QhN73kCHQh1g2mggH669Y425JEws",
+      "createdSlot": 453621956,
+      "blockTime": 1791214749,
+      "rentLamports": 5974080,
+      "checks": 20,
+      "failed": []
+    }
+  ],
+  "checks": 80,
+  "failures": 0
+}
