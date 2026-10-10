@@ -38,10 +38,11 @@ export function riskFlags(r: RiskInput): Flag[] {
   const unlocked = c.partnerLiquidityPercentage + c.creatorLiquidityPercentage
   if (unlocked > 0) {
     const vesting = c.partnerLiquidityVestingInfo.isInitialized || c.creatorLiquidityVestingInfo.isInitialized
+    // a vesting schedule does not downgrade it: on mainnet, pools on vesting configs lost their LP as often (lp-outcomes.json)
     add(
-      unlocked >= 50 && !vesting ? 'red' : 'warn',
+      unlocked >= 50 ? 'red' : 'warn',
       `${unlocked}% of graduation LP not permanently locked`,
-      `Partner ${c.partnerLiquidityPercentage}%, creator ${c.creatorLiquidityPercentage}% of the DAMM liquidity ${vesting ? 'is subject to a vesting schedule, then withdrawable' : 'can be withdrawn after graduation'}.`,
+      `Partner ${c.partnerLiquidityPercentage}%, creator ${c.creatorLiquidityPercentage}% of the DAMM liquidity can be withdrawn after graduation${vesting ? ' (a vesting schedule covers part of it)' : ''}.`,
     )
   }
 

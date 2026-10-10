@@ -50,11 +50,21 @@ test('graduated-configs.json: classification adds up and follows its rule', () =
   const sum = (f: (c: { lpUnlockedPct: number; lpVesting: boolean; mintAuthority: boolean }) => boolean) =>
     scan.allConfigs.filter((c: { lpUnlockedPct: number | null }) => c.lpUnlockedPct !== null).filter(f).reduce((n: number, c: { graduatedPools: number }) => n + c.graduatedPools, 0)
   const { lpMostlyWithdrawable, lpAllLocked, mintAuthorityKept } = scan.classification.safety
-  assert.equal(sum((c) => c.lpUnlockedPct >= 50 && !c.lpVesting), lpMostlyWithdrawable)
+  assert.equal(sum((c) => c.lpUnlockedPct >= 50), lpMostlyWithdrawable)
   assert.equal(sum((c) => c.lpUnlockedPct === 0), lpAllLocked)
   assert.equal(sum((c) => c.mintAuthority), mintAuthorityKept)
   assert.equal(total, scan.graduatedPools)
   assert.equal(scan.allConfigs.length, scan.distinctConfigs)
+})
+
+test('lp-outcomes.json: classes add up, and the control (all LP locked) mostly shows no loss', () => {
+  const o = json('lp-outcomes.json')
+  const classes = Object.values(o.byClass) as { graduations: number; lostHalfOrMore: number }[]
+  assert.equal(classes.reduce((n, c) => n + c.graduations, 0), o.measured)
+  assert.equal(o.byKind.damm_v1.graduations + o.byKind.damm_v2.graduations, o.measured)
+  for (const c of classes) assert.ok(c.lostHalfOrMore <= c.graduations)
+  // if pools on fully locked configs lose liquidity often, the measurement is broken, not the pools
+  assert.ok(o.byClass.locked.lostHalfOrMore <= o.byClass.locked.graduations * 0.1, `control: ${o.byClass.locked.lostHalfOrMore} of ${o.byClass.locked.graduations}`)
 })
 
 // 3. on-chain proof files agree with each other
@@ -97,7 +107,9 @@ test('risk flags: mint authority, withdrawable LP, never-decaying fee, vesting; 
   assert.deepEqual(titles({}), [])
   assert.ok(titles({ tokenUpdateAuthority: 3 })[0].startsWith('red:Mint authority'))
   assert.ok(titles({ partnerLiquidityPercentage: 89 })[0].startsWith('red:89% of graduation LP'))
-  assert.ok(titles({ partnerLiquidityPercentage: 89, partnerLiquidityVestingInfo: { isInitialized: 1 } })[0].startsWith('warn:'))
+  // vesting does not downgrade it: pools on vesting configs lost their LP as often (lp-outcomes.json)
+  assert.ok(titles({ partnerLiquidityPercentage: 89, partnerLiquidityVestingInfo: { isInitialized: 1 } })[0].startsWith('red:'))
+  assert.ok(titles({ partnerLiquidityPercentage: 20 })[0].startsWith('warn:20% of graduation LP'))
   assert.ok(titles({}, { feeStartPct: 15, feeEndPct: 15 })[0].startsWith('red:15% trading fee'))
   assert.deepEqual(titles({}, { feeStartPct: 60, feeEndPct: 1 }).map((t) => t.split(':')[0]), ['info'])
   const vest = { cliffUnlockAmount: new BN(0), amountPerPeriod: new BN(25e6).mul(new BN(1e6)), numberOfPeriod: new BN(10) }

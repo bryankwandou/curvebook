@@ -7,6 +7,8 @@ import { PRESETS } from '../lib/presets'
 import { fmt, presetStats } from '../lib/stats'
 import { CurveChart, type Series } from './CurveChart'
 import { useLive } from '../lib/live'
+import { Methodology, type ConfigRow } from './Methodology'
+import { OutcomesTable } from './Outcomes'
 
 interface ScanRow {
   config: string
@@ -28,8 +30,10 @@ type Scan = {
   classification: {
     all: { graduations: number; listings: number; undecoded: number }
     safety?: { lpMostlyWithdrawable: number; lpAllLocked: number; mintAuthorityKept: number }
+    sample: string
   }
   configs: ScanRow[]
+  allConfigs: ConfigRow[]
 }
 const scanBundled = scanJson as unknown as Scan
 
@@ -140,7 +144,7 @@ export function Inspector() {
             <p className="hint">Mint authority revoked, LP 100% permanently locked, no high fee, no creator vesting, no strong sniper advantage.</p>
           )}
           <p className="hint">
-            Same checks from a terminal or CI: <code>npx tsx scripts/check.ts {short(result.address)}</code>
+            Same checks from a terminal or CI: <code>npx tsx scripts/check.ts {result.address}</code>
           </p>
         </div>
       )}
@@ -225,7 +229,7 @@ export function Inspector() {
         {scan.distinctConfigs} configs, {scan.window.from.slice(0, 10)} to {scan.window.to.slice(0, 10)}. {scan.classification.all.listings.toLocaleString('en-US')} of them came from
         configs where price moves 1.25x or less or that graduate on under 0.01 of the quote token ({scan.classification.all.undecoded} could not be decoded).
         {scan.classification.safety &&
-          ` ${scan.classification.safety.lpMostlyWithdrawable.toLocaleString('en-US')} came from configs that leave half or more of the graduation LP withdrawable with no vesting; ${scan.classification.safety.lpAllLocked.toLocaleString('en-US')} from configs that lock all of it.`} Busy
+          ` ${scan.classification.safety.lpMostlyWithdrawable.toLocaleString('en-US')} came from configs that leave half or more of the graduation LP withdrawable; ${scan.classification.safety.lpAllLocked.toLocaleString('en-US')} from configs that lock all of it.`} Busy
         migration configs cover days and quiet ones months, so this is a sample, not a time series. The scan reruns daily in GitHub Actions; this copy is from {scan.ranAt.slice(0, 10)}. Top configs below; click a row to inspect it.
       </p>
       <div className="panel scroll-x">
@@ -271,6 +275,8 @@ export function Inspector() {
           </tbody>
         </table>
       </div>
+      <OutcomesTable />
+      <Methodology rows={scan.allConfigs} sample={scan.classification.sample} window={scan.window} />
     </section>
   )
 }

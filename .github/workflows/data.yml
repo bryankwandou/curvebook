@@ -31,6 +31,10 @@ jobs:
           CONCURRENCY: 8
           DELAY: 150
         run: npx tsx scripts/scan-graduations.ts
+      - name: Measure what happened to the graduation liquidity
+        env:
+          RPC: ${{ secrets.HELIUS_RPC }}
+        run: npx tsx scripts/lp-outcomes.ts
       - name: Read the launched pool
         env:
           RPC: ${{ secrets.HELIUS_RPC }}
@@ -48,7 +52,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add graduated-configs.json graduation-history.json mainnet-pool-state.json
+          git add graduated-configs.json graduation-history.json lp-outcomes.json mainnet-pool-state.json
           git diff --cached --quiet && { echo "no change"; exit 0; }
           git commit -m "data: daily mainnet refresh $(date -u +%F)"
           git push

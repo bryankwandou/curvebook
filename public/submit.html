@@ -42,7 +42,7 @@ curvebook: paste any DBC config, see what its curve, fees and LP lock really do.
 
 https://curvebook-kappa.vercel.app/demo`, 'Post this on X with the button, then paste the tweet URL into Tweet Link above. Attach demo.mp4 for an inline video if you can.', 'x'],
   ['Project Name', 'curvebook'],
-  ['Project Description', `We decoded the config behind 1,790 recent DBC graduations on mainnet. 916 of them (51%) came from configs that leave half or more of the graduation LP withdrawable by the launchpad or creator, with no vesting. Only 675 (38%) lock all of it. 61% were direct listings: price moves 1.25x or less, or graduation needs under 0.01 of the quote token. None of it is visible without decoding the config account.
+  ['Project Description', `We decoded the config behind 1,792 recent DBC graduations on mainnet. 1,103 of them (62%) came from configs that leave half or more of the graduation LP withdrawable by the launchpad or creator. We then checked each pool's DAMM liquidity today: 71% of those have since lost half or more of the liquidity they graduated with. On configs that lock all LP, 2%. One pool had all of its liquidity removed 3 minutes 23 seconds after graduating. None of this is visible without decoding the config account.
 
 curvebook is a pre-launch check for DBC configs. Paste any config address and it reads the account from mainnet, walks the curve with the SDK math, and flags what matters to a buyer: mint authority kept, LP not permanently locked, fees that never decay, supply vesting to the creator, migration fees, and how far ahead early buyers are at graduation. The same checks run from a terminal (scripts/check.ts, exit 1 on a red flag), so a launchpad can gate its configs in CI. Every report has a shareable link.
 
@@ -55,6 +55,7 @@ How we know it works:
 - one token launched on mainnet on the Flat Fair config
 - the full lifecycle on devnet: buy to 100%, migrateToDammV2, both DAMM v2 LP positions permanently locked
 - the risk rules are unit-tested, and CI runs lint, build and tests on every push
+- the liquidity study has a control: pools on configs that lock all LP (2% lost half), and npm test fails if that rises above 10%
 
 No users yet beyond us. That is the next step.`],
   ['Project Github Link', 'https://github.com/bryankwandou/curvebook'],
