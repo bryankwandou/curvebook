@@ -163,6 +163,18 @@ It is read-only. The public RPC rate-limits it hard, so a private RPC is the pra
 RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDRESS=200 npx tsx scripts/scan-graduations.ts
 ```
 
+`.github/workflows/data.yml` reruns the scan and `scripts/pool-state.ts` every day (read-only, RPC from the
+`HELIUS_RPC` repo secret; it fails instead of passing when the secret is missing or the scan comes back short), runs
+`npm test` on the new files and commits them. The deployed site reads the latest committed copy at runtime
+(`src/lib/live.ts`) and keeps its bundled copy when that is newer or GitHub is unreachable.
+
+## Tests
+
+`npm test` (`scripts/test.ts`, offline): each preset hits its advertised open → graduation multiple with a monotonic
+curve that ends at its threshold; the published graduation share recomputes from the per-config rows with the stated
+rule; the mainnet launch, devnet graduation and deployed configs agree; the submission page parses and fits the form
+limits. CI (`.github/workflows/ci.yml`) runs lint, build and tests on every push.
+
 ## Run the app
 
 ```bash
