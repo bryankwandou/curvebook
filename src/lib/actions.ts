@@ -1,5 +1,5 @@
 import { DynamicBondingCurveClient } from '@meteora-ag/dynamic-bonding-curve-sdk'
-import { Keypair, PublicKey, type Connection, type Transaction } from '@solana/web3.js'
+import { Connection, Keypair, PublicKey, type Transaction } from '@solana/web3.js'
 import type { WalletContextState } from '@solana/wallet-adapter-react'
 import { buildPreset, quoteMint, type Preset } from './presets'
 
@@ -68,6 +68,11 @@ export interface PoolRow {
   creator: string
   progress: number
   migrated: boolean
+}
+
+/** the public RPC refuses getProgramAccounts, so the feed goes through the site's narrow /api/rpc proxy */
+export function feedConnection(fallback: Connection) {
+  return typeof location === 'undefined' ? fallback : new Connection(new URL('/api/rpc', location.origin).toString(), 'confirmed')
 }
 
 export async function poolsOnConfig(connection: Connection, config: string): Promise<PoolRow[]> {

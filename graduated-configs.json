@@ -1,0 +1,189 @@
+{
+  "cluster": "mainnet-beta",
+  "mode": "read-only (getSignaturesForAddress on the DAMM migration configs + getTransaction + config accounts)",
+  "ranAt": "2026-10-10T08:46:34.354Z",
+  "window": {
+    "from": "2025-05-18T16:52:27.000Z",
+    "to": "2026-10-10T08:40:55.000Z"
+  },
+  "graduatedPools": 1792,
+  "distinctConfigs": 632,
+  "configs": [
+    {
+      "config": "CSsWETyMitcLExMf2pqfaM3X3Vw6Vwp5gubnz2fzFkve",
+      "graduatedPools": 197,
+      "samplePools": [
+        "E55bvnvG7MWHaHgsyxGzBgHqFEK9G2cPMZwYQxnRm8Wf",
+        "BsFjYjAzWbSHp8c2JobMPZgxB4nQ5tZ1XKWrtFSBfDSx",
+        "35ff6uEtzWczaDUyrTryovqMzHyfNbAie8G1bjTubAWj"
+      ],
+      "lastGraduation": "2025-05-24T14:09:48.000Z",
+      "feeClaimer": "CXx9wwxKW19jdPQNtpsZYoCEQitb9BF6bk3SoNLUP5id",
+      "quote": "SOL",
+      "threshold": 1,
+      "multiplier": 1,
+      "earlyBuyerMultiple": 1,
+      "soldPct": 0,
+      "fee": "0.01% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v1",
+      "lpLockedPct": 3,
+      "closest": "Stock Pair (USDC)",
+      "closestGap": 0.3389460928312339
+    },
+    {
+      "config": "2XyKhFogGgEQVFtyMce6UqkHMSvsa8ME3VEcXvYnm5Gz",
+      "graduatedPools": 159,
+      "samplePools": [
+        "9HAk2yHhYmTBir5m8jHJXq3Kd79MX2gedLsEeTevfTww",
+        "4RvZRfMJA6amBUUnkmDZiSFJ8HUdmgdPQpZxqQ2ZG7EU",
+        "5iLpEg3v7FLdk72QfNqnuHzSSk5FY6mnuq8Qsz8qu2FJ"
+      ],
+      "lastGraduation": "2026-10-10T04:11:48.000Z",
+      "feeClaimer": "9RaoVypDNRDgy7tLLVPrJRzuR219P5ZxZ46F2TmzJpYc",
+      "quote": "CWZ6…4cMt",
+      "threshold": 100000,
+      "multiplier": 15.999999581939425,
+      "earlyBuyerMultiple": 7.111111007538468,
+      "soldPct": 79.99999895778261,
+      "fee": "1% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v2, 0.3% pool fee",
+      "lpLockedPct": 100,
+      "closest": "Early Discovery",
+      "closestGap": 0.41568581375995173
+    },
+    {
+      "config": "HMZp5aqadH9W17fuH1AiqptGWVn1cR2XQ5BZfBbgfZQx",
+      "graduatedPools": 58,
+      "samplePools": [
+        "5sC97xRvW8iUn6raYrTwGcyhTKyoJMp1KZyiYFpFc3mX",
+        "CJKmcnYSUVhUvaQoy5Fd4KVm2FZTBEDo4eu8WKXe3xCg",
+        "GnsuCrfBYBXN4hRPw5zgCeYcd79LTmMMCDZ4n8djy31y"
+      ],
+      "lastGraduation": "2026-10-09T21:22:06.000Z",
+      "feeClaimer": "AQbBhrGXkTsmCEW8x7GHybQANen2miVU1tDc7Rpgmu3U",
+      "quote": "SOL",
+      "threshold": 0.007672363,
+      "multiplier": 1.052631549780764,
+      "earlyBuyerMultiple": 1.0435751979466845,
+      "soldPct": 0.0005064110121,
+      "fee": "1% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v2, 1% pool fee",
+      "lpLockedPct": 100,
+      "closest": "Stock Pair (USDC)",
+      "closestGap": 0.3089153951406712
+    },
+    {
+      "config": "9q4yEJsVqUQ4SQp24o8moARNrBFFCm1vZDKLo3KPkqTe",
+      "graduatedPools": 57,
+      "samplePools": [
+        "JAPrq6eexu81k4snnBRDfhtymgsfLnDsizShMU1GmTL1",
+        "7eWvH8cn7pMSQasiQYVbAdzfDB19ARuDhTFaussG4Cjg",
+        "HKSm7GFrUmz4FYWPLeRw73rQWvKAUnxbm41Jh2w5Enkk"
+      ],
+      "lastGraduation": "2026-10-10T08:39:57.000Z",
+      "feeClaimer": "CtH6UcKwomgpuFJvzArV5HPvB2uacuQQjDWuyaaNpVr2",
+      "quote": "SOL",
+      "threshold": 0.007536904,
+      "multiplier": 56819891.22115961,
+      "earlyBuyerMultiple": 35.952218891252755,
+      "soldPct": 99.9867323714533,
+      "fee": "0.25% flat",
+      "creatorFeePct": 100,
+      "migration": "DAMM v2, 1% pool fee",
+      "lpLockedPct": 11,
+      "closest": "none",
+      "closestGap": 14.153813412126436
+    },
+    {
+      "config": "36VxV18iT8rDdh2ioZ6ssqEDLEfjnzRw6LMhv1kqnmse",
+      "graduatedPools": 54,
+      "samplePools": [
+        "ERrYZ9S2WmZaiJMWRaK3shSQ1CjWUaXan5XW6kat4pY3",
+        "7dbmpTXCLojBucQF4tddpxhmojUM7sswv5gK1EPBYjhf",
+        "EXtuun9DB5R87GSMHYXxpBxbF7UtkapkVJeracTnugMJ"
+      ],
+      "lastGraduation": "2026-09-09T02:52:19.000Z",
+      "feeClaimer": "8TPACXaKotSZ7WXktfmKDRhgoypyGXNzo1ctr2YBzxLc",
+      "quote": "SOL",
+      "threshold": 12,
+      "multiplier": 1.1746531063933212,
+      "earlyBuyerMultiple": 1.1421959127630663,
+      "soldPct": 0.8683928621789998,
+      "fee": "1% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v1",
+      "lpLockedPct": 11,
+      "closest": "Stock Pair (USDC)",
+      "closestGap": 0.2431980119918588
+    },
+    {
+      "config": "FmTggVGAziiyvqKNqLp4tcsYg91XXDxzH98Nz9wqMtNM",
+      "graduatedPools": 51,
+      "samplePools": [
+        "4FLuEkDpUbH7iiP9pSuoavekUHYE8UuLxYE3P2z8AtQC",
+        "B2LFdmCVmkiGDCU2ToSoeoEoiK5B1WrwSh7D1QzFu8tY",
+        "87GTQK74dwnSRSXdPQQ9xgSUrASkAswnkdE6VmBJttpv"
+      ],
+      "lastGraduation": "2026-03-03T13:44:59.000Z",
+      "feeClaimer": "7XrX7jF4zzkKQDaDsbuC3pj83JDzRY3RPZk3yWvU5s82",
+      "quote": "SOL",
+      "threshold": 12,
+      "multiplier": 1.1746531063933212,
+      "earlyBuyerMultiple": 1.1421959127630679,
+      "soldPct": 0.1302589293262,
+      "fee": "1% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v1",
+      "lpLockedPct": 11,
+      "closest": "Stock Pair (USDC)",
+      "closestGap": 0.24319801199185948
+    },
+    {
+      "config": "GEi2PKrdDMGG2vmwcYLTrHfwnHszc8eLfPP2Q9j9JmLu",
+      "graduatedPools": 50,
+      "samplePools": [
+        "D8EH69ot97VcWbu5tJ2MAKo9XigwxxKCzmaeKfYFSHkh",
+        "DhCmHdSrTCtFAG7sp9tLdQHAivvqEumNXqb9yE1oyYXz",
+        "6cqULpMUPArg59wKAyGuTPGxm2DBZXDb2BxvaA5BjYJo"
+      ],
+      "lastGraduation": "2026-09-09T02:43:11.000Z",
+      "feeClaimer": "8TPACXaKotSZ7WXktfmKDRhgoypyGXNzo1ctr2YBzxLc",
+      "quote": "SOL",
+      "threshold": 12,
+      "multiplier": 1.1746531063933212,
+      "earlyBuyerMultiple": 1.1421959127630643,
+      "soldPct": 2.6051785865376003,
+      "fee": "1% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v1",
+      "lpLockedPct": 11,
+      "closest": "Stock Pair (USDC)",
+      "closestGap": 0.24319801199185792
+    },
+    {
+      "config": "3odqUdzxiaGrvFJci18XJ1p7tftpKrwzEHJoUZ79uMTa",
+      "graduatedPools": 50,
+      "samplePools": [
+        "HTXFxXmk8fq2pzD82kJpNHnaXH8WpkRvdw9MJ79xoZPq",
+        "5Tz8rMJt2naqvv9m669kpaR8BDJodcw6HTQsGrhD6ZZ1",
+        "D3vezDZaS5wwaAMJ1rBmNBdACWkMH444CZ1zN3BbMJcD"
+      ],
+      "lastGraduation": "2026-03-03T13:56:51.000Z",
+      "feeClaimer": "7XrX7jF4zzkKQDaDsbuC3pj83JDzRY3RPZk3yWvU5s82",
+      "quote": "SOL",
+      "threshold": 12,
+      "multiplier": 1.1746531063933212,
+      "earlyBuyerMultiple": 1.1421959127630643,
+      "soldPct": 2.6051785865376003,
+      "fee": "1% flat",
+      "creatorFeePct": 0,
+      "migration": "DAMM v1",
+      "lpLockedPct": 11,
+      "closest": "Stock Pair (USDC)",
+      "closestGap": 0.24319801199185792
+    }
+  ]
+}

@@ -146,14 +146,36 @@ KEYPAIR=path/to/wallet.json RPC=https://your-mainnet-rpc npx tsx scripts/deploy-
 This writes the config addresses to `src/deployed.json`. The app then shows the launch form and a
 live pool feed for each preset.
 
+## Config inspector
+
+The site's Inspector (`#inspect`) reads any DBC config from mainnet and decodes it in the browser with
+`src/lib/inspect.ts`: it walks the curve with the SDK math, reads the fee schedule, migration option, LP split and
+lock, token vesting and fee claimer, and finds the closest curvebook preset by comparing curve shape (price multiple
+at each tenth of the raise). On the four official configs it returns each preset exactly.
+
+`scripts/scan-graduations.ts` is the data behind the "Which configs actually graduate" table. Every DBC graduation
+passes one of Meteora's DAMM migration configs, so the script reads their latest signatures, finds each
+`migration_damm_v2` / `migrate_meteora_damm` instruction by its IDL discriminator, takes the DBC config (account #2)
+and pool (account #0), groups by config and decodes the most-graduated ones ([graduated-configs.json](graduated-configs.json)).
+It is read-only. The public RPC rate-limits it hard, so a private RPC is the practical way to run it:
+
+```bash
+RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDRESS=200 npx tsx scripts/scan-graduations.ts
+```
+
 ## Run the app
 
 ```bash
-npm run dev                         # VITE_RPC=... for the pool feed (needs getProgramAccounts)
+npm run dev                         # VITE_RPC=... to override the default PublicNode RPC
 npm run build
 ```
 
 Stack: React + Vite, `@meteora-ag/dynamic-bonding-curve-sdk`, Solana wallet adapter. Mainnet only.
+
+`api.mainnet-beta.solana.com` answers 403 to browser requests, so the site reads through PublicNode's free endpoint.
+The pool feed needs `getProgramAccounts`, which public endpoints refuse: it goes through `api/rpc.js`, a Vercel
+function that forwards only `getProgramAccounts` on the DBC program and `getAccountInfo` to a private RPC set in the
+`HELIUS_RPC` env var. The key never reaches the browser.
 
 ## Status
 

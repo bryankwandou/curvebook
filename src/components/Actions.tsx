@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { useWalletModal } from '@solana/wallet-adapter-react-ui'
-import { deployConfig, launchToken, poolsOnConfig, type PoolRow } from '../lib/actions'
+import { deployConfig, feedConnection, launchToken, poolsOnConfig, type PoolRow } from '../lib/actions'
 import type { Preset } from '../lib/presets'
 
 const short = (s: string) => `${s.slice(0, 4)}…${s.slice(-4)}`
@@ -117,7 +117,7 @@ export function PoolFeed({ config }: { config: string }) {
 
   useEffect(() => {
     let live = true
-    poolsOnConfig(connection, config)
+    poolsOnConfig(feedConnection(connection), config)
       .then((r) => live && setRows(r))
       .catch((e) => live && setError((e as Error).message))
     return () => {
@@ -125,7 +125,7 @@ export function PoolFeed({ config }: { config: string }) {
     }
   }, [connection, config])
 
-  if (error) return <p className="hint">Pool feed needs an RPC that allows getProgramAccounts (set VITE_RPC). {error.slice(0, 120)}</p>
+  if (error) return <p className="hint">Pool feed is unavailable right now ({error.slice(0, 80)}). The pools are on Solscan from the config link above.</p>
   if (!rows) return <p className="hint">Loading pools on this config…</p>
   if (!rows.length) return <p className="hint">No tokens launched on this config yet. Be the first.</p>
   return (
