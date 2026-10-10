@@ -1,8 +1,8 @@
 {
   "cluster": "mainnet-beta",
   "mode": "read-only (getSignaturesForAddress + getTransaction + pool account)",
-  "ranAt": "2026-10-10T03:10:19.906Z",
-  "slot": 455101846,
+  "ranAt": "2026-10-10T13:13:11.509Z",
+  "slot": 455267955,
   "pool": "4ikgpisQo83h3wBwtaqW8mhRuHbjM9L2egv9Fq7XY1zd",
   "mint": "9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FKPxZZ6gfS",
   "deployer": "GNuQ8FoXKAsq1i5QaT3o3Cjtevo7MAyRsAKiWB4Z2as8",
@@ -91,6 +91,116 @@
       "solChange": -0.000005,
       "cbkChange": 0,
       "signature": "3WeiPRUcYoT7pDTvmGdhDvaWxYDCpTG59YVsQ5qw17BfQ7jrsG19Y45saChNBujE1SvtELRL6Butajz2yKEu61Ft"
+    },
+    {
+      "time": "2026-10-10T04:00:44.000Z",
+      "slot": 455115722,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "47UE6Uie6sYbbt4aijyGL6iy3sWtJ5eFgzwxw178h6avxAJiNriAubUBTqQRNKzQQM3va4UWqHWEozSs771F6HjM"
+    },
+    {
+      "time": "2026-10-10T05:00:37.000Z",
+      "slot": 455132146,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "5fquyqUnhPYixvQKoZ27V4VqZQsZAg5ESgD1yJzp4SZ5J39oXBCX2w5BNvetDHpnWB1o5BmEaodp27KwKfyQ5omD"
+    },
+    {
+      "time": "2026-10-10T06:00:44.000Z",
+      "slot": 455148677,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "2BwYnM25p3NPx1TuQZwEJHMscBciTwVYfxmG4rrTj8mBWvbejCcJiwnW2QiC3tVA9nYnTmPERjpgpdtr2i87mtLt"
+    },
+    {
+      "time": "2026-10-10T07:00:38.000Z",
+      "slot": 455165199,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "5JssQTu11Hh5JjFo61mMG5UVwHot3MyHZZK9dhxe939uGzZ8wSJsDj5cphHjXd4pE4zMAEFcviugm7qXiC4KY4M1"
+    },
+    {
+      "time": "2026-10-10T08:00:43.000Z",
+      "slot": 455181793,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "55t1ZgdMm1v2dVjhjWCWebfBPn8rrNouuXtwzy9P4TgTw54qcQut6NiZjSuXRR6RFnGAxjwUjhxUyK4NAr8NPpxU"
+    },
+    {
+      "time": "2026-10-10T09:00:49.000Z",
+      "slot": 455198316,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "3XB56zpfNxXDDZPdWGtUYuBsesQcCbFF1SJ77j17RT3sTj6omwD9CgmXNbZscySzndQD4UhNDapcqC3dJ2ZTDkbB"
+    },
+    {
+      "time": "2026-10-10T10:00:41.000Z",
+      "slot": 455214860,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "b1NvvNRRd8f3USediagXW44mZ4TEfmRfa9ZCtxci2E6Yz73dqsx6AW7cWTdzctE2YV6uPVgJP16p3X6FWJs9nZp"
+    },
+    {
+      "time": "2026-10-10T11:00:42.000Z",
+      "slot": 455231375,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "4gMPunnQ8ucL2esNopX79rX4iaXDvwRD4KTMzJvBg2iLbn9gbi6fegvK2gJh4KrpA4Fij2QTgETW5vHVuQpf5hKt"
+    },
+    {
+      "time": "2026-10-10T12:00:40.000Z",
+      "slot": 455247936,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "5dxgjHUezEFhA8hn2mH8hJW1EX6wmvXvXa4yJLmvoj1qFof6KKL4JwEWaeRXUCr6dPqVfZyWqdhdbAy69cXrny7x"
+    },
+    {
+      "time": "2026-10-10T13:00:47.000Z",
+      "slot": 455264536,
+      "ok": false,
+      "signer": "8kgYYhrVqij9nQb4XJZ5G3H4xguojzg7SpMgLhTznzPk",
+      "ours": false,
+      "instruction": "ClaimProtocolPoolCreationFee",
+      "solChange": -0.000005,
+      "cbkChange": 0,
+      "signature": "5ipvyEaZutrvrYGhbXm9nBJKqHvwz8xhugDopRXVCqZF4FyGLTUtrbZSqSLohKQGYZZC15th8PHVvQKXqk5udj9q"
     }
   ]
 }
