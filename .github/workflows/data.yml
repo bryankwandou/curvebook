@@ -55,4 +55,6 @@ jobs:
           git add graduated-configs.json graduation-history.json lp-outcomes.json mainnet-pool-state.json
           git diff --cached --quiet && { echo "no change"; exit 0; }
           git commit -m "data: daily mainnet refresh $(date -u +%F)"
+          # main may have moved while the scan ran; only data files are committed here, so a rebase cannot conflict with code
+          git pull --rebase origin main
           git push
