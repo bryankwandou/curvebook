@@ -47,6 +47,8 @@ jobs:
           configs=$(node -p "Object.values(require('./src/deployed.json')).map(d => d.config).join(' ')")
           npx tsx scripts/check.ts --fail-on warn --json $configs > checked.json
           node -e "const r = require('./checked.json'); const n = $(echo $configs | wc -w); if (r.length !== n || r.some((x) => !x.pass)) { console.error(JSON.stringify(r, null, 2)); process.exit(1) } console.log('checked', r.length, 'presets, all pass')"
+      - name: Smoke-test the live API on known cases
+        run: node scripts/smoke.mjs
       - name: Sanity check before publishing
         run: |
           n=$(node -p "require('./graduated-configs.json').graduatedPools")

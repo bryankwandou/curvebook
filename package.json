@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "tsx scripts/test.ts"
+    "test": "tsx scripts/test.ts",
+    "build:api": "esbuild api-src/check.ts api-src/badge.ts --bundle --platform=node --target=node20 --format=cjs --outdir=api-dist --external:bufferutil --external:utf-8-validate --log-level=warning --footer:js=\"module.exports = module.exports.default;\""
   },
   "dependencies": {
     "@meteora-ag/dynamic-bonding-curve-sdk": "^1.5.13",
