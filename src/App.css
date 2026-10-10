@@ -385,3 +385,47 @@ footer {
     flex-direction: column;
   }
 }
+
+button.link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.flags ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.flag {
+  padding: 0.45rem 0.7rem;
+  border-left: 3px solid var(--muted);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--muted) 8%, transparent);
+}
+.flag.red {
+  border-color: #e5484d;
+  background: color-mix(in srgb, #e5484d 12%, transparent);
+}
+.flag.warn {
+  border-color: #f5a524;
+  background: color-mix(in srgb, #f5a524 12%, transparent);
+}
+.flag b {
+  margin-right: 0.35rem;
+}
+
+.flags {
+  margin: 16px 0;
+}
+
+td.bad {
+  color: #e5484d;
+  font-weight: 600;
+}

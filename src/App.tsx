@@ -420,6 +420,10 @@ export default function App() {
   const all = useMemo(() => PRESETS.map((p) => ({ p, r: presetStats(p) })), [])
   const chosen = PRESETS.find((p) => p.id === selected)!
   const scan = useLive('graduated-configs.json', scanBundled)
+  const grads = scan.classification.all
+  // older published copies have no safety block; the hero then leaves that sentence out
+  const safety = (scan.classification as { safety?: typeof scanBundled.classification.safety }).safety
+  const pct = { n: (x: number) => x.toLocaleString('en-US'), of: (x: number, t: number) => `${Math.round((x / t) * 100)}%` }
 
   return (
     <>
@@ -443,16 +447,25 @@ export default function App() {
       <main>
         <section className="hero">
           <div>
-            <p className="eyebrow">Launch-curve data and presets for Meteora Dynamic Bonding Curve</p>
-            <h1>Know what a launch curve does before you launch on it.</h1>
+            <p className="eyebrow">Pre-launch checks and launch-curve data for Meteora Dynamic Bonding Curve</p>
+            <h1>Know what a launch curve does before you launch or buy on it.</h1>
             <p className="lede">
-              We read {scan.classification.all.graduations.toLocaleString('en-US')} DBC graduations on mainnet.{' '}
-              {scan.classification.all.listings.toLocaleString('en-US')} of them ({Math.round((scan.classification.all.listings / scan.classification.all.graduations) * 100)}%) came from
-              configs where price moves 1.25x or less, or that graduate on under 0.01 of the quote token: direct listings, not price discovery. curvebook reads any DBC
-              config from mainnet and shows what its curve, fees and LP lock actually do, then offers presets tuned for real price discovery, each live on mainnet and checked against the program.
+              We read {pct.n(grads.graduations)} DBC graduations on mainnet and decoded every config behind them.{' '}
+              {safety && (
+                <>
+                  {pct.n(safety.lpMostlyWithdrawable)} ({pct.of(safety.lpMostlyWithdrawable, grads.graduations)}) came from configs that leave half or more of the graduation LP
+                  withdrawable by the launchpad or creator, with no vesting.{' '}
+                </>
+              )}
+              {pct.n(grads.listings)} ({pct.of(grads.listings, grads.graduations)}) were direct listings, not price discovery: price moves 1.25x or less, or graduation needs under 0.01 of
+              the quote token.
             </p>
             <p className="lede">
-              <a href="#inspect">Inspect a config</a> · <a href="#presets">Browse presets</a>
+              curvebook checks any DBC config from mainnet for mint authority, LP lock, fee traps, creator vesting and sniper advantage: in the browser, from a terminal, or
+              in a launchpad's CI. Its four presets pass every check and are live on mainnet.
+            </p>
+            <p className="lede">
+              <a href="#inspect">Check a config</a> · <a href="#presets">Browse presets</a>
             </p>
           </div>
           <div className="panel">

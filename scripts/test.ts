@@ -4,6 +4,8 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { PRESETS } from '../src/lib/presets'
 import { presetStats } from '../src/lib/stats'
+import { riskFlags } from '../src/lib/risk'
+import BN from 'bn.js'
 
 let passed = 0
 function test(name: string, f: () => void) {
@@ -45,6 +47,12 @@ test('graduated-configs.json: classification adds up and follows its rule', () =
     }
   }
   assert.deepEqual({ graduations: total, listings, undecoded }, scan.classification.all)
+  const sum = (f: (c: { lpUnlockedPct: number; lpVesting: boolean; mintAuthority: boolean }) => boolean) =>
+    scan.allConfigs.filter((c: { lpUnlockedPct: number | null }) => c.lpUnlockedPct !== null).filter(f).reduce((n: number, c: { graduatedPools: number }) => n + c.graduatedPools, 0)
+  const { lpMostlyWithdrawable, lpAllLocked, mintAuthorityKept } = scan.classification.safety
+  assert.equal(sum((c) => c.lpUnlockedPct >= 50 && !c.lpVesting), lpMostlyWithdrawable)
+  assert.equal(sum((c) => c.lpUnlockedPct === 0), lpAllLocked)
+  assert.equal(sum((c) => c.mintAuthority), mintAuthorityKept)
   assert.equal(total, scan.graduatedPools)
   assert.equal(scan.allConfigs.length, scan.distinctConfigs)
 })
@@ -68,6 +76,32 @@ test('public/submit.html: script parses, description ≤ 3000, tweet ≤ 280', (
   const field = (name: string) => F.find((f) => f[0].startsWith(name))![1]
   assert.ok(field('Project Description').length <= 3000, `description ${field('Project Description').length}`)
   assert.ok(field('Tweet text').replace(/https:\S+/g, 'x'.repeat(23)).length <= 280, 'tweet too long')
+})
+
+// 5. risk flags: each rule fires on a config built to trip it, and a clean config gets none
+test('risk flags: mint authority, withdrawable LP, never-decaying fee, vesting; clean config has none', () => {
+  const cfg = (o: Record<string, unknown> = {}) =>
+    ({
+      tokenUpdateAuthority: 1,
+      partnerLiquidityPercentage: 0,
+      creatorLiquidityPercentage: 0,
+      partnerLiquidityVestingInfo: { isInitialized: 0 },
+      creatorLiquidityVestingInfo: { isInitialized: 0 },
+      lockedVestingConfig: { cliffUnlockAmount: new BN(0), amountPerPeriod: new BN(0), numberOfPeriod: new BN(0) },
+      migrationFeePercentage: 0,
+      creatorMigrationFeePercentage: 0,
+      ...o,
+    }) as never
+  const base = { baseDecimals: 6, supply: 1e9, multiplier: 5, earlyBuyerMultiple: 3, threshold: 85, quote: 'SOL', feeStartPct: 1, feeEndPct: 1 }
+  const titles = (o: Record<string, unknown>, b = {}) => riskFlags({ ...base, ...b, config: cfg(o) }).map((f) => `${f.severity}:${f.title}`)
+  assert.deepEqual(titles({}), [])
+  assert.ok(titles({ tokenUpdateAuthority: 3 })[0].startsWith('red:Mint authority'))
+  assert.ok(titles({ partnerLiquidityPercentage: 89 })[0].startsWith('red:89% of graduation LP'))
+  assert.ok(titles({ partnerLiquidityPercentage: 89, partnerLiquidityVestingInfo: { isInitialized: 1 } })[0].startsWith('warn:'))
+  assert.ok(titles({}, { feeStartPct: 15, feeEndPct: 15 })[0].startsWith('red:15% trading fee'))
+  assert.deepEqual(titles({}, { feeStartPct: 60, feeEndPct: 1 }).map((t) => t.split(':')[0]), ['info'])
+  const vest = { cliffUnlockAmount: new BN(0), amountPerPeriod: new BN(25e6).mul(new BN(1e6)), numberOfPeriod: new BN(10) }
+  assert.ok(titles({ lockedVestingConfig: vest })[0].startsWith('warn:25.0% of supply vests'))
 })
 
 console.log(`\n${passed} passed`)

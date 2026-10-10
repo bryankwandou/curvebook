@@ -5,7 +5,7 @@
 //
 //   npx tsx scripts/scan-graduations.ts        (PER_ADDRESS=100 signatures per migration config, RPC=... optional)
 //   RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDRESS=200 npx tsx scripts/scan-graduations.ts
-import { writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import {
   DAMM_V1_MIGRATION_FEE_ADDRESS,
   DAMM_V2_MIGRATION_FEE_ADDRESS,
@@ -54,8 +54,12 @@ async function rawTransaction(signature: string) {
 }
 
 const sigs = new Map<string, ConfirmedSignatureInfo>()
+// the sample is complete from coveredSince on: every migration config that hit the PER_ADDRESS limit reaches back at least that far
+let coveredSince = 0
 for (const a of [...DAMM_V2_MIGRATION_FEE_ADDRESS, ...DAMM_V1_MIGRATION_FEE_ADDRESS]) {
-  for (const s of await retry(() => connection.getSignaturesForAddress(a, { limit: PER_ADDRESS }))) if (!s.err) sigs.set(s.signature, s)
+  const page = await retry(() => connection.getSignaturesForAddress(a, { limit: PER_ADDRESS }))
+  for (const s of page) if (!s.err) sigs.set(s.signature, s)
+  if (page.length >= PER_ADDRESS) coveredSince = Math.max(coveredSince, Math.min(...page.map((s) => s.blockTime ?? Infinity)))
 }
 console.log(`${sigs.size} successful transactions on the migration configs`)
 
@@ -99,7 +103,7 @@ const times = graduations.map((g) => g.time).filter(Boolean)
 // classify EVERY config, not just the top ones: price range from the stored sqrt prices (exact, no curve walk)
 // and graduation threshold in quote units. "Listing" = price moves 1.25x or less, or graduates on under 0.01 quote.
 const coder = createDbcProgram(connection).program.coder
-const decoded = new Map<string, { multiplier: number; threshold: number; quoteMint: string }>()
+const decoded = new Map<string, { multiplier: number; threshold: number; quoteMint: string; lpUnlockedPct: number; lpVesting: boolean; mintAuthority: boolean }>()
 for (let i = 0; i < ranked.length; i += 100) {
   const keys = ranked.slice(i, i + 100).map((r) => new PublicKey(r.config))
   const infos = await retry(() => connection.getMultipleAccountsInfo(keys))
@@ -112,7 +116,16 @@ for (let i = 0; i < ranked.length; i += 100) {
       return // not a current-layout pool config: counted as undecoded below
     }
     const r = Number(c.migrationSqrtPrice.toString()) / Number(c.sqrtStartPrice.toString())
-    decoded.set(keys[k].toBase58(), { multiplier: r * r, threshold: Number(c.migrationQuoteThreshold.toString()), quoteMint: c.quoteMint.toBase58() })
+    decoded.set(keys[k].toBase58(), {
+      multiplier: r * r,
+      threshold: Number(c.migrationQuoteThreshold.toString()),
+      quoteMint: c.quoteMint.toBase58(),
+      // LP that is not permanently locked goes to the partner / creator as a position they can withdraw
+      lpUnlockedPct: c.partnerLiquidityPercentage + c.creatorLiquidityPercentage,
+      lpVesting: !!(c.partnerLiquidityVestingInfo?.isInitialized || c.creatorLiquidityVestingInfo?.isInitialized),
+      // token authority options 3 and 4 keep the mint authority with the creator / partner
+      mintAuthority: c.tokenUpdateAuthority === 3 || c.tokenUpdateAuthority === 4,
+    })
   })
 }
 const mints = [...new Set([...decoded.values()].map((d) => d.quoteMint))]
@@ -140,9 +153,37 @@ const share = (since: number) => {
     }
   return { graduations: total, listings: listing, undecoded: unknown }
 }
+// buyer-safety view of the same sample: graduations whose DAMM liquidity is mostly withdrawable, or whose mint stays open
+const safety = (() => {
+  let lpMostlyWithdrawable = 0
+  let lpAllLocked = 0
+  let mintAuthorityKept = 0
+  for (const r of ranked) {
+    const d = decoded.get(r.config)
+    if (!d) continue
+    if (d.lpUnlockedPct >= 50 && !d.lpVesting) lpMostlyWithdrawable += r.pools.size
+    if (d.lpUnlockedPct === 0) lpAllLocked += r.pools.size
+    if (d.mintAuthority) mintAuthorityKept += r.pools.size
+  }
+  return {
+    rule: 'lpMostlyWithdrawable = 50% or more of the graduation LP is not permanently locked and has no vesting schedule; lpAllLocked = 100% permanently locked; mintAuthorityKept = token authority option 3 or 4',
+    lpMostlyWithdrawable,
+    lpAllLocked,
+    mintAuthorityKept,
+  }
+})()
 const perConfig = ranked.map((r) => {
   const d = decoded.get(r.config)
-  return { config: r.config, graduatedPools: r.pools.size, multiplier: d?.multiplier ?? null, threshold: d ? d.threshold / 10 ** (decimals.get(d.quoteMint) ?? 9) : null, listing: isListing(r.config) }
+  return {
+    config: r.config,
+    graduatedPools: r.pools.size,
+    multiplier: d?.multiplier ?? null,
+    threshold: d ? d.threshold / 10 ** (decimals.get(d.quoteMint) ?? 9) : null,
+    listing: isListing(r.config),
+    lpUnlockedPct: d?.lpUnlockedPct ?? null,
+    lpVesting: d?.lpVesting ?? null,
+    mintAuthority: d?.mintAuthority ?? null,
+  }
 })
 const classification = {
   rule: 'listing = price moves 1.25x or less from open to graduation, or the graduation threshold is under 0.01 of the quote token',
@@ -151,6 +192,7 @@ const classification = {
   // the sample is the latest signatures per migration config, so busy configs cover days and quiet ones months:
   // only the whole-sample share is meaningful, not per-period shares
   sample: 'latest PER_ADDRESS successful transactions on each DAMM v1/v2 migration-fee config',
+  safety,
 }
 console.log(JSON.stringify(classification))
 
@@ -194,6 +236,27 @@ const out = {
   allConfigs: perConfig,
 }
 writeFileSync(new URL('../graduated-configs.json', import.meta.url), JSON.stringify(out, null, 2) + '\n')
+
+// daily snapshot of the same sample. Not a daily graduation count: the busiest migration config fills
+// PER_ADDRESS signatures in about an hour, so coveredSince records how far back the sample is complete.
+const day = {
+  date: out.ranAt.slice(0, 10),
+  ranAt: out.ranAt,
+  window: out.window,
+  coveredSince: new Date(coveredSince * 1000).toISOString(),
+  configs: ranked.length,
+  ...classification.all,
+  lpMostlyWithdrawable: safety.lpMostlyWithdrawable,
+  lpAllLocked: safety.lpAllLocked,
+  mintAuthorityKept: safety.mintAuthorityKept,
+}
+const historyFile = new URL('../graduation-history.json', import.meta.url)
+const history: { rule: string; days: (typeof day)[] } = existsSync(historyFile)
+  ? JSON.parse(readFileSync(historyFile, 'utf8'))
+  : { rule: classification.rule, days: [] }
+const days = [...history.days.filter((d) => d.date !== day.date), day].sort((a, b) => a.date.localeCompare(b.date))
+writeFileSync(historyFile, JSON.stringify({ rule: history.rule, ranAt: out.ranAt, days }, null, 2) + '\n')
+console.log(`last 24h: ${JSON.stringify(day)}`)
 console.log(`${totalPools} graduated pools across ${ranked.length} configs, ${out.window.from} → ${out.window.to}`)
 for (const c of configs)
   console.log(`${String(c.graduatedPools).padStart(4)}  ${c.config}  ${c.quote}  ${c.multiplier.toFixed(1)}x  early ${c.earlyBuyerMultiple.toFixed(1)}x  ${c.fee}  LP locked ${c.lpLockedPct}%  ~${c.closest}`)

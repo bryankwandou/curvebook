@@ -9,6 +9,7 @@ import { PublicKey, type Connection } from '@solana/web3.js'
 import { sampleCurve, type CurvePoint } from './curve'
 import { PRESETS, USDC_MINT, SOL_MINT } from './presets'
 import { presetStats } from './stats'
+import { riskFlags, type Flag } from './risk'
 
 const FEE_DENOMINATOR = 1e9
 const MIGRATION_FEE_BPS = [25, 30, 100, 200, 400, 600]
@@ -37,9 +38,19 @@ export interface Inspection {
   lpLockedPct: number
   tokenVesting: boolean
   closest: { id: string; name: string; gap: number }
+  flags: Flag[]
 }
 
 const short = (k: string) => `${k.slice(0, 4)}…${k.slice(-4)}`
+
+/** trading fee at launch and after any fee schedule has finished, in % */
+function feeRange(c: PoolConfig) {
+  const b = c.poolFees.baseFee
+  const start = (Number(b.cliffFeeNumerator.toString()) / FEE_DENOMINATOR) * 100
+  if (b.baseFeeMode > BaseFeeMode.FeeSchedulerExponential || !b.firstFactor) return { start, end: start }
+  const end = getFeeSchedulerMinBaseFeeNumerator(b.cliffFeeNumerator, b.firstFactor, new BN(b.thirdFactor.toString()), b.baseFeeMode)
+  return { start, end: (Number(end.toString()) / FEE_DENOMINATOR) * 100 }
+}
 
 function feeLabel(c: PoolConfig) {
   const b = c.poolFees.baseFee
@@ -100,18 +111,25 @@ export async function inspectConfig(connection: Connection, address: string): Pr
     if (gap < closest.gap) closest = { id: p.id, name: p.name, gap }
   }
 
+  const quote = quoteMint === SOL_MINT.toBase58() ? 'SOL' : quoteMint === USDC_MINT.toBase58() ? 'USDC' : short(quoteMint)
+  const multiplier = end.price / points[0].price
+  const earlyBuyerMultiple = end.price / early.price
+  const threshold = Number(c.migrationQuoteThreshold.toString()) / 10 ** quoteDecimals
+  const fees = feeRange(c)
+  const flags = riskFlags({ config: c, baseDecimals, supply, multiplier, earlyBuyerMultiple, threshold, quote, feeStartPct: fees.start, feeEndPct: fees.end })
+
   return {
     address: key.toBase58(),
     feeClaimer: c.feeClaimer.toBase58(),
-    quote: quoteMint === SOL_MINT.toBase58() ? 'SOL' : quoteMint === USDC_MINT.toBase58() ? 'USDC' : short(quoteMint),
+    quote,
     quoteDecimals,
     baseDecimals,
     supply,
     points,
-    multiplier: end.price / points[0].price,
-    earlyBuyerMultiple: end.price / early.price,
+    multiplier,
+    earlyBuyerMultiple,
     soldPct: (end.sold / supply) * 100,
-    threshold: Number(c.migrationQuoteThreshold.toString()) / 10 ** quoteDecimals,
+    threshold,
     fee: feeLabel(c),
     dynamicFee: c.poolFees.dynamicFee.initialized !== 0,
     creatorFeePct: c.creatorTradingFeePercentage,
@@ -124,6 +142,7 @@ export async function inspectConfig(connection: Connection, address: string): Pr
     lpLockedPct,
     tokenVesting: !c.lockedVestingConfig.amountPerPeriod.isZero() || !c.lockedVestingConfig.cliffUnlockAmount.isZero(),
     closest,
+    flags,
   }
 }
 
