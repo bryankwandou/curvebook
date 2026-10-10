@@ -1,19 +1,19 @@
 {
   "cluster": "mainnet-beta",
   "mode": "read-only (getSignaturesForAddress on the DAMM migration configs + getTransaction + config accounts)",
-  "ranAt": "2026-10-10T09:20:54.041Z",
+  "ranAt": "2026-10-10T13:13:08.596Z",
   "window": {
     "from": "2025-05-18T16:52:27.000Z",
-    "to": "2026-10-10T09:15:24.000Z"
+    "to": "2026-10-10T13:07:30.000Z"
   },
-  "graduatedPools": 1787,
-  "distinctConfigs": 636,
+  "graduatedPools": 1795,
+  "distinctConfigs": 643,
   "classification": {
     "rule": "listing = price moves 1.25x or less from open to graduation, or the graduation threshold is under 0.01 of the quote token",
-    "configsDecoded": 625,
+    "configsDecoded": 632,
     "all": {
-      "graduations": 1787,
-      "listings": 1111,
+      "graduations": 1795,
+      "listings": 1094,
       "undecoded": 13
     },
     "sample": "latest PER_ADDRESS successful transactions on each DAMM v1/v2 migration-fee config"
@@ -25,7 +25,7 @@
       "samplePools": [
         "E55bvnvG7MWHaHgsyxGzBgHqFEK9G2cPMZwYQxnRm8Wf",
         "5eZDpaPkzVeeuxs8Ai1V5dnVCjKzsRumbGbtDTBk4Hc5",
-        "HSJ272DPj1sJ1nWAQ5bejsaj6wFfovcmQjkwbHQFsw6p"
+        "G46SBiptMzdL2tQHNGgLeFvY5nBbh2veZQRnvLwzahu3"
       ],
       "lastGraduation": "2025-05-24T14:09:48.000Z",
       "feeClaimer": "CXx9wwxKW19jdPQNtpsZYoCEQitb9BF6bk3SoNLUP5id",
@@ -38,16 +38,16 @@
       "creatorFeePct": 0,
       "migration": "DAMM v1",
       "lpLockedPct": 3,
-      "closest": "Stock Pair (USDC)",
+      "closest": "none",
       "closestGap": 0.3389460928312339
     },
     {
       "config": "2XyKhFogGgEQVFtyMce6UqkHMSvsa8ME3VEcXvYnm5Gz",
       "graduatedPools": 159,
       "samplePools": [
+        "4RvZRfMJA6amBUUnkmDZiSFJ8HUdmgdPQpZxqQ2ZG7EU",
         "5iLpEg3v7FLdk72QfNqnuHzSSk5FY6mnuq8Qsz8qu2FJ",
-        "ANoucfXwmbyqtxq68MtNyL6g3ZPhkySPmaBgaKcNJvRr",
-        "9HAk2yHhYmTBir5m8jHJXq3Kd79MX2gedLsEeTevfTww"
+        "ANoucfXwmbyqtxq68MtNyL6g3ZPhkySPmaBgaKcNJvRr"
       ],
       "lastGraduation": "2026-10-10T04:11:48.000Z",
       "feeClaimer": "9RaoVypDNRDgy7tLLVPrJRzuR219P5ZxZ46F2TmzJpYc",
@@ -60,15 +60,15 @@
       "creatorFeePct": 0,
       "migration": "DAMM v2, 0.3% pool fee",
       "lpLockedPct": 100,
-      "closest": "Early Discovery",
+      "closest": "none",
       "closestGap": 0.41568581375995173
     },
     {
       "config": "HMZp5aqadH9W17fuH1AiqptGWVn1cR2XQ5BZfBbgfZQx",
       "graduatedPools": 58,
       "samplePools": [
-        "CJKmcnYSUVhUvaQoy5Fd4KVm2FZTBEDo4eu8WKXe3xCg",
         "5sC97xRvW8iUn6raYrTwGcyhTKyoJMp1KZyiYFpFc3mX",
+        "CJKmcnYSUVhUvaQoy5Fd4KVm2FZTBEDo4eu8WKXe3xCg",
         "GnsuCrfBYBXN4hRPw5zgCeYcd79LTmMMCDZ4n8djy31y"
       ],
       "lastGraduation": "2026-10-09T21:22:06.000Z",
@@ -82,15 +82,15 @@
       "creatorFeePct": 0,
       "migration": "DAMM v2, 1% pool fee",
       "lpLockedPct": 100,
-      "closest": "Stock Pair (USDC)",
+      "closest": "none",
       "closestGap": 0.3089153951406712
     },
     {
       "config": "9q4yEJsVqUQ4SQp24o8moARNrBFFCm1vZDKLo3KPkqTe",
       "graduatedPools": 57,
       "samplePools": [
+        "JAPrq6eexu81k4snnBRDfhtymgsfLnDsizShMU1GmTL1",
         "8LJuza3oXqA1mkwRQu6wnxwrTxXsZgsERwFuTozM21FJ",
-        "7eWvH8cn7pMSQasiQYVbAdzfDB19ARuDhTFaussG4Cjg",
         "HKSm7GFrUmz4FYWPLeRw73rQWvKAUnxbm41Jh2w5Enkk"
       ],
       "lastGraduation": "2026-10-10T08:39:57.000Z",
@@ -112,8 +112,8 @@
       "graduatedPools": 54,
       "samplePools": [
         "ERrYZ9S2WmZaiJMWRaK3shSQ1CjWUaXan5XW6kat4pY3",
-        "7dbmpTXCLojBucQF4tddpxhmojUM7sswv5gK1EPBYjhf",
-        "w6879sLdVjMSP47TFGSGNv9AmxrNWdnrK34stz6XGPh"
+        "EXtuun9DB5R87GSMHYXxpBxbF7UtkapkVJeracTnugMJ",
+        "7dbmpTXCLojBucQF4tddpxhmojUM7sswv5gK1EPBYjhf"
       ],
       "lastGraduation": "2026-09-09T02:52:19.000Z",
       "feeClaimer": "8TPACXaKotSZ7WXktfmKDRhgoypyGXNzo1ctr2YBzxLc",
@@ -178,8 +178,8 @@
       "graduatedPools": 50,
       "samplePools": [
         "5Tz8rMJt2naqvv9m669kpaR8BDJodcw6HTQsGrhD6ZZ1",
-        "HTXFxXmk8fq2pzD82kJpNHnaXH8WpkRvdw9MJ79xoZPq",
-        "HWK3fU7H3oHKgbr52oi9aJzoUynveL4FgSRpS6APW3Re"
+        "HWK3fU7H3oHKgbr52oi9aJzoUynveL4FgSRpS6APW3Re",
+        "HTXFxXmk8fq2pzD82kJpNHnaXH8WpkRvdw9MJ79xoZPq"
       ],
       "lastGraduation": "2026-03-03T13:56:51.000Z",
       "feeClaimer": "7XrX7jF4zzkKQDaDsbuC3pj83JDzRY3RPZk3yWvU5s82",
@@ -303,10 +303,10 @@
       "listing": false
     },
     {
-      "config": "2bFH5q216w51UopEZP359NGGSUUeCwmycoBzP8Jc83at",
-      "graduatedPools": 16,
-      "multiplier": 6.126807524123902,
-      "threshold": 11.51,
+      "config": "CaDBnXEGdbJ9bKBN8U4AbbvJ7BMY6KMrBTXDyShaonjd",
+      "graduatedPools": 18,
+      "multiplier": 1.646358438637287,
+      "threshold": 10.95,
       "listing": false
     },
     {
@@ -317,46 +317,32 @@
       "listing": false
     },
     {
-      "config": "3mDSxat7hMmhQ41wQEyJJdufhN7j2Kd6oeNWEn8jfZF2",
-      "graduatedPools": 13,
-      "multiplier": 6.097001551029777,
-      "threshold": 11.53,
-      "listing": false
-    },
-    {
-      "config": "84oov3dvowdD81zUoY9g8GUhDfPEySwSJasQ736AqPCo",
-      "graduatedPools": 11,
-      "multiplier": 3.6075867271894055,
-      "threshold": 14.17,
-      "listing": false
-    },
-    {
-      "config": "BeieowyJQUR9qLbJFGjchDnJApppzDngvtXYERbZzQqP",
-      "graduatedPools": 11,
-      "multiplier": 528999848239150.75,
-      "threshold": 0.00001,
-      "listing": true
-    },
-    {
       "config": "9wWy2WEayLKEC67eeXuKDkGLpfXzkGtU31uxHeJrPVfL",
-      "graduatedPools": 11,
-      "multiplier": 483999859204027.44,
-      "threshold": 0.00001,
-      "listing": true
-    },
-    {
-      "config": "7oZrYpk9qcCy13J68S2z6d5qhMRHDsSUMHv7dLpPf1uN",
-      "graduatedPools": 10,
+      "graduatedPools": 12,
       "multiplier": 483999859204027.44,
       "threshold": 0.00001,
       "listing": true
     },
     {
       "config": "G8h7tk6bSkJba9wDg3nTKh5vYjo547AYRCTVbYERiUAM",
-      "graduatedPools": 10,
+      "graduatedPools": 12,
       "multiplier": 483999859204027.44,
       "threshold": 0.00001,
       "listing": true
+    },
+    {
+      "config": "2bFH5q216w51UopEZP359NGGSUUeCwmycoBzP8Jc83at",
+      "graduatedPools": 12,
+      "multiplier": 6.126807524123902,
+      "threshold": 11.51,
+      "listing": false
+    },
+    {
+      "config": "FPs1mGXUc3HaFnh9VvWJY6oDaNARZNbiRRriGvWas6MB",
+      "graduatedPools": 11,
+      "multiplier": 8.134360800849198,
+      "threshold": 12.98,
+      "listing": false
     },
     {
       "config": "ADn16PUZ1HVzfuaw43CjgjWAUhfncMYcWa6bWKkhPE69",
@@ -364,6 +350,20 @@
       "multiplier": 7.840000000000367,
       "threshold": 0.004949,
       "listing": true
+    },
+    {
+      "config": "7oZrYpk9qcCy13J68S2z6d5qhMRHDsSUMHv7dLpPf1uN",
+      "graduatedPools": 9,
+      "multiplier": 483999859204027.44,
+      "threshold": 0.00001,
+      "listing": true
+    },
+    {
+      "config": "DfisHsfuyAEbPgkyxTRWkLUa1cqMQ9st3ZrWV3dJn9cn",
+      "graduatedPools": 9,
+      "multiplier": 2.325694305699557,
+      "threshold": 10.99,
+      "listing": false
     },
     {
       "config": "GjwcFLHFr7J91aTatmgB1WjCfFE9iQW6QfwpFH5VeqT2",
@@ -380,17 +380,10 @@
       "listing": false
     },
     {
-      "config": "4ytxa5bUrMfdC6HH2xaYygDzEbGiwRgB5DgC7xzmVbRL",
-      "graduatedPools": 7,
-      "multiplier": 8.134360800849198,
-      "threshold": 12.98,
-      "listing": false
-    },
-    {
-      "config": "CaDBnXEGdbJ9bKBN8U4AbbvJ7BMY6KMrBTXDyShaonjd",
+      "config": "21eyFLarvKLkrn2ksPvePSiDK3v3YnfG1cTJoa3P2jXc",
       "graduatedPools": 6,
-      "multiplier": 1.646358438637287,
-      "threshold": 10.95,
+      "multiplier": 3.000656804918845,
+      "threshold": 10.98,
       "listing": false
     },
     {
@@ -415,24 +408,24 @@
       "listing": false
     },
     {
-      "config": "Gr47yXfDoxpEzAmdSk4sQmqM3L5ruVPhP8rJaF3c9JWP",
+      "config": "2FHEBEHGRisenfzgSefsua2wM1aygL1EuRsf5drJAXHx",
+      "graduatedPools": 5,
+      "multiplier": 23.45534382963364,
+      "threshold": 11.98,
+      "listing": false
+    },
+    {
+      "config": "7ERY4MYhKGQ5CLEQ1fZMgaC6WXGxpUiHuhjCD8UsnTy9",
+      "graduatedPools": 5,
+      "multiplier": 159841.24730675184,
+      "threshold": 0.000499,
+      "listing": true
+    },
+    {
+      "config": "84oov3dvowdD81zUoY9g8GUhDfPEySwSJasQ736AqPCo",
       "graduatedPools": 5,
       "multiplier": 3.6075867271894055,
       "threshold": 14.17,
-      "listing": false
-    },
-    {
-      "config": "CYAhfxmZs9dXhcCtyAeRBdTQupZyEWG4ski6wYbtqqF6",
-      "graduatedPools": 5,
-      "multiplier": 3.000656804918845,
-      "threshold": 10.98,
-      "listing": false
-    },
-    {
-      "config": "EZmnjPixJw8JHS71LrztKXfqbCzA5HnQFbYSraZzNYpk",
-      "graduatedPools": 5,
-      "multiplier": 12.629025446082483,
-      "threshold": 10.98,
       "listing": false
     },
     {
@@ -457,6 +450,34 @@
       "listing": false
     },
     {
+      "config": "3mDSxat7hMmhQ41wQEyJJdufhN7j2Kd6oeNWEn8jfZF2",
+      "graduatedPools": 4,
+      "multiplier": 6.097001551029777,
+      "threshold": 11.53,
+      "listing": false
+    },
+    {
+      "config": "GSVtkvk5HATtdyp6uyYUpZwdeKDB9eed7E81x1YxNPD4",
+      "graduatedPools": 4,
+      "multiplier": 6.318704817661774,
+      "threshold": 14.23,
+      "listing": false
+    },
+    {
+      "config": "3zDKhPEs3favJrtxve5xt9KTx8CPVPap2R5sGeV5K1VY",
+      "graduatedPools": 4,
+      "multiplier": 1.3096257914976857,
+      "threshold": 13.99,
+      "listing": false
+    },
+    {
+      "config": "Gr47yXfDoxpEzAmdSk4sQmqM3L5ruVPhP8rJaF3c9JWP",
+      "graduatedPools": 4,
+      "multiplier": 3.6075867271894055,
+      "threshold": 14.17,
+      "listing": false
+    },
+    {
       "config": "cfg9SSeY3G4BxSmFSZGWAr6q4dBX3z7UHytrTSCtXK3",
       "graduatedPools": 4,
       "multiplier": 1.0000059292794008,
@@ -476,34 +497,6 @@
       "multiplier": 2.8333333268817222,
       "threshold": 31.677992705,
       "listing": false
-    },
-    {
-      "config": "21eyFLarvKLkrn2ksPvePSiDK3v3YnfG1cTJoa3P2jXc",
-      "graduatedPools": 3,
-      "multiplier": 3.000656804918845,
-      "threshold": 10.98,
-      "listing": false
-    },
-    {
-      "config": "AbnXQAALmDVWgNVa2qo92fRD8Szg2jUGAzcxa8CJH8T2",
-      "graduatedPools": 3,
-      "multiplier": 35155820921.09667,
-      "threshold": 4.4e-7,
-      "listing": true
-    },
-    {
-      "config": "FRCpyH2VYci8WHWhRsgPsWo1UUzZJfybWxrD87TZjzAe",
-      "graduatedPools": 3,
-      "multiplier": 3.6075867271894055,
-      "threshold": 14.17,
-      "listing": false
-    },
-    {
-      "config": "FQCTnqHah77kbrw16hYqLUJK9Cvow4kg5XjJydNQYw9y",
-      "graduatedPools": 3,
-      "multiplier": 171089.0836374511,
-      "threshold": 0.000499,
-      "listing": true
     },
     {
       "config": "3ic7GnKzT4aqSCJ2wA4yNxszhPfiowxR7m7TK3UH3bCG",
@@ -632,25 +625,39 @@
       "listing": false
     },
     {
-      "config": "GKDMxu34q8MWqqj2mVVV3pEw2zkFC7LxYjvPXNjBQLMi",
+      "config": "4viPRdRakSNTp6DvwsAVRpxw8U1XSAcshc6mWdUEryjS",
       "graduatedPools": 2,
-      "multiplier": 1.174653106556838,
-      "threshold": 10,
+      "multiplier": 2.4907151677869046,
+      "threshold": 16,
+      "listing": false
+    },
+    {
+      "config": "7U4y7wQJ9QYCen9CjhMiyx9CVDQTTe2Dmfy1uSMzRU8J",
+      "graduatedPools": 2,
+      "multiplier": 2.263681863897759,
+      "threshold": 10.98,
+      "listing": false
+    },
+    {
+      "config": "E2JQxytDD8J1MerFcuHa7tjwKPYY6XCd8ayTsyMckC6c",
+      "graduatedPools": 2,
+      "multiplier": 2.113197724392031,
+      "threshold": 19,
+      "listing": false
+    },
+    {
+      "config": "3SVmV5va9aRN1XS3zSWWwa5QE6mA774R4JErzXwdk29B",
+      "graduatedPools": 2,
+      "multiplier": 159841.24730675184,
+      "threshold": 0.000499,
       "listing": true
     },
     {
-      "config": "4zvwa4Jfy9FpgWU2Bp68SQ5VpMKCj1EKbSosbjzC4414",
+      "config": "FRCpyH2VYci8WHWhRsgPsWo1UUzZJfybWxrD87TZjzAe",
       "graduatedPools": 2,
-      "multiplier": 27777401715.099243,
-      "threshold": 4.4e-7,
-      "listing": true
-    },
-    {
-      "config": "5aGno4DurxUxDzrPcEoeLH9me9Xa6VYs9dqxRemTTAsk",
-      "graduatedPools": 2,
-      "multiplier": 1.174653106556835,
-      "threshold": 10,
-      "listing": true
+      "multiplier": 3.6075867271894055,
+      "threshold": 14.17,
+      "listing": false
     },
     {
       "config": "6WTJuRvA9FdUqsTEDMNv3anzpsxc6gtfmr8JC8iGHjq4",
@@ -667,31 +674,10 @@
       "listing": false
     },
     {
-      "config": "BwZ8ELHXUTqjyExtWn6yD7HBSB9zgfDR8QBuehewe4Da",
+      "config": "Aq31RMBnNu6pXZEQraSfjPq6poSFJxaVaaNGdVW4fXG4",
       "graduatedPools": 1,
-      "multiplier": 1.4400088202557628,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "4rUoU9tUprH9joi3NyQGseuCRWwVrWPDQYH2cnf6qs6t",
-      "graduatedPools": 1,
-      "multiplier": 1.4400278206400015,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "35MvQBM462rL8ygyU431Ng15VuCUybsQAkbrZw376Jxc",
-      "graduatedPools": 1,
-      "multiplier": 445.78413902621264,
-      "threshold": 85.017199381,
-      "listing": false
-    },
-    {
-      "config": "HuqZJpWCiVmJvsqPduybDsi1YMQnwGaDfjc24whf9CSn",
-      "graduatedPools": 1,
-      "multiplier": 1.4400174503070329,
-      "threshold": 1,
+      "multiplier": 99999999582180520000,
+      "threshold": 0.1,
       "listing": false
     },
     {
@@ -702,16 +688,16 @@
       "listing": false
     },
     {
-      "config": "J1y64EfLYd9LLRUZvRJtHiTgzQLiFuv9fjVEEWZs697Y",
+      "config": "BwZ8ELHXUTqjyExtWn6yD7HBSB9zgfDR8QBuehewe4Da",
       "graduatedPools": 1,
-      "multiplier": 1.440000243086025,
+      "multiplier": 1.4400088202557628,
       "threshold": 1,
       "listing": false
     },
     {
-      "config": "D44Qa9bu2vt43aj8c5P3FHzgAWkk6izaJdNUxvQi8GLZ",
+      "config": "HuqZJpWCiVmJvsqPduybDsi1YMQnwGaDfjc24whf9CSn",
       "graduatedPools": 1,
-      "multiplier": 1.4400210883486377,
+      "multiplier": 1.4400174503070329,
       "threshold": 1,
       "listing": false
     },
@@ -723,10 +709,24 @@
       "listing": false
     },
     {
-      "config": "Fq4RbT1pS5ptgdCfoVc2hpaUUTEPMY2rdxhsimWKx2LR",
+      "config": "4rUoU9tUprH9joi3NyQGseuCRWwVrWPDQYH2cnf6qs6t",
       "graduatedPools": 1,
-      "multiplier": 1.4400020662550277,
+      "multiplier": 1.4400278206400015,
       "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "D44Qa9bu2vt43aj8c5P3FHzgAWkk6izaJdNUxvQi8GLZ",
+      "graduatedPools": 1,
+      "multiplier": 1.4400210883486377,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "35MvQBM462rL8ygyU431Ng15VuCUybsQAkbrZw376Jxc",
+      "graduatedPools": 1,
+      "multiplier": 445.78413902621264,
+      "threshold": 85.017199381,
       "listing": false
     },
     {
@@ -737,9 +737,9 @@
       "listing": null
     },
     {
-      "config": "3f4LihCXP4V6PJiNBRs7neLemEH3gvB8B3KjBYjWhzqT",
+      "config": "Fq4RbT1pS5ptgdCfoVc2hpaUUTEPMY2rdxhsimWKx2LR",
       "graduatedPools": 1,
-      "multiplier": 1.4400178133214814,
+      "multiplier": 1.4400020662550277,
       "threshold": 1,
       "listing": false
     },
@@ -751,10 +751,24 @@
       "listing": false
     },
     {
-      "config": "54DY3nMvCgdtveo3vQBoQwPGahwBJADw4kyhESV12rP8",
+      "config": "EZ8S7VfPXHGcsqy3GAo46hLTqjhqWt7jBBcRwvJJwM1e",
       "graduatedPools": 1,
-      "multiplier": 14.6938144588216,
-      "threshold": 0.1,
+      "multiplier": 1.4400080798960766,
+      "threshold": 0.8,
+      "listing": false
+    },
+    {
+      "config": "J1y64EfLYd9LLRUZvRJtHiTgzQLiFuv9fjVEEWZs697Y",
+      "graduatedPools": 1,
+      "multiplier": 1.440000243086025,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "3f4LihCXP4V6PJiNBRs7neLemEH3gvB8B3KjBYjWhzqT",
+      "graduatedPools": 1,
+      "multiplier": 1.4400178133214814,
+      "threshold": 1,
       "listing": false
     },
     {
@@ -765,10 +779,17 @@
       "listing": false
     },
     {
-      "config": "EZ8S7VfPXHGcsqy3GAo46hLTqjhqWt7jBBcRwvJJwM1e",
+      "config": "54DY3nMvCgdtveo3vQBoQwPGahwBJADw4kyhESV12rP8",
       "graduatedPools": 1,
-      "multiplier": 1.4400080798960766,
-      "threshold": 0.8,
+      "multiplier": 14.6938144588216,
+      "threshold": 0.1,
+      "listing": false
+    },
+    {
+      "config": "13ifThW5r3pp7tijfKXAveYS1YKH15WaxwjXBUXb9T7W",
+      "graduatedPools": 1,
+      "multiplier": 15.99995834923468,
+      "threshold": 0.01,
       "listing": false
     },
     {
@@ -779,14 +800,14 @@
       "listing": false
     },
     {
-      "config": "2Kb5ZeKgzJmeWECQyVPQ9C3x6wPFSZfd3cTWZRQ7TFrc",
+      "config": "3THa5q4JhrP9HP2otZj2qj5p2E4Y7WQr4ee8zMR5mqpe",
       "graduatedPools": 1,
       "multiplier": 15.99995834923468,
       "threshold": 0.01,
       "listing": false
     },
     {
-      "config": "67BWScPJdRHfZMfYBpcs8yg9VPdA546qF22cpCfW1cCb",
+      "config": "2Kb5ZeKgzJmeWECQyVPQ9C3x6wPFSZfd3cTWZRQ7TFrc",
       "graduatedPools": 1,
       "multiplier": 15.99995834923468,
       "threshold": 0.01,
@@ -800,14 +821,7 @@
       "listing": false
     },
     {
-      "config": "13ifThW5r3pp7tijfKXAveYS1YKH15WaxwjXBUXb9T7W",
-      "graduatedPools": 1,
-      "multiplier": 15.99995834923468,
-      "threshold": 0.01,
-      "listing": false
-    },
-    {
-      "config": "3THa5q4JhrP9HP2otZj2qj5p2E4Y7WQr4ee8zMR5mqpe",
+      "config": "67BWScPJdRHfZMfYBpcs8yg9VPdA546qF22cpCfW1cCb",
       "graduatedPools": 1,
       "multiplier": 15.99995834923468,
       "threshold": 0.01,
@@ -818,20 +832,6 @@
       "graduatedPools": 1,
       "multiplier": 9800.99769494185,
       "threshold": 0.04,
-      "listing": false
-    },
-    {
-      "config": "ESLoZrN1rzP1zgsf64aWWRpawcFTFDPH268XBJ3bU1zC",
-      "graduatedPools": 1,
-      "multiplier": 9800.99769494185,
-      "threshold": 0.04,
-      "listing": false
-    },
-    {
-      "config": "8oSKMfYxUx582g6D4TAKFQdGMsszJD4dPaWUooCFsMAp",
-      "graduatedPools": 1,
-      "multiplier": 1.4400044362296238,
-      "threshold": 1,
       "listing": false
     },
     {
@@ -849,10 +849,17 @@
       "listing": false
     },
     {
-      "config": "CWqnH4jgN2goJ3XQFa21ja7eFK3ovMorzfb6maX3CfjS",
+      "config": "ESLoZrN1rzP1zgsf64aWWRpawcFTFDPH268XBJ3bU1zC",
       "graduatedPools": 1,
-      "multiplier": 26417984507296.176,
-      "threshold": 0.001235146,
+      "multiplier": 9800.99769494185,
+      "threshold": 0.04,
+      "listing": false
+    },
+    {
+      "config": "4q2XmU5ZBCRP6sv9D48XwfwrhP4Mv2QxxuHMmjMwBDit",
+      "graduatedPools": 1,
+      "multiplier": 81235999940945.98,
+      "threshold": 0.002349198,
       "listing": true
     },
     {
@@ -863,10 +870,10 @@
       "listing": true
     },
     {
-      "config": "4q2XmU5ZBCRP6sv9D48XwfwrhP4Mv2QxxuHMmjMwBDit",
+      "config": "3viFcdZHGQUQn7BEuQPoE8VDfeXAwqxhNLKXHqwSBf4Y",
       "graduatedPools": 1,
-      "multiplier": 81235999940945.98,
-      "threshold": 0.002349198,
+      "multiplier": 101339907963947.48,
+      "threshold": 0.002599864,
       "listing": true
     },
     {
@@ -877,18 +884,11 @@
       "listing": true
     },
     {
-      "config": "3tT5KQGABNqdJULm8Jerapd6bmgAKZ2V8EKgWsTTXbXs",
+      "config": "2C6ySirDZaDhuh2yunGwm4KfQ2mxARGt5SQLCocJjUxm",
       "graduatedPools": 1,
       "multiplier": 9800.99769494185,
       "threshold": 0.04,
       "listing": false
-    },
-    {
-      "config": "3viFcdZHGQUQn7BEuQPoE8VDfeXAwqxhNLKXHqwSBf4Y",
-      "graduatedPools": 1,
-      "multiplier": 101339907963947.48,
-      "threshold": 0.002599864,
-      "listing": true
     },
     {
       "config": "AX1KiJYtmWpXwg7VGQdYEvrSkUP33Wt6VbWCjJBv7MHk",
@@ -898,28 +898,28 @@
       "listing": true
     },
     {
-      "config": "2C6ySirDZaDhuh2yunGwm4KfQ2mxARGt5SQLCocJjUxm",
+      "config": "8oSKMfYxUx582g6D4TAKFQdGMsszJD4dPaWUooCFsMAp",
+      "graduatedPools": 1,
+      "multiplier": 1.4400044362296238,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "CWqnH4jgN2goJ3XQFa21ja7eFK3ovMorzfb6maX3CfjS",
+      "graduatedPools": 1,
+      "multiplier": 26417984507296.176,
+      "threshold": 0.001235146,
+      "listing": true
+    },
+    {
+      "config": "94vRbCG7CXTgTAGhnq4kztp4KNPmVaNYyKVJwDCF4Jbu",
       "graduatedPools": 1,
       "multiplier": 9800.99769494185,
       "threshold": 0.04,
       "listing": false
     },
     {
-      "config": "3eLQK6LP9ArZHxZQPzysjTrznz4PFgbFpKi2RfqtXNz4",
-      "graduatedPools": 1,
-      "multiplier": 9998009364.73874,
-      "threshold": 0.029649572,
-      "listing": false
-    },
-    {
-      "config": "CGTSJGDMiAidFFp93JWY2xe5FoaHWQS6Qd1oRcuUdFXo",
-      "graduatedPools": 1,
-      "multiplier": 7761658231.487912,
-      "threshold": 0.000021995,
-      "listing": true
-    },
-    {
-      "config": "94vRbCG7CXTgTAGhnq4kztp4KNPmVaNYyKVJwDCF4Jbu",
+      "config": "3tT5KQGABNqdJULm8Jerapd6bmgAKZ2V8EKgWsTTXbXs",
       "graduatedPools": 1,
       "multiplier": 9800.99769494185,
       "threshold": 0.04,
@@ -940,17 +940,24 @@
       "listing": true
     },
     {
-      "config": "5ya8x5qGBFRPd3ZF6iunfGasyKeyHFcRhgcskfNNjTtY",
-      "graduatedPools": 1,
-      "multiplier": 433036081906549.7,
-      "threshold": 0.006471723,
-      "listing": true
-    },
-    {
       "config": "4Zh6akGafr4XcW2DMoHqxvMyMMugT8GTqQVPiPLy6fHn",
       "graduatedPools": 1,
       "multiplier": 8125000000.187985,
       "threshold": 0.000022012,
+      "listing": true
+    },
+    {
+      "config": "CGTSJGDMiAidFFp93JWY2xe5FoaHWQS6Qd1oRcuUdFXo",
+      "graduatedPools": 1,
+      "multiplier": 7761658231.487912,
+      "threshold": 0.000021995,
+      "listing": true
+    },
+    {
+      "config": "5ya8x5qGBFRPd3ZF6iunfGasyKeyHFcRhgcskfNNjTtY",
+      "graduatedPools": 1,
+      "multiplier": 433036081906549.7,
+      "threshold": 0.006471723,
       "listing": true
     },
     {
@@ -961,11 +968,11 @@
       "listing": false
     },
     {
-      "config": "9NqwCpvVAVxXx9cyDx9y2kjpqx1P9DsF9648BMX6rnrv",
+      "config": "ArCz764mvVWVqz7zDWgQNNmJkwjmQLrUyZRtAyZvZXXQ",
       "graduatedPools": 1,
-      "multiplier": 9998009364.73874,
-      "threshold": 0.029649572,
-      "listing": false
+      "multiplier": 9.999968478699731,
+      "threshold": 0.004324555,
+      "listing": true
     },
     {
       "config": "CebJLF2Kg37pvfGk1xPZQjzfodje7f8re3v1daN6o7bx",
@@ -982,6 +989,13 @@
       "listing": false
     },
     {
+      "config": "3eLQK6LP9ArZHxZQPzysjTrznz4PFgbFpKi2RfqtXNz4",
+      "graduatedPools": 1,
+      "multiplier": 9998009364.73874,
+      "threshold": 0.029649572,
+      "listing": false
+    },
+    {
       "config": "3THgfc61TQyRw5Jz3UXf1r23ER4pUABXtaj9kcoRm9Qf",
       "graduatedPools": 1,
       "multiplier": 9998009364.73874,
@@ -989,24 +1003,10 @@
       "listing": false
     },
     {
-      "config": "ArCz764mvVWVqz7zDWgQNNmJkwjmQLrUyZRtAyZvZXXQ",
+      "config": "9NqwCpvVAVxXx9cyDx9y2kjpqx1P9DsF9648BMX6rnrv",
       "graduatedPools": 1,
-      "multiplier": 9.999968478699731,
-      "threshold": 0.004324555,
-      "listing": true
-    },
-    {
-      "config": "HtbAR981ExQhXQeuA2VpvwNysYyBu98v4tjQCS4YMe7j",
-      "graduatedPools": 1,
-      "multiplier": 1.4400127803497156,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "jGN4PWpGhW83mLUqpExwcL6byxdmN4xXVmHtmhYoemW",
-      "graduatedPools": 1,
-      "multiplier": 1.4999967576344284,
-      "threshold": 0.067423461,
+      "multiplier": 9998009364.73874,
+      "threshold": 0.029649572,
       "listing": false
     },
     {
@@ -1017,9 +1017,23 @@
       "listing": false
     },
     {
+      "config": "ETfiW2L9SPoVr4mfnwQxHqGnLsfE2mCtBy5AHc9JxEjY",
+      "graduatedPools": 1,
+      "multiplier": 1.4400010083394583,
+      "threshold": 1,
+      "listing": false
+    },
+    {
       "config": "5Rdzam7HQ1fnzoqAE7MCvHJExvtPHnTUM5S3mrQwQxPt",
       "graduatedPools": 1,
       "multiplier": 1.4400079735488869,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "HtbAR981ExQhXQeuA2VpvwNysYyBu98v4tjQCS4YMe7j",
+      "graduatedPools": 1,
+      "multiplier": 1.4400127803497156,
       "threshold": 1,
       "listing": false
     },
@@ -1031,13 +1045,6 @@
       "listing": false
     },
     {
-      "config": "ETfiW2L9SPoVr4mfnwQxHqGnLsfE2mCtBy5AHc9JxEjY",
-      "graduatedPools": 1,
-      "multiplier": 1.4400010083394583,
-      "threshold": 1,
-      "listing": false
-    },
-    {
       "config": "HW7VTB8K18ZLK58G9eYxnkxhiLreSrRjgRvrJrR5n9Dy",
       "graduatedPools": 1,
       "multiplier": 1.4400112047931188,
@@ -1045,9 +1052,23 @@
       "listing": false
     },
     {
+      "config": "jGN4PWpGhW83mLUqpExwcL6byxdmN4xXVmHtmhYoemW",
+      "graduatedPools": 1,
+      "multiplier": 1.4999967576344284,
+      "threshold": 0.067423461,
+      "listing": false
+    },
+    {
       "config": "3gBfvK3vatZfrYFpCHQ3LACnUV9fb1sURqjRvZgELpik",
       "graduatedPools": 1,
       "multiplier": 1.440012756733183,
+      "threshold": 0.015,
+      "listing": false
+    },
+    {
+      "config": "HSucBfHjjRS46os3C2g6WP6sCRysh7QikGDTYrUaQoJM",
+      "graduatedPools": 1,
+      "multiplier": 1.4400295453063516,
       "threshold": 0.015,
       "listing": false
     },
@@ -1059,10 +1080,17 @@
       "listing": false
     },
     {
-      "config": "AEuy4zdvCrcPt8hUAUG2fsyZN9gLvzyMEJSQtP1c6ynR",
+      "config": "9cotQ9GsCHuybmgskA9h8RtPfzEaT1kkDRwEPK79c7Sw",
       "graduatedPools": 1,
-      "multiplier": 1.4400077889678773,
+      "multiplier": 1.4400079330150448,
       "threshold": 0.015,
+      "listing": false
+    },
+    {
+      "config": "5w8S5LkqWFYDgiLavRiyepbB2KyNieYbeZ3Fkj2ktBvG",
+      "graduatedPools": 1,
+      "multiplier": 14.695799188606303,
+      "threshold": 10033.459034,
       "listing": false
     },
     {
@@ -1080,52 +1108,10 @@
       "listing": false
     },
     {
-      "config": "9cotQ9GsCHuybmgskA9h8RtPfzEaT1kkDRwEPK79c7Sw",
-      "graduatedPools": 1,
-      "multiplier": 1.4400079330150448,
-      "threshold": 0.015,
-      "listing": false
-    },
-    {
-      "config": "HSucBfHjjRS46os3C2g6WP6sCRysh7QikGDTYrUaQoJM",
-      "graduatedPools": 1,
-      "multiplier": 1.4400295453063516,
-      "threshold": 0.015,
-      "listing": false
-    },
-    {
-      "config": "5w8S5LkqWFYDgiLavRiyepbB2KyNieYbeZ3Fkj2ktBvG",
-      "graduatedPools": 1,
-      "multiplier": 14.695799188606303,
-      "threshold": 10033.459034,
-      "listing": false
-    },
-    {
-      "config": "3SW2D4EGQHaj1TmU9Uet6DUUrLPzWBwyQwaoUXEe4thf",
-      "graduatedPools": 1,
-      "multiplier": 1.4400108613415705,
-      "threshold": 0.16,
-      "listing": false
-    },
-    {
-      "config": "21Gq4dqUpfS1LZrL3pNYj2e4mndtFmCQZZYX2xxSj9bp",
-      "graduatedPools": 1,
-      "multiplier": 9800.99769494185,
-      "threshold": 0.04,
-      "listing": false
-    },
-    {
       "config": "9jchnGkAb5UJswNYotwbo3GyEShiNh7HfCLnQzNgUKzv",
       "graduatedPools": 1,
       "multiplier": 1.4400030404057955,
       "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "4NCK61GAXRNSj8qK3QFiNLo5m7XYjBKMWvATZJK4Yswk",
-      "graduatedPools": 1,
-      "multiplier": 1.4411558709264365,
-      "threshold": 0.015,
       "listing": false
     },
     {
@@ -1136,17 +1122,10 @@
       "listing": false
     },
     {
-      "config": "D1deuAoX2LDcGTCNnpiPZQqLWgiAWYrFLtzzpTGpxDKw",
+      "config": "AEuy4zdvCrcPt8hUAUG2fsyZN9gLvzyMEJSQtP1c6ynR",
       "graduatedPools": 1,
-      "multiplier": 1.440002350035814,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "261xyMymM7VJDjvWVrZVAKBuWWjQnnBbiYZqVhzUWy5U",
-      "graduatedPools": 1,
-      "multiplier": 1.4399997102448736,
-      "threshold": 0.15,
+      "multiplier": 1.4400077889678773,
+      "threshold": 0.015,
       "listing": false
     },
     {
@@ -1157,51 +1136,37 @@
       "listing": false
     },
     {
-      "config": "H1NRKshEhPhrXmNvu5to7kobkjJmouY5fvqDqQgcR2fn",
+      "config": "261xyMymM7VJDjvWVrZVAKBuWWjQnnBbiYZqVhzUWy5U",
       "graduatedPools": 1,
-      "multiplier": 39.99999882466617,
-      "threshold": 0.532455532,
+      "multiplier": 1.4399997102448736,
+      "threshold": 0.15,
       "listing": false
     },
     {
-      "config": "BXM1f7vtoSr2YsHtPKaTHAYm4FttPAuhQ9BMP55FwHEq",
+      "config": "21Gq4dqUpfS1LZrL3pNYj2e4mndtFmCQZZYX2xxSj9bp",
       "graduatedPools": 1,
-      "multiplier": 1.4400159596406066,
-      "threshold": 1,
+      "multiplier": 9800.99769494185,
+      "threshold": 0.04,
       "listing": false
     },
     {
-      "config": "EkJvPdS5vwi2UDuy18dhUDdgUNr19V8R2fvCGTY8Vg2r",
+      "config": "4NCK61GAXRNSj8qK3QFiNLo5m7XYjBKMWvATZJK4Yswk",
       "graduatedPools": 1,
-      "multiplier": 15.99995834923468,
-      "threshold": 0.01,
+      "multiplier": 1.4411558709264365,
+      "threshold": 0.015,
       "listing": false
     },
     {
-      "config": "AQh3H5WeUZ9Z6bWCUSKAf6oSEwWAwmhspeZ53o4nLULd",
+      "config": "3SW2D4EGQHaj1TmU9Uet6DUUrLPzWBwyQwaoUXEe4thf",
       "graduatedPools": 1,
-      "multiplier": 1.440003235477016,
-      "threshold": 1,
+      "multiplier": 1.4400108613415705,
+      "threshold": 0.16,
       "listing": false
     },
     {
-      "config": "7FtZKPRQmbcTd8r9uopPCnSaQcjQ1rBinCh9vjSfASsc",
+      "config": "D1deuAoX2LDcGTCNnpiPZQqLWgiAWYrFLtzzpTGpxDKw",
       "graduatedPools": 1,
-      "multiplier": 1.4400012835811702,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "B9SECVpMbtpiugqbH4pN1gM6q9mdHdko6DJxiQqVzBcW",
-      "graduatedPools": 1,
-      "multiplier": 1.4400020365474053,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "LRG737uzz3LxYtfJoz4Kb9fk61uLtdKKAqYruvySx8w",
-      "graduatedPools": 1,
-      "multiplier": 1.4400007832899777,
+      "multiplier": 1.440002350035814,
       "threshold": 1,
       "listing": false
     },
@@ -1213,16 +1178,51 @@
       "listing": false
     },
     {
-      "config": "4jhBqwwXELS8ydqxW9UvigSe9Rjqo513pTr6jyMmw4CE",
+      "config": "LRG737uzz3LxYtfJoz4Kb9fk61uLtdKKAqYruvySx8w",
       "graduatedPools": 1,
-      "multiplier": 1.440001633672179,
+      "multiplier": 1.4400007832899777,
       "threshold": 1,
       "listing": false
     },
     {
-      "config": "zuW7WcjXwFa4J8aRuZq5A4j3vMi3F8yjMUBMxd3BiXS",
+      "config": "BXM1f7vtoSr2YsHtPKaTHAYm4FttPAuhQ9BMP55FwHEq",
       "graduatedPools": 1,
-      "multiplier": 1.4400034347102213,
+      "multiplier": 1.4400159596406066,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "7FtZKPRQmbcTd8r9uopPCnSaQcjQ1rBinCh9vjSfASsc",
+      "graduatedPools": 1,
+      "multiplier": 1.4400012835811702,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "H1NRKshEhPhrXmNvu5to7kobkjJmouY5fvqDqQgcR2fn",
+      "graduatedPools": 1,
+      "multiplier": 39.99999882466617,
+      "threshold": 0.532455532,
+      "listing": false
+    },
+    {
+      "config": "AQh3H5WeUZ9Z6bWCUSKAf6oSEwWAwmhspeZ53o4nLULd",
+      "graduatedPools": 1,
+      "multiplier": 1.440003235477016,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "B9SECVpMbtpiugqbH4pN1gM6q9mdHdko6DJxiQqVzBcW",
+      "graduatedPools": 1,
+      "multiplier": 1.4400020365474053,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "GMeWkwAjygEtnUgvj5fD9WtyhzjaHBEir859LS9gdPpg",
+      "graduatedPools": 1,
+      "multiplier": 1.4400076675747324,
       "threshold": 1,
       "listing": false
     },
@@ -1234,23 +1234,9 @@
       "listing": false
     },
     {
-      "config": "AMECGh8a6WmNogmLdCxac2zgEYZEQTb6F5FsYJ4wWCJn",
+      "config": "4jhBqwwXELS8ydqxW9UvigSe9Rjqo513pTr6jyMmw4CE",
       "graduatedPools": 1,
-      "multiplier": 1.4400007436780466,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "GhZgspQjCgx8SUMBaZEE6ni6tm72FkTR1wedVfFhTfxv",
-      "graduatedPools": 1,
-      "multiplier": 1.4400032124965232,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "EHwQKN5RNTZLC5SBWTvQHDvHwYsrxBbfVJeX7pgUUW1r",
-      "graduatedPools": 1,
-      "multiplier": 1.4400076675747324,
+      "multiplier": 1.440001633672179,
       "threshold": 1,
       "listing": false
     },
@@ -1262,16 +1248,51 @@
       "listing": false
     },
     {
-      "config": "GMeWkwAjygEtnUgvj5fD9WtyhzjaHBEir859LS9gdPpg",
+      "config": "GhZgspQjCgx8SUMBaZEE6ni6tm72FkTR1wedVfFhTfxv",
+      "graduatedPools": 1,
+      "multiplier": 1.4400032124965232,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "zuW7WcjXwFa4J8aRuZq5A4j3vMi3F8yjMUBMxd3BiXS",
+      "graduatedPools": 1,
+      "multiplier": 1.4400034347102213,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "EkJvPdS5vwi2UDuy18dhUDdgUNr19V8R2fvCGTY8Vg2r",
+      "graduatedPools": 1,
+      "multiplier": 15.99995834923468,
+      "threshold": 0.01,
+      "listing": false
+    },
+    {
+      "config": "EHwQKN5RNTZLC5SBWTvQHDvHwYsrxBbfVJeX7pgUUW1r",
       "graduatedPools": 1,
       "multiplier": 1.4400076675747324,
       "threshold": 1,
       "listing": false
     },
     {
-      "config": "GETDecieVTU4p1F1GHNyRMuhSKAw4f8x3NKnJ3XzFUb8",
+      "config": "HtyTrswCbg29fakRBPCcr2S8vEqsYjMDgcvz3sxfzBas",
       "graduatedPools": 1,
-      "multiplier": 1.440005664976993,
+      "multiplier": 39.99999882959628,
+      "threshold": 0.532455532,
+      "listing": false
+    },
+    {
+      "config": "GTZ95vAygrYBCRVGM7RbrpyrVqqqYgqRcAkLmJMoyEMQ",
+      "graduatedPools": 1,
+      "multiplier": 14.545454510238613,
+      "threshold": 10517.435103577,
+      "listing": false
+    },
+    {
+      "config": "AMECGh8a6WmNogmLdCxac2zgEYZEQTb6F5FsYJ4wWCJn",
+      "graduatedPools": 1,
+      "multiplier": 1.4400007436780466,
       "threshold": 1,
       "listing": false
     },
@@ -1283,13 +1304,6 @@
       "listing": true
     },
     {
-      "config": "HtyTrswCbg29fakRBPCcr2S8vEqsYjMDgcvz3sxfzBas",
-      "graduatedPools": 1,
-      "multiplier": 39.99999882959628,
-      "threshold": 0.532455532,
-      "listing": false
-    },
-    {
       "config": "UTrbjw3EN9jhVCX9yC88NzAdFxp1Svt5hNcPo1tFx9M",
       "graduatedPools": 1,
       "multiplier": 1.4399999765654796,
@@ -1297,17 +1311,17 @@
       "listing": false
     },
     {
-      "config": "2iqaXwGJV7UYoq87BRW7ZZ6fCvfwsWqo9EeyyJgnYmSa",
+      "config": "GETDecieVTU4p1F1GHNyRMuhSKAw4f8x3NKnJ3XzFUb8",
       "graduatedPools": 1,
-      "multiplier": null,
-      "threshold": null,
-      "listing": null
+      "multiplier": 1.440005664976993,
+      "threshold": 1,
+      "listing": false
     },
     {
-      "config": "GTZ95vAygrYBCRVGM7RbrpyrVqqqYgqRcAkLmJMoyEMQ",
+      "config": "BRjFzTK8TvPknfh9pZMpy5AMZiS1WobnavVcr5q8tV8s",
       "graduatedPools": 1,
-      "multiplier": 14.545454510238613,
-      "threshold": 10517.435103577,
+      "multiplier": 9800.99769494185,
+      "threshold": 0.04,
       "listing": false
     },
     {
@@ -1325,11 +1339,18 @@
       "listing": true
     },
     {
-      "config": "8u5go17zarUvPsjsPvsN3XDP5gfhjD7TRBfULxE7hBiA",
+      "config": "FgPtgp42S2k3d8J9HizVB9c4iWCVtPbDqYo3gpwU5k4n",
       "graduatedPools": 1,
-      "multiplier": 11.835792696235242,
-      "threshold": 0.095,
-      "listing": false
+      "multiplier": 1.0254680772456206,
+      "threshold": 0.01995,
+      "listing": true
+    },
+    {
+      "config": "2iqaXwGJV7UYoq87BRW7ZZ6fCvfwsWqo9EeyyJgnYmSa",
+      "graduatedPools": 1,
+      "multiplier": null,
+      "threshold": null,
+      "listing": null
     },
     {
       "config": "8Q5bn37mx14i7CUFRYAiDBwkP9P87UWSyDpemT7EYcJ7",
@@ -1339,17 +1360,10 @@
       "listing": true
     },
     {
-      "config": "G4RyP3vPN7YGzztv2sH7USYjDiGwjxmffeSuGYMyq3d8",
+      "config": "8u5go17zarUvPsjsPvsN3XDP5gfhjD7TRBfULxE7hBiA",
       "graduatedPools": 1,
-      "multiplier": 1.4400218389125254,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "BRjFzTK8TvPknfh9pZMpy5AMZiS1WobnavVcr5q8tV8s",
-      "graduatedPools": 1,
-      "multiplier": 9800.99769494185,
-      "threshold": 0.04,
+      "multiplier": 11.835792696235242,
+      "threshold": 0.095,
       "listing": false
     },
     {
@@ -1360,11 +1374,46 @@
       "listing": false
     },
     {
-      "config": "FgPtgp42S2k3d8J9HizVB9c4iWCVtPbDqYo3gpwU5k4n",
+      "config": "ju6xkcXiQ5v11r3BWFpeim1rk3dHCP4QikgU3bWAGBP",
       "graduatedPools": 1,
-      "multiplier": 1.0254680772456206,
-      "threshold": 0.01995,
-      "listing": true
+      "multiplier": 9800.99769494185,
+      "threshold": 0.04,
+      "listing": false
+    },
+    {
+      "config": "BEgosGZ1AfpjEM6tksEB9Nd2tPNzWArsXMH4AT1SAKmS",
+      "graduatedPools": 1,
+      "multiplier": 9800.99769494185,
+      "threshold": 0.04,
+      "listing": false
+    },
+    {
+      "config": "FtGhsgtvBbSxB3oim5KWJYxEzXHGswXqCDXTVpjwR2RZ",
+      "graduatedPools": 1,
+      "multiplier": 1.440006332817205,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "AoqBiziqp33Wahhd51gnD6Y9T7fCfc5m6etLLKMYmNVg",
+      "graduatedPools": 1,
+      "multiplier": 1.4400169620968026,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "G4RyP3vPN7YGzztv2sH7USYjDiGwjxmffeSuGYMyq3d8",
+      "graduatedPools": 1,
+      "multiplier": 1.4400218389125254,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "5Ecb8Tz65Tc8qSrCtv5FfxRry2JjYEGjjUyGbazrVMyF",
+      "graduatedPools": 1,
+      "multiplier": 1.4400037500726104,
+      "threshold": 1,
+      "listing": false
     },
     {
       "config": "GtxHeLmAWRy9pXiWmjVX1MTPLM8LTZrY7jHETAZTyVVz",
@@ -1381,59 +1430,10 @@
       "listing": false
     },
     {
-      "config": "5Ecb8Tz65Tc8qSrCtv5FfxRry2JjYEGjjUyGbazrVMyF",
+      "config": "99K4eC3PPwhb3sbyrAJTSAWrKiDCDxFfAfwJeonKGbVS",
       "graduatedPools": 1,
-      "multiplier": 1.4400037500726104,
+      "multiplier": 1.44000534877721,
       "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "ju6xkcXiQ5v11r3BWFpeim1rk3dHCP4QikgU3bWAGBP",
-      "graduatedPools": 1,
-      "multiplier": 9800.99769494185,
-      "threshold": 0.04,
-      "listing": false
-    },
-    {
-      "config": "4iFyW3UiTZyMTR8MMVQCozRk2w5WPgDDrj32xb5zyme6",
-      "graduatedPools": 1,
-      "multiplier": 1.4399999887985777,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "BEgosGZ1AfpjEM6tksEB9Nd2tPNzWArsXMH4AT1SAKmS",
-      "graduatedPools": 1,
-      "multiplier": 9800.99769494185,
-      "threshold": 0.04,
-      "listing": false
-    },
-    {
-      "config": "AoqBiziqp33Wahhd51gnD6Y9T7fCfc5m6etLLKMYmNVg",
-      "graduatedPools": 1,
-      "multiplier": 1.4400169620968026,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "FtGhsgtvBbSxB3oim5KWJYxEzXHGswXqCDXTVpjwR2RZ",
-      "graduatedPools": 1,
-      "multiplier": 1.440006332817205,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "3v87CSDuPTTaUEe2Rs59JSviKAeKwEnK7RVMyrAe6rWL",
-      "graduatedPools": 1,
-      "multiplier": 1.4400007921456917,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "EYUtJpmnkcHCm3KoUy2PHxJExGVWcBSoEXxynK66Sr9",
-      "graduatedPools": 1,
-      "multiplier": 39.99999884205284,
-      "threshold": 0.532455532,
       "listing": false
     },
     {
@@ -1451,16 +1451,23 @@
       "listing": false
     },
     {
-      "config": "CjDNvKboRKKVj5gAFukBHQwUpoLQavu4NiZBmYXuiiZu",
+      "config": "HcQYFS49wvJDqtCRrZh8Eia7Cwx8CgLuZtzJpnKteJ2b",
       "graduatedPools": 1,
-      "multiplier": 39.99999884205284,
+      "multiplier": 39.99999882466617,
       "threshold": 0.532455532,
       "listing": false
     },
     {
-      "config": "HcQYFS49wvJDqtCRrZh8Eia7Cwx8CgLuZtzJpnKteJ2b",
+      "config": "3v87CSDuPTTaUEe2Rs59JSviKAeKwEnK7RVMyrAe6rWL",
       "graduatedPools": 1,
-      "multiplier": 39.99999882466617,
+      "multiplier": 1.4400007921456917,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "EYUtJpmnkcHCm3KoUy2PHxJExGVWcBSoEXxynK66Sr9",
+      "graduatedPools": 1,
+      "multiplier": 39.99999884205284,
       "threshold": 0.532455532,
       "listing": false
     },
@@ -1472,39 +1479,11 @@
       "listing": null
     },
     {
-      "config": "99K4eC3PPwhb3sbyrAJTSAWrKiDCDxFfAfwJeonKGbVS",
+      "config": "4iFyW3UiTZyMTR8MMVQCozRk2w5WPgDDrj32xb5zyme6",
       "graduatedPools": 1,
-      "multiplier": 1.44000534877721,
+      "multiplier": 1.4399999887985777,
       "threshold": 1,
       "listing": false
-    },
-    {
-      "config": "G2x2S28V5VdkB8kNQPbYhqVe3kF7ZZzgw5S9D7owG2pD",
-      "graduatedPools": 1,
-      "multiplier": 1.4400008067412349,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "J5D7hVvC86Yi5xjyucJqG2cbEaEHA7sELSSsSzEkFSpe",
-      "graduatedPools": 1,
-      "multiplier": 1.4400023715626726,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "4yHajTVQDJZCi1y5rVTZm4MRqearKzy2KpkLUP7T8hnq",
-      "graduatedPools": 1,
-      "multiplier": 1.440004738870204,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "ATzrrddu33ezN1ZQPQsYVR8aRvrn3M8T99Rcmx4iEj4x",
-      "graduatedPools": 1,
-      "multiplier": 15.999951905842977,
-      "threshold": 0.0075,
-      "listing": true
     },
     {
       "config": "53Ku6y48qkvwsyQUkfE1pk1SDyYHt38r4WKdTkDHrzUS",
@@ -1521,16 +1500,58 @@
       "listing": false
     },
     {
-      "config": "FbMvTckrNcoPijsAa9hpAVDDEaRFp8tzhwxJGreX1gTv",
+      "config": "ViZmznhMA8iByTbPCDXPdgRYQgQfVHBmAFik9N3Csgp",
       "graduatedPools": 1,
-      "multiplier": 1.4400036874271096,
+      "multiplier": 1.440001623257757,
       "threshold": 1,
       "listing": false
     },
     {
-      "config": "ViZmznhMA8iByTbPCDXPdgRYQgQfVHBmAFik9N3Csgp",
+      "config": "CjDNvKboRKKVj5gAFukBHQwUpoLQavu4NiZBmYXuiiZu",
       "graduatedPools": 1,
-      "multiplier": 1.440001623257757,
+      "multiplier": 39.99999884205284,
+      "threshold": 0.532455532,
+      "listing": false
+    },
+    {
+      "config": "ATzrrddu33ezN1ZQPQsYVR8aRvrn3M8T99Rcmx4iEj4x",
+      "graduatedPools": 1,
+      "multiplier": 15.999951905842977,
+      "threshold": 0.0075,
+      "listing": true
+    },
+    {
+      "config": "4yHajTVQDJZCi1y5rVTZm4MRqearKzy2KpkLUP7T8hnq",
+      "graduatedPools": 1,
+      "multiplier": 1.440004738870204,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "J5D7hVvC86Yi5xjyucJqG2cbEaEHA7sELSSsSzEkFSpe",
+      "graduatedPools": 1,
+      "multiplier": 1.4400023715626726,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "G2x2S28V5VdkB8kNQPbYhqVe3kF7ZZzgw5S9D7owG2pD",
+      "graduatedPools": 1,
+      "multiplier": 1.4400008067412349,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "8Beqdr4Gvp5htpWBzVjKCy5QnfizVftS41262pveoQJ4",
+      "graduatedPools": 1,
+      "multiplier": 9800.99733834599,
+      "threshold": 0.03,
+      "listing": false
+    },
+    {
+      "config": "7A7beGeFoXeeJaNWFvEUtxALqmHBTJZjv9Y5dDxjp7Wk",
+      "graduatedPools": 1,
+      "multiplier": 1.4400084421406079,
       "threshold": 1,
       "listing": false
     },
@@ -1542,10 +1563,10 @@
       "listing": false
     },
     {
-      "config": "sWjU9zrrE7DgYqQm6t3Qij6ngCw1f7X8quj4feKFpQa",
+      "config": "2bi2PS1caandULy2256ZZGnc3nzM8V7o93x879ScG7uR",
       "graduatedPools": 1,
-      "multiplier": 1.4400010291383631,
-      "threshold": 0.8,
+      "multiplier": 39.99999884205284,
+      "threshold": 0.532455532,
       "listing": false
     },
     {
@@ -1556,13 +1577,6 @@
       "listing": false
     },
     {
-      "config": "25q77Pbmt2NUAiitkoSAhz7pbCyktEvzvorJyvRodYCT",
-      "graduatedPools": 1,
-      "multiplier": 8.749989990014313,
-      "threshold": 74.948958164,
-      "listing": false
-    },
-    {
       "config": "2Xsj1b46nZtihLXUFRQ4pjcoYmEEA1D3XKNLmgQU9QWT",
       "graduatedPools": 1,
       "multiplier": 1.4400122043520955,
@@ -1570,52 +1584,31 @@
       "listing": false
     },
     {
-      "config": "7A7beGeFoXeeJaNWFvEUtxALqmHBTJZjv9Y5dDxjp7Wk",
+      "config": "FbMvTckrNcoPijsAa9hpAVDDEaRFp8tzhwxJGreX1gTv",
       "graduatedPools": 1,
-      "multiplier": 1.4400084421406079,
+      "multiplier": 1.4400036874271096,
       "threshold": 1,
       "listing": false
     },
     {
-      "config": "2bi2PS1caandULy2256ZZGnc3nzM8V7o93x879ScG7uR",
+      "config": "sWjU9zrrE7DgYqQm6t3Qij6ngCw1f7X8quj4feKFpQa",
       "graduatedPools": 1,
-      "multiplier": 39.99999884205284,
-      "threshold": 0.532455532,
+      "multiplier": 1.4400010291383631,
+      "threshold": 0.8,
       "listing": false
     },
     {
-      "config": "8Beqdr4Gvp5htpWBzVjKCy5QnfizVftS41262pveoQJ4",
+      "config": "Aonc8fiPo2rzHAgSuk1M5mb8un9xx68bNArLUsJoBgQW",
       "graduatedPools": 1,
-      "multiplier": 9800.99733834599,
-      "threshold": 0.03,
+      "multiplier": 1.4400032322141312,
+      "threshold": 1,
       "listing": false
-    },
-    {
-      "config": "GBRYtSnz4mt85doNzPVthd649WnfzbbVR3KiFQgqZQ1E",
-      "graduatedPools": 1,
-      "multiplier": 1.005012531324932,
-      "threshold": 3999.981256,
-      "listing": true
     },
     {
       "config": "6vzcZRbnSjhbNrzbzyRvDDBazNy7nnzYtnYrPBNQPs23",
       "graduatedPools": 1,
       "multiplier": 1.4400006731825745,
       "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "EojU3mjQN3R5Jqis28zYeQTJUDksdfsc3RVFoPFUZvAs",
-      "graduatedPools": 1,
-      "multiplier": 1.4400164782634177,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "Fj9vBZ7ctebhuzCPkzQLzrStrYPyzNcAC5EddrQtUJVN",
-      "graduatedPools": 1,
-      "multiplier": 17.99999999830833,
-      "threshold": 2,
       "listing": false
     },
     {
@@ -1626,9 +1619,9 @@
       "listing": false
     },
     {
-      "config": "Aonc8fiPo2rzHAgSuk1M5mb8un9xx68bNArLUsJoBgQW",
+      "config": "EojU3mjQN3R5Jqis28zYeQTJUDksdfsc3RVFoPFUZvAs",
       "graduatedPools": 1,
-      "multiplier": 1.4400032322141312,
+      "multiplier": 1.4400164782634177,
       "threshold": 1,
       "listing": false
     },
@@ -1647,24 +1640,31 @@
       "listing": false
     },
     {
-      "config": "7j3Uaqb61oQD8BYVRuzjEiDwSYyDprajUsVchm5jaNac",
+      "config": "25q77Pbmt2NUAiitkoSAhz7pbCyktEvzvorJyvRodYCT",
       "graduatedPools": 1,
-      "multiplier": 9800.99733834599,
-      "threshold": 0.03,
+      "multiplier": 8.749989990014313,
+      "threshold": 74.948958164,
       "listing": false
     },
     {
-      "config": "Cx1aUeGJYghgVRF5Kejm3vVsLJ5js4dR2HtXS9ZzJugc",
+      "config": "GBRYtSnz4mt85doNzPVthd649WnfzbbVR3KiFQgqZQ1E",
       "graduatedPools": 1,
-      "multiplier": 1.440015896683045,
+      "multiplier": 1.005012531324932,
+      "threshold": 3999.981256,
+      "listing": true
+    },
+    {
+      "config": "Fj9vBZ7ctebhuzCPkzQLzrStrYPyzNcAC5EddrQtUJVN",
+      "graduatedPools": 1,
+      "multiplier": 17.99999999830833,
+      "threshold": 2,
+      "listing": false
+    },
+    {
+      "config": "8BSurDiz3Tctn7pQf3CqZGAVWsic36a8UTAM6p8hdj3r",
+      "graduatedPools": 1,
+      "multiplier": 1.439999989475083,
       "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "CxiruWsPTjkjS6CkChy8XzPsTshnD9kUciVcyC75mzNC",
-      "graduatedPools": 1,
-      "multiplier": 1.4400023111934472,
-      "threshold": 0.8,
       "listing": false
     },
     {
@@ -1675,9 +1675,23 @@
       "listing": false
     },
     {
-      "config": "8BSurDiz3Tctn7pQf3CqZGAVWsic36a8UTAM6p8hdj3r",
+      "config": "7j3Uaqb61oQD8BYVRuzjEiDwSYyDprajUsVchm5jaNac",
       "graduatedPools": 1,
-      "multiplier": 1.439999989475083,
+      "multiplier": 9800.99733834599,
+      "threshold": 0.03,
+      "listing": false
+    },
+    {
+      "config": "CxiruWsPTjkjS6CkChy8XzPsTshnD9kUciVcyC75mzNC",
+      "graduatedPools": 1,
+      "multiplier": 1.4400023111934472,
+      "threshold": 0.8,
+      "listing": false
+    },
+    {
+      "config": "2AcNW1zwecMxAUoYSF14BHRG6Mh9dpxXUCGGe1dRUEJW",
+      "graduatedPools": 1,
+      "multiplier": 1.4400086622058434,
       "threshold": 1,
       "listing": false
     },
@@ -1696,37 +1710,37 @@
       "listing": false
     },
     {
-      "config": "2AcNW1zwecMxAUoYSF14BHRG6Mh9dpxXUCGGe1dRUEJW",
+      "config": "Dmu55Dz8hoMfueXhEJ5MPeHiLGzSwoZXX9mBNy9ZCAUq",
       "graduatedPools": 1,
-      "multiplier": 1.4400086622058434,
+      "multiplier": 9800.99733834599,
+      "threshold": 0.03,
+      "listing": false
+    },
+    {
+      "config": "JC4wqsfrG5cx4u1fRjx7iY2BSRJGcT265CJ5M6gFCeKM",
+      "graduatedPools": 1,
+      "multiplier": 1.4399999594117363,
       "threshold": 1,
       "listing": false
     },
     {
-      "config": "GAdbqKPAD9hp2HER3K7cP49SZZQyDbVY5nAX8SpMZhEj",
+      "config": "DrVf3hybUkNNvNviAcvCdYRut31Sa6CPg5SjsNyzvHnZ",
       "graduatedPools": 1,
-      "multiplier": 1.4400071078090169,
-      "threshold": 0.8,
+      "multiplier": 1.4400105621465709,
+      "threshold": 1,
       "listing": false
     },
     {
-      "config": "D88CSu3rSeWD8cky8DBVa11evkUfnCoa8frZ7vBZUJC1",
+      "config": "Cx1aUeGJYghgVRF5Kejm3vVsLJ5js4dR2HtXS9ZzJugc",
       "graduatedPools": 1,
-      "multiplier": 1.4400008258261738,
-      "threshold": 0.8,
+      "multiplier": 1.440015896683045,
+      "threshold": 1,
       "listing": false
     },
     {
       "config": "DodixX76e1RQnprAh2TP4dUnq2CwVFdGDTf3KJ7FpxGv",
       "graduatedPools": 1,
       "multiplier": 1.4400039898647345,
-      "threshold": 0.8,
-      "listing": false
-    },
-    {
-      "config": "4m9FzLwCdT9h3LkNYpgbw8ucPi7Hgov6P7E1bAaNhmUR",
-      "graduatedPools": 1,
-      "multiplier": 1.440002618930154,
       "threshold": 0.8,
       "listing": false
     },
@@ -1738,51 +1752,23 @@
       "listing": false
     },
     {
-      "config": "Dmu55Dz8hoMfueXhEJ5MPeHiLGzSwoZXX9mBNy9ZCAUq",
+      "config": "D88CSu3rSeWD8cky8DBVa11evkUfnCoa8frZ7vBZUJC1",
       "graduatedPools": 1,
-      "multiplier": 9800.99733834599,
-      "threshold": 0.03,
-      "listing": false
-    },
-    {
-      "config": "DrVf3hybUkNNvNviAcvCdYRut31Sa6CPg5SjsNyzvHnZ",
-      "graduatedPools": 1,
-      "multiplier": 1.4400105621465709,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "JC4wqsfrG5cx4u1fRjx7iY2BSRJGcT265CJ5M6gFCeKM",
-      "graduatedPools": 1,
-      "multiplier": 1.4399999594117363,
-      "threshold": 1,
-      "listing": false
-    },
-    {
-      "config": "8anaYo8YMpchgKjibVv26RMiuM9WXC87UmZGksJ91Prw",
-      "graduatedPools": 1,
-      "multiplier": 1.4400041592532904,
+      "multiplier": 1.4400008258261738,
       "threshold": 0.8,
       "listing": false
     },
     {
-      "config": "8DU7iR8wKrNFn3E6K4MkFrW8J8ugLADYsKUUsJDkbnDV",
+      "config": "4m9FzLwCdT9h3LkNYpgbw8ucPi7Hgov6P7E1bAaNhmUR",
       "graduatedPools": 1,
-      "multiplier": 1.4400008130096507,
+      "multiplier": 1.440002618930154,
       "threshold": 0.8,
       "listing": false
     },
     {
-      "config": "FY5z9jvQLaMu4Mj25G4dCqKsGYk5qdHBRuEGUJSLnPei",
+      "config": "GAdbqKPAD9hp2HER3K7cP49SZZQyDbVY5nAX8SpMZhEj",
       "graduatedPools": 1,
-      "multiplier": 1.4400042459926616,
-      "threshold": 0.8,
-      "listing": false
-    },
-    {
-      "config": "3gRf9X42VCPxe6be5xyPjHQfxvgbr1x3xZCG9NmSNwgZ",
-      "graduatedPools": 1,
-      "multiplier": 1.440000228401623,
+      "multiplier": 1.4400071078090169,
       "threshold": 0.8,
       "listing": false
     },
@@ -1801,17 +1787,31 @@
       "listing": false
     },
     {
-      "config": "Ht6YYBnprRVQDW4CHuZGB9MDWPLPrpnXjZZWMM6Nz53q",
+      "config": "8DU7iR8wKrNFn3E6K4MkFrW8J8ugLADYsKUUsJDkbnDV",
       "graduatedPools": 1,
-      "multiplier": 1.4400010466640294,
-      "threshold": 1,
+      "multiplier": 1.4400008130096507,
+      "threshold": 0.8,
       "listing": false
     },
     {
-      "config": "8de9pBxf2o4hmXo2kxhiLRvhmjuBmQjJQdiPTn5FQXC2",
+      "config": "3gRf9X42VCPxe6be5xyPjHQfxvgbr1x3xZCG9NmSNwgZ",
       "graduatedPools": 1,
-      "multiplier": 1.2352939743990878,
-      "threshold": 0.01426441,
+      "multiplier": 1.440000228401623,
+      "threshold": 0.8,
+      "listing": false
+    },
+    {
+      "config": "FY5z9jvQLaMu4Mj25G4dCqKsGYk5qdHBRuEGUJSLnPei",
+      "graduatedPools": 1,
+      "multiplier": 1.4400042459926616,
+      "threshold": 0.8,
+      "listing": false
+    },
+    {
+      "config": "2stFUjXpopvWeW36Df5fPnWQExGGL25Hwcj2B72K6Krv",
+      "graduatedPools": 1,
+      "multiplier": 1.235293709406158,
+      "threshold": 0.00354903,
       "listing": true
     },
     {
@@ -1822,25 +1822,11 @@
       "listing": true
     },
     {
-      "config": "3jeEtnaBrQYxMkiSRip6Gz9CmBVvY1JyqDDqeLs56mgz",
-      "graduatedPools": 1,
-      "multiplier": 1.4400059141202732,
-      "threshold": 1,
-      "listing": false
-    },
-    {
       "config": "Cm68YAJE2ed83RuGQ7EogSLaXzKWPfWpL1JyuDYHtrWY",
       "graduatedPools": 1,
       "multiplier": 1.4400212353470048,
       "threshold": 1,
       "listing": false
-    },
-    {
-      "config": "2stFUjXpopvWeW36Df5fPnWQExGGL25Hwcj2B72K6Krv",
-      "graduatedPools": 1,
-      "multiplier": 1.235293709406158,
-      "threshold": 0.00354903,
-      "listing": true
     },
     {
       "config": "7EM9JeCdzF6hQLDNLpt9fwyuuckWf5U1L1UuqWxj1Wr1",
@@ -1857,10 +1843,24 @@
       "listing": false
     },
     {
-      "config": "FRftqMnFToBxRaePwWQ1w61cDYHKaji1m5D51h1LyY9n",
+      "config": "8anaYo8YMpchgKjibVv26RMiuM9WXC87UmZGksJ91Prw",
       "graduatedPools": 1,
-      "multiplier": 14.693826221180064,
-      "threshold": 36724.797385,
+      "multiplier": 1.4400041592532904,
+      "threshold": 0.8,
+      "listing": false
+    },
+    {
+      "config": "Ht6YYBnprRVQDW4CHuZGB9MDWPLPrpnXjZZWMM6Nz53q",
+      "graduatedPools": 1,
+      "multiplier": 1.4400010466640294,
+      "threshold": 1,
+      "listing": false
+    },
+    {
+      "config": "3jeEtnaBrQYxMkiSRip6Gz9CmBVvY1JyqDDqeLs56mgz",
+      "graduatedPools": 1,
+      "multiplier": 1.4400059141202732,
+      "threshold": 1,
       "listing": false
     },
     {
@@ -1871,10 +1871,17 @@
       "listing": false
     },
     {
-      "config": "HRzWbNeYoWLoacaSzCaAvLPjRXUC26uj1ddpcBM6GeMf",
+      "config": "EKYQTXQ4Euy3uU7z5jziTcpXvNwT3kqC7aVZM24QLC2x",
       "graduatedPools": 1,
-      "multiplier": 14.693826262831697,
-      "threshold": 41946.274865,
+      "multiplier": 1.9328239693911197e+22,
+      "threshold": 0.0075369,
+      "listing": true
+    },
+    {
+      "config": "EMouXBdzWUtiEfoQAKedYwR7UVvrPrkGqs4zGgFdEcE7",
+      "graduatedPools": 1,
+      "multiplier": 1.440024052162802,
+      "threshold": 0.8,
       "listing": false
     },
     {
@@ -1885,16 +1892,23 @@
       "listing": false
     },
     {
-      "config": "HmticNNr5kA9biMhckG56HCTZ3PsGn4tS15HhDm12Wpu",
+      "config": "8de9pBxf2o4hmXo2kxhiLRvhmjuBmQjJQdiPTn5FQXC2",
       "graduatedPools": 1,
-      "multiplier": 1.440002039522037,
-      "threshold": 0.8,
+      "multiplier": 1.2352939743990878,
+      "threshold": 0.01426441,
+      "listing": true
+    },
+    {
+      "config": "HRzWbNeYoWLoacaSzCaAvLPjRXUC26uj1ddpcBM6GeMf",
+      "graduatedPools": 1,
+      "multiplier": 14.693826262831697,
+      "threshold": 41946.274865,
       "listing": false
     },
     {
-      "config": "EMouXBdzWUtiEfoQAKedYwR7UVvrPrkGqs4zGgFdEcE7",
+      "config": "HmticNNr5kA9biMhckG56HCTZ3PsGn4tS15HhDm12Wpu",
       "graduatedPools": 1,
-      "multiplier": 1.440024052162802,
+      "multiplier": 1.440002039522037,
       "threshold": 0.8,
       "listing": false
     },
@@ -1906,11 +1920,11 @@
       "listing": true
     },
     {
-      "config": "EKYQTXQ4Euy3uU7z5jziTcpXvNwT3kqC7aVZM24QLC2x",
+      "config": "ATL4f4U13LAozEnQmi49hX5KFLofebpknrf3iQ9jN6Bf",
       "graduatedPools": 1,
-      "multiplier": 1.9328239693911197e+22,
-      "threshold": 0.0075369,
-      "listing": true
+      "multiplier": 15.999992395652347,
+      "threshold": 0.3,
+      "listing": false
     },
     {
       "config": "9uD2jxzCFtQuV5DG3GH8QMTuBoptkKDuw8G2BcQPgJTE",
@@ -1920,17 +1934,10 @@
       "listing": false
     },
     {
-      "config": "ATL4f4U13LAozEnQmi49hX5KFLofebpknrf3iQ9jN6Bf",
+      "config": "FRftqMnFToBxRaePwWQ1w61cDYHKaji1m5D51h1LyY9n",
       "graduatedPools": 1,
-      "multiplier": 15.999992395652347,
-      "threshold": 0.3,
-      "listing": false
-    },
-    {
-      "config": "7heRRGKx5u9wkskvygh3E77S46Cv3WmQ8TBhzmTAuNda",
-      "graduatedPools": 1,
-      "multiplier": 14.693826443155237,
-      "threshold": 85,
+      "multiplier": 14.693826221180064,
+      "threshold": 36724.797385,
       "listing": false
     },
     {
@@ -1969,18 +1976,18 @@
       "listing": false
     },
     {
-      "config": "J8iF9tG1jAJbwn1XSUhBEFC5vVHAAo8N7SfEdtadeVzh",
-      "graduatedPools": 1,
-      "multiplier": null,
-      "threshold": null,
-      "listing": null
-    },
-    {
       "config": "8TXNGgx6g5TcsVCYt7wz3cAxJkynzzBZWXeQtXZaz6A3",
       "graduatedPools": 1,
       "multiplier": 15.60246005855559,
       "threshold": 85,
       "listing": false
+    },
+    {
+      "config": "J8iF9tG1jAJbwn1XSUhBEFC5vVHAAo8N7SfEdtadeVzh",
+      "graduatedPools": 1,
+      "multiplier": null,
+      "threshold": null,
+      "listing": null
     },
     {
       "config": "CNeYZ5HH1TgM1AQp3itdSRa5ASC1szgktYXueL94nFa7",
@@ -2025,13 +2032,6 @@
       "listing": true
     },
     {
-      "config": "EFf5P4JES2mongkbU8q4XVbUrD7PQkxNHz49AHdTRVX2",
-      "graduatedPools": 1,
-      "multiplier": 745165.1927853497,
-      "threshold": 0.069426,
-      "listing": false
-    },
-    {
       "config": "AHWz5g2BD2AyZedsgSKWeAs57memEjPWFmfYabJpJHpx",
       "graduatedPools": 1,
       "multiplier": 7.999999436382243,
@@ -2040,6 +2040,13 @@
     },
     {
       "config": "BnMjz9sdLvgMLLKgVzmYDA6HWem5UwwMzwNLfz5RDykc",
+      "graduatedPools": 1,
+      "multiplier": 745165.1927853497,
+      "threshold": 0.069426,
+      "listing": false
+    },
+    {
+      "config": "EFf5P4JES2mongkbU8q4XVbUrD7PQkxNHz49AHdTRVX2",
       "graduatedPools": 1,
       "multiplier": 745165.1927853497,
       "threshold": 0.069426,
@@ -2074,13 +2081,6 @@
       "listing": null
     },
     {
-      "config": "CwkAvqn4gxTcj4vfLkq5UTBTZM9UGALXVTTyV9686BYx",
-      "graduatedPools": 1,
-      "multiplier": null,
-      "threshold": null,
-      "listing": null
-    },
-    {
       "config": "7uRc2rnJrtWFbnsBBKoCGYzn6GXHW4REco6CMhwpNyGr",
       "graduatedPools": 1,
       "multiplier": 15.96256006016747,
@@ -2093,6 +2093,13 @@
       "multiplier": 15.96256454925184,
       "threshold": 0.25,
       "listing": false
+    },
+    {
+      "config": "CwkAvqn4gxTcj4vfLkq5UTBTZM9UGALXVTTyV9686BYx",
+      "graduatedPools": 1,
+      "multiplier": null,
+      "threshold": null,
+      "listing": null
     },
     {
       "config": "9FVUAA3Ydw8BtqcDwm5JbPeJY2JYZCmNqLu8VWfg1j7p",
@@ -2123,20 +2130,6 @@
       "listing": false
     },
     {
-      "config": "EfN7kwKMBYCQTCNEUGeCFSYRn3j1SCi1nvLHuMGvZbBT",
-      "graduatedPools": 1,
-      "multiplier": null,
-      "threshold": null,
-      "listing": null
-    },
-    {
-      "config": "3st8YPc3pbfpg3eJvMMLyLjJj64WACCPiHs1CCjZq4mi",
-      "graduatedPools": 1,
-      "multiplier": 15.999986828871453,
-      "threshold": 0.1,
-      "listing": false
-    },
-    {
       "config": "4MT7osU1g7yeh9Db6rC8LPWuo5L6qfSpZZKTmKuh5Bt6",
       "graduatedPools": 1,
       "multiplier": null,
@@ -2144,11 +2137,11 @@
       "listing": null
     },
     {
-      "config": "GiY3aHA63dbezaTD3BXiRLFzA7hpqzQu6QYNTDBdQbf9",
+      "config": "8RR5RJPPLEiMzySNY5wHVr5J6WS6UgPU4foGSdNF7iHA",
       "graduatedPools": 1,
-      "multiplier": 15.986831572916868,
-      "threshold": 1e-7,
-      "listing": true
+      "multiplier": 15.999986828871453,
+      "threshold": 0.1,
+      "listing": false
     },
     {
       "config": "HkBbyU4vx4Vb88uPkCn6mhbbZBbHyjfP3PPyNp9sCk3w",
@@ -2158,7 +2151,7 @@
       "listing": false
     },
     {
-      "config": "8RR5RJPPLEiMzySNY5wHVr5J6WS6UgPU4foGSdNF7iHA",
+      "config": "3st8YPc3pbfpg3eJvMMLyLjJj64WACCPiHs1CCjZq4mi",
       "graduatedPools": 1,
       "multiplier": 15.999986828871453,
       "threshold": 0.1,
@@ -2172,18 +2165,18 @@
       "listing": null
     },
     {
-      "config": "GeoPkbjBdCgoPzBb85X6VuyqKmhG4KphoZEufG5VgqKE",
+      "config": "EfN7kwKMBYCQTCNEUGeCFSYRn3j1SCi1nvLHuMGvZbBT",
       "graduatedPools": 1,
-      "multiplier": 8.928571077698615,
-      "threshold": 62.686939925,
-      "listing": false
+      "multiplier": null,
+      "threshold": null,
+      "listing": null
     },
     {
-      "config": "7chitfGmtL9aWUkv8a7pA8axqUUCJ7VE517PM5wMpFKz",
+      "config": "GiY3aHA63dbezaTD3BXiRLFzA7hpqzQu6QYNTDBdQbf9",
       "graduatedPools": 1,
-      "multiplier": 5.428571144315272,
-      "threshold": 23.79758218,
-      "listing": false
+      "multiplier": 15.986831572916868,
+      "threshold": 1e-7,
+      "listing": true
     },
     {
       "config": "7PooeBPTAA8pbbYoGG4UcCJHNUfWauuEYS6KTAJHB7zd",
@@ -2193,24 +2186,10 @@
       "listing": false
     },
     {
-      "config": "1cyCZ2pkhm1r4wyJYKh927CvTe8txga4proBQ4vKeUK",
+      "config": "GeoPkbjBdCgoPzBb85X6VuyqKmhG4KphoZEufG5VgqKE",
       "graduatedPools": 1,
-      "multiplier": 13.103447876752275,
-      "threshold": 82.253422663,
-      "listing": false
-    },
-    {
-      "config": "3utoxqCpTxEXgnfTNb9namy6dYR4oHHC7hkW66cLZGmz",
-      "graduatedPools": 1,
-      "multiplier": 13.999999597038387,
-      "threshold": 88.576623265,
-      "listing": false
-    },
-    {
-      "config": "Be9oQpGehEyW31zjmL5raZQS8HyX3SGj3FieLJtCnaRY",
-      "graduatedPools": 1,
-      "multiplier": 12.857142453787942,
-      "threshold": 78.505160079,
+      "multiplier": 8.928571077698615,
+      "threshold": 62.686939925,
       "listing": false
     },
     {
@@ -2221,24 +2200,31 @@
       "listing": false
     },
     {
-      "config": "J3eZHPj8BjPwaEubBzQ8d3abBrBGYswz2aawEAbtE5Yn",
+      "config": "7chitfGmtL9aWUkv8a7pA8axqUUCJ7VE517PM5wMpFKz",
       "graduatedPools": 1,
-      "multiplier": 9.999999627105554,
-      "threshold": 64.868329805,
+      "multiplier": 5.428571144315272,
+      "threshold": 23.79758218,
       "listing": false
     },
     {
-      "config": "6Ryz28mnUMWVeykyDh75iRjUTHAEfPFHHHE5ZNHEXQUP",
+      "config": "Be9oQpGehEyW31zjmL5raZQS8HyX3SGj3FieLJtCnaRY",
       "graduatedPools": 1,
-      "multiplier": 6.399998982506764,
-      "threshold": 2298.96808,
+      "multiplier": 12.857142453787942,
+      "threshold": 78.505160079,
       "listing": false
     },
     {
-      "config": "5eTzQv5KzDXdM3U8NQnmdJ1xVPQLfM3N1NN6y6VUc6qN",
+      "config": "3utoxqCpTxEXgnfTNb9namy6dYR4oHHC7hkW66cLZGmz",
       "graduatedPools": 1,
-      "multiplier": 13.333332938263844,
-      "threshold": 85.994066487,
+      "multiplier": 13.999999597038387,
+      "threshold": 88.576623265,
+      "listing": false
+    },
+    {
+      "config": "1cyCZ2pkhm1r4wyJYKh927CvTe8txga4proBQ4vKeUK",
+      "graduatedPools": 1,
+      "multiplier": 13.103447876752275,
+      "threshold": 82.253422663,
       "listing": false
     },
     {
@@ -2249,10 +2235,31 @@
       "listing": false
     },
     {
+      "config": "5eTzQv5KzDXdM3U8NQnmdJ1xVPQLfM3N1NN6y6VUc6qN",
+      "graduatedPools": 1,
+      "multiplier": 13.333332938263844,
+      "threshold": 85.994066487,
+      "listing": false
+    },
+    {
       "config": "AGgjyrVkShhqYmhqbcTGLwen1WcMEmFsAG6ZGAsMW257",
       "graduatedPools": 1,
       "multiplier": 15.999985713904609,
       "threshold": 85,
+      "listing": false
+    },
+    {
+      "config": "6Ryz28mnUMWVeykyDh75iRjUTHAEfPFHHHE5ZNHEXQUP",
+      "graduatedPools": 1,
+      "multiplier": 6.399998982506764,
+      "threshold": 2298.96808,
+      "listing": false
+    },
+    {
+      "config": "J3eZHPj8BjPwaEubBzQ8d3abBrBGYswz2aawEAbtE5Yn",
+      "graduatedPools": 1,
+      "multiplier": 9.999999627105554,
+      "threshold": 64.868329805,
       "listing": false
     },
     {
@@ -2263,17 +2270,17 @@
       "listing": false
     },
     {
-      "config": "HrJsXRQaq7spWBU4gJZ4UvDCUoUggKAVyNy8nayxHbC1",
+      "config": "6agshHLZAfUgwJakZ45ML5ymKsDpS4QmxeFjUdRiEWUy",
       "graduatedPools": 1,
-      "multiplier": 8.000007501870849,
-      "threshold": 677194.957745,
+      "multiplier": 15.999999620010007,
+      "threshold": 120,
       "listing": false
     },
     {
-      "config": "26GZrX2DMTt6GBi9TdC9q6rBt3r9EgoT8mSwVG7hd73N",
+      "config": "4ikK5K5SMmkvXfiX4iGHQC3YY4sHbBkRTPswAbhWFErr",
       "graduatedPools": 1,
-      "multiplier": 5.999998420768228,
-      "threshold": 1.794088031,
+      "multiplier": 15.999999620010007,
+      "threshold": 120,
       "listing": false
     },
     {
@@ -2291,17 +2298,10 @@
       "listing": false
     },
     {
-      "config": "4ikK5K5SMmkvXfiX4iGHQC3YY4sHbBkRTPswAbhWFErr",
+      "config": "HrJsXRQaq7spWBU4gJZ4UvDCUoUggKAVyNy8nayxHbC1",
       "graduatedPools": 1,
-      "multiplier": 15.999999620010007,
-      "threshold": 120,
-      "listing": false
-    },
-    {
-      "config": "6agshHLZAfUgwJakZ45ML5ymKsDpS4QmxeFjUdRiEWUy",
-      "graduatedPools": 1,
-      "multiplier": 15.999999620010007,
-      "threshold": 120,
+      "multiplier": 8.000007501870849,
+      "threshold": 677194.957745,
       "listing": false
     },
     {
@@ -2312,31 +2312,17 @@
       "listing": false
     },
     {
-      "config": "vSD7EkjrYxEqNNS2Cw9MZ7uB2B9xcJcVwp5ACGBgMGS",
+      "config": "26GZrX2DMTt6GBi9TdC9q6rBt3r9EgoT8mSwVG7hd73N",
       "graduatedPools": 1,
-      "multiplier": 15.99997054845727,
-      "threshold": 20,
+      "multiplier": 5.999998420768228,
+      "threshold": 1.794088031,
       "listing": false
     },
     {
-      "config": "2L3yTGbzZvX52cvndC3zVkXGwUWUg2uApLazFuNaT31g",
+      "config": "87SxJz9R38FSk1r6qf698WNHuXkngJX9pjd7mXDtL8k",
       "graduatedPools": 1,
-      "multiplier": 3.999999687944034,
-      "threshold": 26.666666666,
-      "listing": false
-    },
-    {
-      "config": "EfLndJ3MAWyrL6dfFBDkfxnaDDGxSKj9VFJpFcFNKZvD",
-      "graduatedPools": 1,
-      "multiplier": 18.333332884946103,
-      "threshold": 104.132267658,
-      "listing": false
-    },
-    {
-      "config": "BdjkkjnuWQe9V2VSU22WZDk7XfppXdD7ipqp9kLDc1aQ",
-      "graduatedPools": 1,
-      "multiplier": 8.333332291572571,
-      "threshold": 2347.719004,
+      "multiplier": 13.454544529673596,
+      "threshold": 15852.464731,
       "listing": false
     },
     {
@@ -2347,20 +2333,6 @@
       "listing": false
     },
     {
-      "config": "BvR6F5xMUkmZovnXN5H4d9cdoqBktWMU2HjTBgkZCpAv",
-      "graduatedPools": 1,
-      "multiplier": 1.0333280195760204,
-      "threshold": 15.684051993,
-      "listing": true
-    },
-    {
-      "config": "87SxJz9R38FSk1r6qf698WNHuXkngJX9pjd7mXDtL8k",
-      "graduatedPools": 1,
-      "multiplier": 13.454544529673596,
-      "threshold": 15852.464731,
-      "listing": false
-    },
-    {
       "config": "EZHm6dUjTGMJaDvJvh2tZ5kx5GTReY6MHGysLJat2KBq",
       "graduatedPools": 1,
       "multiplier": 9.999999998169102,
@@ -2368,17 +2340,38 @@
       "listing": false
     },
     {
-      "config": "3wCwU8sB62U5YoxnPUPrzxDEPdnrnu8tyqaAjGku5qZf",
+      "config": "EfLndJ3MAWyrL6dfFBDkfxnaDDGxSKj9VFJpFcFNKZvD",
       "graduatedPools": 1,
-      "multiplier": 13.831921578579617,
-      "threshold": 84.999994792,
+      "multiplier": 18.333332884946103,
+      "threshold": 104.132267658,
       "listing": false
     },
     {
-      "config": "ASQLx3VwAfuceNcRdoeetHEMeLrKz7eePCswydervHqX",
+      "config": "vSD7EkjrYxEqNNS2Cw9MZ7uB2B9xcJcVwp5ACGBgMGS",
       "graduatedPools": 1,
-      "multiplier": 15.99999916708823,
-      "threshold": 25,
+      "multiplier": 15.99997054845727,
+      "threshold": 20,
+      "listing": false
+    },
+    {
+      "config": "BvR6F5xMUkmZovnXN5H4d9cdoqBktWMU2HjTBgkZCpAv",
+      "graduatedPools": 1,
+      "multiplier": 1.0333280195760204,
+      "threshold": 15.684051993,
+      "listing": true
+    },
+    {
+      "config": "BdjkkjnuWQe9V2VSU22WZDk7XfppXdD7ipqp9kLDc1aQ",
+      "graduatedPools": 1,
+      "multiplier": 8.333332291572571,
+      "threshold": 2347.719004,
+      "listing": false
+    },
+    {
+      "config": "2L3yTGbzZvX52cvndC3zVkXGwUWUg2uApLazFuNaT31g",
+      "graduatedPools": 1,
+      "multiplier": 3.999999687944034,
+      "threshold": 26.666666666,
       "listing": false
     },
     {
@@ -2389,10 +2382,10 @@
       "listing": false
     },
     {
-      "config": "FQgsVXPyhDkaiKMMswjmGGsVnpSddAX25TVgfwkEVZc1",
+      "config": "D3LdoPTBuMsWy1G9BVCWWZiu2LE3e4towthdDHDN6zdC",
       "graduatedPools": 1,
-      "multiplier": 15.99999941111601,
-      "threshold": 50,
+      "multiplier": 11.526015140146521,
+      "threshold": 101,
       "listing": false
     },
     {
@@ -2403,10 +2396,24 @@
       "listing": false
     },
     {
+      "config": "ASQLx3VwAfuceNcRdoeetHEMeLrKz7eePCswydervHqX",
+      "graduatedPools": 1,
+      "multiplier": 15.99999916708823,
+      "threshold": 25,
+      "listing": false
+    },
+    {
       "config": "HL3mLi4iiHVmrxZ4NA385g5yRsAYzwgn8B16jERc54XA",
       "graduatedPools": 1,
       "multiplier": 4.801999998873179,
       "threshold": 42.043128486,
+      "listing": false
+    },
+    {
+      "config": "3wCwU8sB62U5YoxnPUPrzxDEPdnrnu8tyqaAjGku5qZf",
+      "graduatedPools": 1,
+      "multiplier": 13.831921578579617,
+      "threshold": 84.999994792,
       "listing": false
     },
     {
@@ -2417,31 +2424,10 @@
       "listing": false
     },
     {
-      "config": "D3LdoPTBuMsWy1G9BVCWWZiu2LE3e4towthdDHDN6zdC",
+      "config": "FQgsVXPyhDkaiKMMswjmGGsVnpSddAX25TVgfwkEVZc1",
       "graduatedPools": 1,
-      "multiplier": 11.526015140146521,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "AmE3jAbswvBb6xBe9XjCW2iaJ9NzGt9yfg2z6QF1zqG9",
-      "graduatedPools": 1,
-      "multiplier": 16.3599995306904,
-      "threshold": 81.074389351,
-      "listing": false
-    },
-    {
-      "config": "6UAxHN1tgW4bo6VTBz7nR967xAmBbrK4G7zAUP43YETD",
-      "graduatedPools": 1,
-      "multiplier": 2.4999809958757293,
-      "threshold": 3.874258867,
-      "listing": false
-    },
-    {
-      "config": "91eDJansf2Lb6bPfXEPf5sJ8DHm7gGNLQhut66kJieD5",
-      "graduatedPools": 1,
-      "multiplier": 12.333321364494063,
-      "threshold": 83.110869788,
+      "multiplier": 15.99999941111601,
+      "threshold": 50,
       "listing": false
     },
     {
@@ -2452,10 +2438,31 @@
       "listing": false
     },
     {
+      "config": "GFQH72Nwy1pAEHgETQifz4cwfFe6j6QYcN2vvEGVr9n8",
+      "graduatedPools": 1,
+      "multiplier": 12.959967214443788,
+      "threshold": 85,
+      "listing": false
+    },
+    {
+      "config": "91eDJansf2Lb6bPfXEPf5sJ8DHm7gGNLQhut66kJieD5",
+      "graduatedPools": 1,
+      "multiplier": 12.333321364494063,
+      "threshold": 83.110869788,
+      "listing": false
+    },
+    {
       "config": "BzrZDEhoxqtkdQnqPZsC74TReGU2xazEyo68jdPuffKn",
       "graduatedPools": 1,
       "multiplier": 6.399989604461511,
       "threshold": 45.328063055,
+      "listing": false
+    },
+    {
+      "config": "AmE3jAbswvBb6xBe9XjCW2iaJ9NzGt9yfg2z6QF1zqG9",
+      "graduatedPools": 1,
+      "multiplier": 16.3599995306904,
+      "threshold": 81.074389351,
       "listing": false
     },
     {
@@ -2466,11 +2473,32 @@
       "listing": false
     },
     {
-      "config": "GFQH72Nwy1pAEHgETQifz4cwfFe6j6QYcN2vvEGVr9n8",
+      "config": "6UAxHN1tgW4bo6VTBz7nR967xAmBbrK4G7zAUP43YETD",
       "graduatedPools": 1,
-      "multiplier": 12.959967214443788,
-      "threshold": 85,
+      "multiplier": 2.4999809958757293,
+      "threshold": 3.874258867,
       "listing": false
+    },
+    {
+      "config": "8jixb85mBq8MXVsMDnQc7s7178NqUocYatWQD9GGqJMX",
+      "graduatedPools": 1,
+      "multiplier": 8.468099468854007,
+      "threshold": 101,
+      "listing": false
+    },
+    {
+      "config": "CBmxWu1CpcHPKx3seuEEgfAuPfJ8bAi1vmoVzs8Fsfmk",
+      "graduatedPools": 1,
+      "multiplier": 1.099999985418013,
+      "threshold": 55.032721,
+      "listing": true
+    },
+    {
+      "config": "6PrtL44tNeJzZbXpAn7a3Ux6HiPSh9emS6CfXqi8nkav",
+      "graduatedPools": 1,
+      "multiplier": 1.099999985418013,
+      "threshold": 55.032721,
+      "listing": true
     },
     {
       "config": "5QpwbK2ANkmbGRvRjdSDosfvVwy46Wgyya1ax6j6NLSY",
@@ -2494,34 +2522,6 @@
       "listing": false
     },
     {
-      "config": "CBmxWu1CpcHPKx3seuEEgfAuPfJ8bAi1vmoVzs8Fsfmk",
-      "graduatedPools": 1,
-      "multiplier": 1.099999985418013,
-      "threshold": 55.032721,
-      "listing": true
-    },
-    {
-      "config": "8jixb85mBq8MXVsMDnQc7s7178NqUocYatWQD9GGqJMX",
-      "graduatedPools": 1,
-      "multiplier": 8.468099468854007,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "6PrtL44tNeJzZbXpAn7a3Ux6HiPSh9emS6CfXqi8nkav",
-      "graduatedPools": 1,
-      "multiplier": 1.099999985418013,
-      "threshold": 55.032721,
-      "listing": true
-    },
-    {
-      "config": "DkUtqG4oYVpwY7CbxXqgkjdWvaz3cjTqFpufN1XL11KF",
-      "graduatedPools": 1,
-      "multiplier": 1.099999985418013,
-      "threshold": 55.032721,
-      "listing": true
-    },
-    {
       "config": "5TD9TJqPNYEZMMSjoKkGXJjb2dWPQgpqjiCZWGJneXnV",
       "graduatedPools": 1,
       "multiplier": 1.099999985418013,
@@ -2536,11 +2536,18 @@
       "listing": true
     },
     {
-      "config": "7nWc2j4Neb4Rx21mbJTNCveKPVfSWdsdVwJG7afrqWMG",
+      "config": "DkUtqG4oYVpwY7CbxXqgkjdWvaz3cjTqFpufN1XL11KF",
       "graduatedPools": 1,
       "multiplier": 1.099999985418013,
       "threshold": 55.032721,
       "listing": true
+    },
+    {
+      "config": "6WMWXJmoZoUGjocgHokEZVRxFNzABa9ipxzBmGgebNMP",
+      "graduatedPools": 1,
+      "multiplier": 8.468092487730742,
+      "threshold": 101,
+      "listing": false
     },
     {
       "config": "7HY9n6wLt898DtDmnJ4fhPHsb2UZsdboKEnRf3W25i1X",
@@ -2548,6 +2555,13 @@
       "multiplier": 8.468092487730742,
       "threshold": 101,
       "listing": false
+    },
+    {
+      "config": "7nWc2j4Neb4Rx21mbJTNCveKPVfSWdsdVwJG7afrqWMG",
+      "graduatedPools": 1,
+      "multiplier": 1.099999985418013,
+      "threshold": 55.032721,
+      "listing": true
     },
     {
       "config": "DxMaMtkEVj3QA3zGFcuxhbzNUAWK3B7aKbyTy35nDtBe",
@@ -2564,7 +2578,21 @@
       "listing": false
     },
     {
-      "config": "6WMWXJmoZoUGjocgHokEZVRxFNzABa9ipxzBmGgebNMP",
+      "config": "PCHb1J6pDfv9h9pJT6eh4gLkNW9ZtEb7n29x8kLRpch",
+      "graduatedPools": 1,
+      "multiplier": 11.526011124580332,
+      "threshold": 51,
+      "listing": false
+    },
+    {
+      "config": "DQxXiTADra5xpP9sTiYBzrmxRrsd52JswSeb7DzoEs17",
+      "graduatedPools": 1,
+      "multiplier": 1.9999999893986644,
+      "threshold": 0.86422361,
+      "listing": false
+    },
+    {
+      "config": "3HPNhUi9qgkTeNyCni6UkjMPreKZt6A7HFUWayGX1ib2",
       "graduatedPools": 1,
       "multiplier": 8.468092487730742,
       "threshold": 101,
@@ -2578,7 +2606,7 @@
       "listing": false
     },
     {
-      "config": "HUnXQLT4dQWhFnQ9bjGFUQZg3T2BAXvbD4ySvd7zLv7c",
+      "config": "7wYD8sUdsY3eNsqZUaEZADMvjQGdomMEmyjLLxLvPtpj",
       "graduatedPools": 1,
       "multiplier": 8.468092487730742,
       "threshold": 101,
@@ -2592,14 +2620,7 @@
       "listing": false
     },
     {
-      "config": "PCHb1J6pDfv9h9pJT6eh4gLkNW9ZtEb7n29x8kLRpch",
-      "graduatedPools": 1,
-      "multiplier": 11.526011124580332,
-      "threshold": 51,
-      "listing": false
-    },
-    {
-      "config": "7wYD8sUdsY3eNsqZUaEZADMvjQGdomMEmyjLLxLvPtpj",
+      "config": "HUnXQLT4dQWhFnQ9bjGFUQZg3T2BAXvbD4ySvd7zLv7c",
       "graduatedPools": 1,
       "multiplier": 8.468092487730742,
       "threshold": 101,
@@ -2613,20 +2634,6 @@
       "listing": false
     },
     {
-      "config": "3HPNhUi9qgkTeNyCni6UkjMPreKZt6A7HFUWayGX1ib2",
-      "graduatedPools": 1,
-      "multiplier": 8.468092487730742,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "DQxXiTADra5xpP9sTiYBzrmxRrsd52JswSeb7DzoEs17",
-      "graduatedPools": 1,
-      "multiplier": 1.9999999893986644,
-      "threshold": 0.86422361,
-      "listing": false
-    },
-    {
       "config": "3wsyYGt8x3F2iNJ2x8NLLRspRqR8mo9HojpuSe1zJnQY",
       "graduatedPools": 1,
       "multiplier": 9.999986294748146,
@@ -2634,44 +2641,9 @@
       "listing": false
     },
     {
-      "config": "AvRf89HsrzdTozQf7RupwX3fFthv4qPX4rRzGE3SzDqt",
-      "graduatedPools": 1,
-      "multiplier": 17.009985110954208,
-      "threshold": 83.593349288,
-      "listing": false
-    },
-    {
-      "config": "Fn7qpEpEV3Lu7Zxfa8f18kCdMar92Z9rKrpBUMdrjUoo",
-      "graduatedPools": 1,
-      "multiplier": 8.468092487730742,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "4i1da1QQKpPn4kyvPTgSX3zTMYxBqnecMPjggXzLt6VC",
-      "graduatedPools": 1,
-      "multiplier": 11.526015140146521,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "2KGgJW1BRgJ8JMUamQDZKqHzg3w5fK1Y5nTf3NzaMc81",
-      "graduatedPools": 1,
-      "multiplier": 8.468092487730742,
-      "threshold": 101,
-      "listing": false
-    },
-    {
       "config": "wHmArPrq9dQMRUYscQTgyuofcHMdSYaeHMgzMZVd47m",
       "graduatedPools": 1,
       "multiplier": 8.468092487730742,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "afPRo2pXWZgz4YtYuZHxGYVhXjbNxGnLbV74wrEQtTo",
-      "graduatedPools": 1,
-      "multiplier": 8.468097624421988,
       "threshold": 101,
       "listing": false
     },
@@ -2683,10 +2655,38 @@
       "listing": false
     },
     {
-      "config": "9zKPsVEUR2zSv8YX6YCp3U8HfvLeVrF7m3B66kHiH1eE",
+      "config": "AvRf89HsrzdTozQf7RupwX3fFthv4qPX4rRzGE3SzDqt",
       "graduatedPools": 1,
-      "multiplier": 2.9999998317669423,
-      "threshold": 0.439230484,
+      "multiplier": 17.009985110954208,
+      "threshold": 83.593349288,
+      "listing": false
+    },
+    {
+      "config": "afPRo2pXWZgz4YtYuZHxGYVhXjbNxGnLbV74wrEQtTo",
+      "graduatedPools": 1,
+      "multiplier": 8.468097624421988,
+      "threshold": 101,
+      "listing": false
+    },
+    {
+      "config": "4i1da1QQKpPn4kyvPTgSX3zTMYxBqnecMPjggXzLt6VC",
+      "graduatedPools": 1,
+      "multiplier": 11.526015140146521,
+      "threshold": 101,
+      "listing": false
+    },
+    {
+      "config": "Fn7qpEpEV3Lu7Zxfa8f18kCdMar92Z9rKrpBUMdrjUoo",
+      "graduatedPools": 1,
+      "multiplier": 8.468092487730742,
+      "threshold": 101,
+      "listing": false
+    },
+    {
+      "config": "2KGgJW1BRgJ8JMUamQDZKqHzg3w5fK1Y5nTf3NzaMc81",
+      "graduatedPools": 1,
+      "multiplier": 8.468092487730742,
+      "threshold": 101,
       "listing": false
     },
     {
@@ -2694,6 +2694,34 @@
       "graduatedPools": 1,
       "multiplier": 6.999948285288521,
       "threshold": 1.920043,
+      "listing": false
+    },
+    {
+      "config": "EHB2rULMjhUKTqCFYoGCpDSNsb1ZiQwytFzmQD81ceyv",
+      "graduatedPools": 1,
+      "multiplier": 8.468099468854007,
+      "threshold": 101,
+      "listing": false
+    },
+    {
+      "config": "9zKPsVEUR2zSv8YX6YCp3U8HfvLeVrF7m3B66kHiH1eE",
+      "graduatedPools": 1,
+      "multiplier": 2.9999998317669423,
+      "threshold": 0.439230484,
+      "listing": false
+    },
+    {
+      "config": "H23FuQUsJZpSAneq1NkL6LNR1mgNM5rQ5Kg6TwWZ3hLa",
+      "graduatedPools": 1,
+      "multiplier": 16.74999998699349,
+      "threshold": 13419.642656,
+      "listing": false
+    },
+    {
+      "config": "FapB9Y7cYFM7XrefRREHQjunhKtEYuD9MVeDLxZquG8L",
+      "graduatedPools": 1,
+      "multiplier": 8.468098316047419,
+      "threshold": 201,
       "listing": false
     },
     {
@@ -2711,24 +2739,10 @@
       "listing": false
     },
     {
-      "config": "EHB2rULMjhUKTqCFYoGCpDSNsb1ZiQwytFzmQD81ceyv",
+      "config": "GnGzCu7iLSKKYjmBFhHRaKhwgTqviU9XK3taMUNphKDw",
       "graduatedPools": 1,
-      "multiplier": 8.468099468854007,
-      "threshold": 101,
-      "listing": false
-    },
-    {
-      "config": "FapB9Y7cYFM7XrefRREHQjunhKtEYuD9MVeDLxZquG8L",
-      "graduatedPools": 1,
-      "multiplier": 8.468098316047419,
-      "threshold": 201,
-      "listing": false
-    },
-    {
-      "config": "H23FuQUsJZpSAneq1NkL6LNR1mgNM5rQ5Kg6TwWZ3hLa",
-      "graduatedPools": 1,
-      "multiplier": 16.74999998699349,
-      "threshold": 13419.642656,
+      "multiplier": 15.999985713904609,
+      "threshold": 85,
       "listing": false
     },
     {
@@ -2739,10 +2753,10 @@
       "listing": false
     },
     {
-      "config": "GnGzCu7iLSKKYjmBFhHRaKhwgTqviU9XK3taMUNphKDw",
+      "config": "E8TSScEaSsrVQpsTm1DYrxo6TvTy1ctojG75h8WniXww",
       "graduatedPools": 1,
-      "multiplier": 15.999985713904609,
-      "threshold": 85,
+      "multiplier": 8.468092487730742,
+      "threshold": 101,
       "listing": false
     },
     {
@@ -2753,24 +2767,10 @@
       "listing": false
     },
     {
-      "config": "E8TSScEaSsrVQpsTm1DYrxo6TvTy1ctojG75h8WniXww",
-      "graduatedPools": 1,
-      "multiplier": 8.468092487730742,
-      "threshold": 101,
-      "listing": false
-    },
-    {
       "config": "G7sV1m8Q4KGLv8cBgzdGmFVhJ2p94H9j2mFtSDGvGcSc",
       "graduatedPools": 1,
       "multiplier": 9.25925889730796,
       "threshold": 61.836752943,
-      "listing": false
-    },
-    {
-      "config": "8Zw7fKqJqt3dBvPzuYGsUfeK6paWxqGzYMMtbs7j3GZd",
-      "graduatedPools": 1,
-      "multiplier": 6.666666541062212,
-      "threshold": 120861.015978,
       "listing": false
     },
     {
@@ -2788,17 +2788,10 @@
       "listing": false
     },
     {
-      "config": "7q2Xi52uw3GHUwvjaeiuBHkbBGT6fFv5FR2f4qen6TSx",
+      "config": "8Zw7fKqJqt3dBvPzuYGsUfeK6paWxqGzYMMtbs7j3GZd",
       "graduatedPools": 1,
-      "multiplier": 13.999987413344119,
-      "threshold": 89.711818978,
-      "listing": false
-    },
-    {
-      "config": "83eXuNY2nEjdLUhfqwvVbUG9kgbSs3Cj4RQkDcjtBFUm",
-      "graduatedPools": 1,
-      "multiplier": 15.999985713904609,
-      "threshold": 85,
+      "multiplier": 6.666666541062212,
+      "threshold": 120861.015978,
       "listing": false
     },
     {
@@ -2823,31 +2816,17 @@
       "listing": false
     },
     {
-      "config": "4eUyUF8wvmSm8tW8RPkjKDtRrom9NTgUQbi3J8DBQR7t",
+      "config": "83eXuNY2nEjdLUhfqwvVbUG9kgbSs3Cj4RQkDcjtBFUm",
       "graduatedPools": 1,
-      "multiplier": 8.111102937914774,
-      "threshold": 0.045055858,
+      "multiplier": 15.999985713904609,
+      "threshold": 85,
       "listing": false
     },
     {
-      "config": "DFFHXU32kzKr16e2K8JunjvEUooqeDUpnqQbvJvDBepC",
+      "config": "7q2Xi52uw3GHUwvjaeiuBHkbBGT6fFv5FR2f4qen6TSx",
       "graduatedPools": 1,
-      "multiplier": 8.974350731663487,
-      "threshold": 75.091752518,
-      "listing": false
-    },
-    {
-      "config": "2qxXvBowQMUiQaHTHAX9boLtyaf664GxJnHsK9DF2PSa",
-      "graduatedPools": 1,
-      "multiplier": 9.999999396087187,
-      "threshold": 12188.350994,
-      "listing": false
-    },
-    {
-      "config": "FKWrPfQAdLyciHJ7bvriqbKfQHUeQoRA4W5wkXYYi6Yv",
-      "graduatedPools": 1,
-      "multiplier": 9.999993717077357,
-      "threshold": 111.952188786,
+      "multiplier": 13.999987413344119,
+      "threshold": 89.711818978,
       "listing": false
     },
     {
@@ -2858,10 +2837,45 @@
       "listing": false
     },
     {
+      "config": "DFFHXU32kzKr16e2K8JunjvEUooqeDUpnqQbvJvDBepC",
+      "graduatedPools": 1,
+      "multiplier": 8.974350731663487,
+      "threshold": 75.091752518,
+      "listing": false
+    },
+    {
+      "config": "FKWrPfQAdLyciHJ7bvriqbKfQHUeQoRA4W5wkXYYi6Yv",
+      "graduatedPools": 1,
+      "multiplier": 9.999993717077357,
+      "threshold": 111.952188786,
+      "listing": false
+    },
+    {
+      "config": "2qxXvBowQMUiQaHTHAX9boLtyaf664GxJnHsK9DF2PSa",
+      "graduatedPools": 1,
+      "multiplier": 9.999999396087187,
+      "threshold": 12188.350994,
+      "listing": false
+    },
+    {
       "config": "2iWbRPpmGKoZf7yxB4kWHgzRwAWiHhkdv8TVtSirPqCs",
       "graduatedPools": 1,
       "multiplier": 29.999999907487176,
       "threshold": 4631612.663846,
+      "listing": false
+    },
+    {
+      "config": "4eUyUF8wvmSm8tW8RPkjKDtRrom9NTgUQbi3J8DBQR7t",
+      "graduatedPools": 1,
+      "multiplier": 8.111102937914774,
+      "threshold": 0.045055858,
+      "listing": false
+    },
+    {
+      "config": "9AEtrjKEKsQ7mnXMrqWPp2FDuC5cttU5BCuvZPLFTqYF",
+      "graduatedPools": 1,
+      "multiplier": 9.9999999825501,
+      "threshold": 240.253073352,
       "listing": false
     },
     {
@@ -2876,13 +2890,6 @@
       "graduatedPools": 1,
       "multiplier": 8.333323045287573,
       "threshold": 65.329564792,
-      "listing": false
-    },
-    {
-      "config": "9AEtrjKEKsQ7mnXMrqWPp2FDuC5cttU5BCuvZPLFTqYF",
-      "graduatedPools": 1,
-      "multiplier": 9.9999999825501,
-      "threshold": 240.253073352,
       "listing": false
     },
     {
@@ -2914,31 +2921,10 @@
       "listing": false
     },
     {
-      "config": "rFvJ6nFB9UubMazDK4pxsJcFPBkJmCfEou9RFqDbi9E",
-      "graduatedPools": 1,
-      "multiplier": 6.50249974723517,
-      "threshold": 60,
-      "listing": false
-    },
-    {
-      "config": "3dHkUugZG6R23mMmvqRaZp58eug5u8Th33zgojPBBNRw",
-      "graduatedPools": 1,
-      "multiplier": 1.9999988832225093,
-      "threshold": 0.828427041,
-      "listing": false
-    },
-    {
       "config": "6Eomu6Tv8fXxWaR8NLny9aeAK7t6L2NbLoqU4yfNw29V",
       "graduatedPools": 1,
       "multiplier": 18.333332884946103,
       "threshold": 104.132267658,
-      "listing": false
-    },
-    {
-      "config": "1EYiaDkKDD3R119i1Bsd2uEDa9pSce6mrkaFyHvhcAV",
-      "graduatedPools": 1,
-      "multiplier": 3.5156248128895147,
-      "threshold": 40,
       "listing": false
     },
     {
@@ -2949,6 +2935,13 @@
       "listing": false
     },
     {
+      "config": "3dHkUugZG6R23mMmvqRaZp58eug5u8Th33zgojPBBNRw",
+      "graduatedPools": 1,
+      "multiplier": 1.9999988832225093,
+      "threshold": 0.828427041,
+      "listing": false
+    },
+    {
       "config": "5kTQRiJEzc48QfN163gYitrRSPaVPDMixj5NtaMiLN8q",
       "graduatedPools": 1,
       "multiplier": 13.333320827846023,
@@ -2956,17 +2949,17 @@
       "listing": false
     },
     {
-      "config": "J9WGMu2BDkwkGZwYVNRPiNGM7PcxvezNNRiNJEVyRF9G",
+      "config": "rFvJ6nFB9UubMazDK4pxsJcFPBkJmCfEou9RFqDbi9E",
       "graduatedPools": 1,
-      "multiplier": 1.9999998801370902,
-      "threshold": 0.041421356,
+      "multiplier": 6.50249974723517,
+      "threshold": 60,
       "listing": false
     },
     {
-      "config": "JAHzQimTVr7RwduyGuNbKV7yA9Hu5qxAdc7FY4KgPfXw",
+      "config": "1EYiaDkKDD3R119i1Bsd2uEDa9pSce6mrkaFyHvhcAV",
       "graduatedPools": 1,
-      "multiplier": 7.499999999442137,
-      "threshold": 100.513393786,
+      "multiplier": 3.5156248128895147,
+      "threshold": 40,
       "listing": false
     },
     {
@@ -2977,17 +2970,24 @@
       "listing": false
     },
     {
+      "config": "JAHzQimTVr7RwduyGuNbKV7yA9Hu5qxAdc7FY4KgPfXw",
+      "graduatedPools": 1,
+      "multiplier": 7.499999999442137,
+      "threshold": 100.513393786,
+      "listing": false
+    },
+    {
+      "config": "J9WGMu2BDkwkGZwYVNRPiNGM7PcxvezNNRiNJEVyRF9G",
+      "graduatedPools": 1,
+      "multiplier": 1.9999998801370902,
+      "threshold": 0.041421356,
+      "listing": false
+    },
+    {
       "config": "F141oTQS5jPZmhrYY1RTt65HmLov4kar2hL9wJ3dEA19",
       "graduatedPools": 1,
       "multiplier": 2.7999875513099233,
       "threshold": 10.473867492,
-      "listing": false
-    },
-    {
-      "config": "6aTnjkzLDzUEQbdy4L2cRDcLuZGUNktMn9XvoM8ZquAv",
-      "graduatedPools": 1,
-      "multiplier": 4.9999997618361665,
-      "threshold": 61.185364886,
       "listing": false
     },
     {
@@ -2998,6 +2998,13 @@
       "listing": false
     },
     {
+      "config": "6aTnjkzLDzUEQbdy4L2cRDcLuZGUNktMn9XvoM8ZquAv",
+      "graduatedPools": 1,
+      "multiplier": 4.9999997618361665,
+      "threshold": 61.185364886,
+      "listing": false
+    },
+    {
       "config": "BhXfsV6q9F8WiwdsKZrpZfKh9Be5px5kariRFXRXqwpt",
       "graduatedPools": 1,
       "multiplier": 2.499999810189445,
@@ -3005,10 +3012,17 @@
       "listing": false
     },
     {
-      "config": "f3VhPzPqKtS9UBCdYCu3LoUySmQaogg5U6hNCK1u2eC",
+      "config": "7PMyhyPPZQtpgU7m85UTJpGPDpS414LVSQzcAJDLRizJ",
       "graduatedPools": 1,
-      "multiplier": 1.999999859953051,
-      "threshold": 0.040592929,
+      "multiplier": 2.8333331053742947,
+      "threshold": 31.677992705,
+      "listing": false
+    },
+    {
+      "config": "BhBpZDkWNRR9EPBa1nR7iwwKDdUsBW9i2qCg7PfNpdXa",
+      "graduatedPools": 1,
+      "multiplier": 1.9999998801370902,
+      "threshold": 0.041421356,
       "listing": false
     },
     {
@@ -3026,10 +3040,10 @@
       "listing": false
     },
     {
-      "config": "BhBpZDkWNRR9EPBa1nR7iwwKDdUsBW9i2qCg7PfNpdXa",
+      "config": "f3VhPzPqKtS9UBCdYCu3LoUySmQaogg5U6hNCK1u2eC",
       "graduatedPools": 1,
-      "multiplier": 1.9999998801370902,
-      "threshold": 0.041421356,
+      "multiplier": 1.999999859953051,
+      "threshold": 0.040592929,
       "listing": false
     },
     {
@@ -3040,10 +3054,10 @@
       "listing": false
     },
     {
-      "config": "7PMyhyPPZQtpgU7m85UTJpGPDpS414LVSQzcAJDLRizJ",
+      "config": "E7ayhBcKzxT1GqL252kFZpuojEA78GGye4pFtx7MkiaS",
       "graduatedPools": 1,
-      "multiplier": 2.8333331053742947,
-      "threshold": 31.677992705,
+      "multiplier": 4.999999724988509,
+      "threshold": 46.352549156,
       "listing": false
     },
     {
@@ -3054,17 +3068,10 @@
       "listing": false
     },
     {
-      "config": "BCn61HB1fQp8QF1epR1jdPE2vXjRZyLMrW3aB1NR7xgm",
+      "config": "HYpFZmkVbHpaHzwME1eNZ91svZ5budeF559PeVywUqHq",
       "graduatedPools": 1,
-      "multiplier": 9.999898467732026,
-      "threshold": 72.075922005,
-      "listing": false
-    },
-    {
-      "config": "E7ayhBcKzxT1GqL252kFZpuojEA78GGye4pFtx7MkiaS",
-      "graduatedPools": 1,
-      "multiplier": 4.999999724988509,
-      "threshold": 46.352549156,
+      "multiplier": 6.399999671638279,
+      "threshold": 45.328063055,
       "listing": false
     },
     {
@@ -3075,17 +3082,10 @@
       "listing": false
     },
     {
-      "config": "HYpFZmkVbHpaHzwME1eNZ91svZ5budeF559PeVywUqHq",
+      "config": "BCn61HB1fQp8QF1epR1jdPE2vXjRZyLMrW3aB1NR7xgm",
       "graduatedPools": 1,
-      "multiplier": 6.399999671638279,
-      "threshold": 45.328063055,
-      "listing": false
-    },
-    {
-      "config": "5hoynXyKkhDgYne4ML3Fcx7gz1bsjPWHwqYtXNYMQDA9",
-      "graduatedPools": 1,
-      "multiplier": 2.999999767916,
-      "threshold": 32.94228634,
+      "multiplier": 9.999898467732026,
+      "threshold": 72.075922005,
       "listing": false
     },
     {
@@ -3103,6 +3103,13 @@
       "listing": false
     },
     {
+      "config": "8eX6a3azvPxyjBUUzc5xQJbq63CcNbPJT1n23PcKVmgc",
+      "graduatedPools": 1,
+      "multiplier": 12.49999916687984,
+      "threshold": 17638.496736,
+      "listing": false
+    },
+    {
       "config": "7pcyTD71E8uMgqMGunicKaRBwVBBruMHsC42yfijAQ8E",
       "graduatedPools": 1,
       "multiplier": 2.666664337111653,
@@ -3110,17 +3117,17 @@
       "listing": false
     },
     {
+      "config": "5hoynXyKkhDgYne4ML3Fcx7gz1bsjPWHwqYtXNYMQDA9",
+      "graduatedPools": 1,
+      "multiplier": 2.999999767916,
+      "threshold": 32.94228634,
+      "listing": false
+    },
+    {
       "config": "7Q7MhJatkbRPUcCnbGw8PdHMJcBRnKH5Kp9Rzkpt3rme",
       "graduatedPools": 1,
       "multiplier": 1.9999964840056812,
       "threshold": 82.842712,
-      "listing": false
-    },
-    {
-      "config": "8eX6a3azvPxyjBUUzc5xQJbq63CcNbPJT1n23PcKVmgc",
-      "graduatedPools": 1,
-      "multiplier": 12.49999916687984,
-      "threshold": 17638.496736,
       "listing": false
     },
     {
@@ -3152,13 +3159,6 @@
       "listing": false
     },
     {
-      "config": "4wYdGpx164Suao5S7vBLRFoUstrwfspM6rDekJDzvLgZ",
-      "graduatedPools": 1,
-      "multiplier": 1.9999988819260421,
-      "threshold": 0.828427124,
-      "listing": false
-    },
-    {
       "config": "FdVRxB6gFvi5beSmvC9ycK5xoCzZ6KCVbme3hh2FPJpZ",
       "graduatedPools": 1,
       "multiplier": 6.61224448484831,
@@ -3166,10 +3166,10 @@
       "listing": false
     },
     {
-      "config": "4wAu2At68dh9PwwW9GyF7mWdv4arZHNV574dKLMWSCVw",
+      "config": "4wYdGpx164Suao5S7vBLRFoUstrwfspM6rDekJDzvLgZ",
       "graduatedPools": 1,
-      "multiplier": 13.999999558947152,
-      "threshold": 73.81385272,
+      "multiplier": 1.9999988819260421,
+      "threshold": 0.828427124,
       "listing": false
     },
     {
@@ -3187,17 +3187,10 @@
       "listing": false
     },
     {
-      "config": "6bv5XHj5zrwtNzKdFNAimS9qaZbz4cbe8YPKiquz8iqd",
+      "config": "4wAu2At68dh9PwwW9GyF7mWdv4arZHNV574dKLMWSCVw",
       "graduatedPools": 1,
-      "multiplier": 1.199999804944404,
-      "threshold": 14.302450484,
-      "listing": true
-    },
-    {
-      "config": "FnStZTwybba52MuxvkYG1Sv4M6WPdwmxCqF3iETHtCaF",
-      "graduatedPools": 1,
-      "multiplier": 1.3333332338892365,
-      "threshold": 48.34711668,
+      "multiplier": 13.999999558947152,
+      "threshold": 73.81385272,
       "listing": false
     },
     {
@@ -3215,6 +3208,20 @@
       "listing": true
     },
     {
+      "config": "FnStZTwybba52MuxvkYG1Sv4M6WPdwmxCqF3iETHtCaF",
+      "graduatedPools": 1,
+      "multiplier": 1.3333332338892365,
+      "threshold": 48.34711668,
+      "listing": false
+    },
+    {
+      "config": "6bv5XHj5zrwtNzKdFNAimS9qaZbz4cbe8YPKiquz8iqd",
+      "graduatedPools": 1,
+      "multiplier": 1.199999804944404,
+      "threshold": 14.302450484,
+      "listing": true
+    },
+    {
       "config": "ssrg7ZCmuBa6CwvKZ23yLx9NWQLVbLckp1AqnNJUMKa",
       "graduatedPools": 1,
       "multiplier": 2.8333333268817222,
@@ -3222,102 +3229,39 @@
       "listing": false
     },
     {
-      "config": "7ERY4MYhKGQ5CLEQ1fZMgaC6WXGxpUiHuhjCD8UsnTy9",
+      "config": "5D7Aautm34d7dP7Kk2rCMAGQa3eTPZ2cLXV7c957WvhK",
       "graduatedPools": 1,
-      "multiplier": 159841.24730675184,
-      "threshold": 0.000499,
-      "listing": true
-    },
-    {
-      "config": "5MQ456LsZ1n2AWVcavL3ik9nbf5iwagyYepHM4gJur6B",
-      "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
-    },
-    {
-      "config": "CrnGXVUyj5D3PoTu6h5JpUZ7rRGNME8JcgfQpUB3WkDC",
-      "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
-    },
-    {
-      "config": "C9DuNhxqpZjgN4qiT8nAcUp7SRhw2DfZar5PiWiHsXbb",
-      "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
-    },
-    {
-      "config": "5JRS18V9nQCpZSCev5GdiBaxLUah2L7v3F9AfEuArGsS",
-      "graduatedPools": 1,
-      "multiplier": 9800.999861150522,
-      "threshold": 11,
+      "multiplier": 17.24137931028413,
+      "threshold": 85,
       "listing": false
     },
     {
-      "config": "AEyjDJyhzBYdTTukti6GVx1vYEpz75CTq6NkAqtgvLQ7",
+      "config": "BbJ4yz55VgTNjHk6stNSoFjrpLHJuDV27SVWUQjQwhj5",
       "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
+      "multiplier": 483999859204027.44,
+      "threshold": 0.00001,
       "listing": true
     },
     {
-      "config": "HrwXUCxBE6Jtgbd6YexSuZbGmMRhB4jKDCaugUrdU68R",
+      "config": "9crASPjXDYGhoRw7QdNgGWJMFbK2n9gM4jYzzJHRmet",
       "graduatedPools": 1,
       "multiplier": 159841.24730675184,
       "threshold": 0.000499,
       "listing": true
     },
     {
-      "config": "23z31H8G3Nxu8YSis2CSDjbzqPp3sgXZ6uCrcy7peRRN",
+      "config": "CYAhfxmZs9dXhcCtyAeRBdTQupZyEWG4ski6wYbtqqF6",
       "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
+      "multiplier": 3.000656804918845,
+      "threshold": 10.98,
+      "listing": false
     },
     {
-      "config": "GzX2MdEvGFoSfp2MAK2JU9pLG2ebC72sERnp4g8VVg6J",
+      "config": "HkEVDSPJqdfzbzR1TuWV28vzwfhcL31K8wCRmmLKUsLp",
       "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
-    },
-    {
-      "config": "83J5AxcdNb63iA3mDXXZ6TmoTg11hazwRvK2vhjbZcVS",
-      "graduatedPools": 1,
-      "multiplier": 159841.24730675184,
-      "threshold": 0.000499,
-      "listing": true
-    },
-    {
-      "config": "9HmrGUgXBp9YnyFVrZL7rQxNcm72Q8hqLWxZsAdiQR9P",
-      "graduatedPools": 1,
-      "multiplier": 159841.24730675184,
-      "threshold": 0.000499,
-      "listing": true
-    },
-    {
-      "config": "5qvf3QJ5LDo4z2TaYCHmcptSpHtxu4hJ348Np6oCDPUJ",
-      "graduatedPools": 1,
-      "multiplier": 1.1746531065568355,
-      "threshold": 10,
-      "listing": true
-    },
-    {
-      "config": "5NLnVP17kHMTGgGTeG15QHojNiTwaozqW3jHHsiGfw9y",
-      "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
-    },
-    {
-      "config": "43xHySEYH3ifSvEe5KCErLanQ9FNCwkLrncG2S1Kx2y1",
-      "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
+      "multiplier": 81.3281993692473,
+      "threshold": 10.98,
+      "listing": false
     },
     {
       "config": "2tjG4qVSAaT42gf4nib1iPsSWLRF8uhMaseuHJJLjtfW",
@@ -3327,7 +3271,28 @@
       "listing": true
     },
     {
-      "config": "J5suWUZ9Euo3YhdE6cfjfCdJK8EU7vSMXqBN29PRRe4w",
+      "config": "6g9scaaTdjjkWRKsCTXeskHHBbkW1CU6WUiw546uf1GZ",
+      "graduatedPools": 1,
+      "multiplier": 1.6303893542517536,
+      "threshold": 10.98,
+      "listing": false
+    },
+    {
+      "config": "C9ZCKtnDP6oCzAmgnZxFmuEmMgnBHfTDQixSdzuLby8A",
+      "graduatedPools": 1,
+      "multiplier": 483999859204027.44,
+      "threshold": 0.00001,
+      "listing": true
+    },
+    {
+      "config": "AfziqhC7iRoEJxMRRV6BTaJUN8WBBekkLwzfbUQ63Gdw",
+      "graduatedPools": 1,
+      "multiplier": 1.6460889681419473,
+      "threshold": 40,
+      "listing": false
+    },
+    {
+      "config": "5c4GNkfZpozsKG14Z6gm1muDdn7554JUaeHn3LKefCf3",
       "graduatedPools": 1,
       "multiplier": 15991995.447470013,
       "threshold": 0.00009,
@@ -3341,42 +3306,126 @@
       "listing": true
     },
     {
-      "config": "HpKhu9y3LbD4rbauHR7cyu9NJ3o8UbxHwhwf4R5aGbNp",
+      "config": "3efhUYt88TRGnLGFtemEKFw1ks395czNBPeTT83NJ2NA",
       "graduatedPools": 1,
       "multiplier": 15991995.447470013,
       "threshold": 0.00009,
       "listing": true
     },
     {
-      "config": "ArBv9xEPQsqeKpKiGc6HqJmDT3hKzhLKQvjkHk8ZMbiQ",
+      "config": "Fpcg3cLR5bnEHvUyq8dSoZknjsNKD9zv9dnpwAjb5Fk8",
       "graduatedPools": 1,
-      "multiplier": 1.174653106556836,
-      "threshold": 10,
-      "listing": true
+      "multiplier": 1.439305304482831,
+      "threshold": 19,
+      "listing": false
     },
     {
-      "config": "9cw7NPxazCdr2Q6TF6c3YsaLyqxsybXLy3mihj67QF8k",
+      "config": "EouehBft9UxqCjFesQ2Xcc8LWC2p44xrQkTMPZk3U1nj",
       "graduatedPools": 1,
-      "multiplier": 159841.24730675184,
-      "threshold": 0.000499,
-      "listing": true
+      "multiplier": 1.3994889612344183,
+      "threshold": 22,
+      "listing": false
     },
     {
-      "config": "2xXLobikCXjaVRTGmZ3gaZaf96wyzbUNXWW4dnLfeNAR",
-      "graduatedPools": 1,
-      "multiplier": 15991995.447470013,
-      "threshold": 0.00009,
-      "listing": true
-    },
-    {
-      "config": "5LX1ytZrgHehskHaLtKCs3KjyxBNLfBrAn9Y2b43Fo64",
+      "config": "BZgdJkoDi5B6hdeV7qpZZhVmXZHZtHAUsGPSSHhYM1UR",
       "graduatedPools": 1,
       "multiplier": 15991995.447470013,
       "threshold": 0.00009,
       "listing": true
     },
     {
-      "config": "3iQnXE1uthvaUF8C1XinTB4FQxmCm22eGgK6aGx6aXdK",
+      "config": "DHdL2JsnL7SRuSUtBtm7puCkaJMAH5nUJcyZPsWA63CY",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "94xVkVyzWGzP4VE3QPkXj5zGehXN1GBemvEcZVVYPUGd",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "7CGfEdaYkYpgoK2m3o3KHVxnKM7ZcLxVshFFGCenxSkz",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "959E8KuRmWeoHivMQymTmtNMp8G7xatJ9Y1xH3c8HRnb",
+      "graduatedPools": 1,
+      "multiplier": 12.903225422604065,
+      "threshold": 87.106002446,
+      "listing": false
+    },
+    {
+      "config": "DvgGvnZfEWJreLjW5DM8mPLmueUAfceqc8hpT4ydVmyY",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "5qk9jioU9ttb1Z1WfiHv4NNdpoMmUUY48NehZ2UVC2d7",
+      "graduatedPools": 1,
+      "multiplier": 1.6251029160394932,
+      "threshold": 10.99,
+      "listing": false
+    },
+    {
+      "config": "D6ncpvqNf6DDqTkSxRGGFWnDcpqPrWe9jkRiL8aGeVWi",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "4w1sDZyeM5m8zbN51Uj7MFSzkD7JxoewaM4kEeK6hsJ7",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "8jfQCfxsLF6mp1RdSTtZhEvV4UKkDCgHLAd2ycMYMdP4",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "EoZiZpKcJjdBZaVLDYHjjTiwdWuZzRHT5dFAm3zpAQER",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "5J2rBqEWtWerq6cE6iMs4uw58u71DwUEgshojdj23gsF",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "CoQF44kXNVuk2Eg7S2q1zxRPq6LNwgJ9izRoaBPWmEDG",
+      "graduatedPools": 1,
+      "multiplier": 15991995.447470013,
+      "threshold": 0.00009,
+      "listing": true
+    },
+    {
+      "config": "FPsm1JgvbYndcGLK84nS4gQxNvdeZJcJRmDPBj7oAKGo",
+      "graduatedPools": 1,
+      "multiplier": 6.745044034936026,
+      "threshold": 11.12,
+      "listing": false
+    },
+    {
+      "config": "54Fu4EiJ73ugQ8SMjwUT1xmakYGqBdS5g7AQaeirKj17",
       "graduatedPools": 1,
       "multiplier": 15991995.447470013,
       "threshold": 0.00009,
@@ -3390,18 +3439,18 @@
       "listing": false
     },
     {
-      "config": "ESY4dGyS2Hu8vmjvbLzwx9gLD9sL77Gd8NvvDhy9yMcD",
-      "graduatedPools": 1,
-      "multiplier": 9801.000000010417,
-      "threshold": 1e-7,
-      "listing": true
-    },
-    {
       "config": "GtMnKKv3iGeSXFMRPNuLPFuS95TLinEmAw81hYqN3w6L",
       "graduatedPools": 1,
       "multiplier": 7.839999999999974,
       "threshold": 0.0495,
       "listing": false
+    },
+    {
+      "config": "ESY4dGyS2Hu8vmjvbLzwx9gLD9sL77Gd8NvvDhy9yMcD",
+      "graduatedPools": 1,
+      "multiplier": 9801.000000010417,
+      "threshold": 1e-7,
+      "listing": true
     },
     {
       "config": "4PzoPr6ywDUH1wZSNwrU195AXGR5L7fsMAbuWCL1fKu5",
@@ -3425,35 +3474,7 @@
       "listing": true
     },
     {
-      "config": "D18ocumGkdhhsfheiTcAoEFP7bULNPszJje4HXjoJQgB",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "B2vMT2w7REWsQNGo9cwUuBaxQUPzNrFAPGKTqovtrhMN",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "C6WcFVxaZwaJmThLkxki6HJMMH8ChT2pYjg9673WMtpc",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "DsbNsvj6LPZ26HEVb1B98ZW1zoWAiYk3xLXG7zJE1LBK",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "FyN9X8eAayyQDtKU1X9Lw3QBocvEcEEt8h7EyQJL2VJp",
+      "config": "CicwcbeZXWVssN4kygm8KaWuyGFvuSz2TU8kEq6DTWge",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3467,6 +3488,20 @@
       "listing": true
     },
     {
+      "config": "FyN9X8eAayyQDtKU1X9Lw3QBocvEcEEt8h7EyQJL2VJp",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "D18ocumGkdhhsfheiTcAoEFP7bULNPszJje4HXjoJQgB",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "Dn1WviohY9gy8FCi2nwpbjTpAbfQjmWESaChCjh7n52S",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -3474,21 +3509,21 @@
       "listing": true
     },
     {
-      "config": "CicwcbeZXWVssN4kygm8KaWuyGFvuSz2TU8kEq6DTWge",
+      "config": "C6WcFVxaZwaJmThLkxki6HJMMH8ChT2pYjg9673WMtpc",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "DvWVa9ae2TqPC49AJzkLSsCPnT3XEro1zdkrjrdHFwm1",
+      "config": "B2vMT2w7REWsQNGo9cwUuBaxQUPzNrFAPGKTqovtrhMN",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "CE3bX2nUvgRAwNwTbhATaMFEcrvqHfoUPZrWRDeox5mv",
+      "config": "DsbNsvj6LPZ26HEVb1B98ZW1zoWAiYk3xLXG7zJE1LBK",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3502,7 +3537,7 @@
       "listing": true
     },
     {
-      "config": "8q28k3YQwoREpdFHXhiBQJV18WuPax1LrxappC2dv4LQ",
+      "config": "8k7GDbKCbnkhzTTeaaiSsqWv55RguMG6czKLS9TmCcGM",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3516,7 +3551,7 @@
       "listing": true
     },
     {
-      "config": "8k7GDbKCbnkhzTTeaaiSsqWv55RguMG6czKLS9TmCcGM",
+      "config": "8q28k3YQwoREpdFHXhiBQJV18WuPax1LrxappC2dv4LQ",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3537,7 +3572,21 @@
       "listing": true
     },
     {
-      "config": "Cc8xQcjtTJrZRcJsPWa7FUcTGiaBbL5dm4UtQ69yoG2K",
+      "config": "DvWVa9ae2TqPC49AJzkLSsCPnT3XEro1zdkrjrdHFwm1",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "CE3bX2nUvgRAwNwTbhATaMFEcrvqHfoUPZrWRDeox5mv",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "vXDQiumjSxZmX16s3UcHvhYhzYzc3d9DeS7duSwg3z3",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3551,7 +3600,7 @@
       "listing": true
     },
     {
-      "config": "2Nfo3T2vGGEWUtjAVdFnLAveR6pTuA2eBACWx15RsPF9",
+      "config": "DNockSarhasaYpJtiFeebHeAusds462jc4UUbWBh4wxN",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3565,7 +3614,7 @@
       "listing": true
     },
     {
-      "config": "A3CSp3e7AM1zkVpAarztpGNykB2oHJLaftqKrFRFa8x1",
+      "config": "Cc8xQcjtTJrZRcJsPWa7FUcTGiaBbL5dm4UtQ69yoG2K",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3579,14 +3628,21 @@
       "listing": true
     },
     {
-      "config": "DNockSarhasaYpJtiFeebHeAusds462jc4UUbWBh4wxN",
+      "config": "2Nfo3T2vGGEWUtjAVdFnLAveR6pTuA2eBACWx15RsPF9",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "vXDQiumjSxZmX16s3UcHvhYhzYzc3d9DeS7duSwg3z3",
+      "config": "A3CSp3e7AM1zkVpAarztpGNykB2oHJLaftqKrFRFa8x1",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "5FATEffH7obmn7qMJAYF1MtBaZQAD9UmDoqYT5jCgk5J",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3607,34 +3663,6 @@
       "listing": true
     },
     {
-      "config": "DFjBPvvRUtRryJVdE4sLfFkLBqPAKU3dDizssGFqpcxi",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "5FATEffH7obmn7qMJAYF1MtBaZQAD9UmDoqYT5jCgk5J",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "EyY2fKJ5Tf14ZA7eSZza89Lz2U9QiHqEUjnqMasebDoT",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "FH35oCx5qpXFSSu5SakXcwfQjkSjttRhhU4DYKXo5g5T",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "EBqfQu6XMkJmMARhTjLV21soFQjeNEQ3UVEXyRHAthQB",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -3649,7 +3677,21 @@
       "listing": true
     },
     {
-      "config": "4Nx4BbJGZbEYqfzKqxVk1ZkyB5T8SHJvbcGmb1Lxw9DM",
+      "config": "FH35oCx5qpXFSSu5SakXcwfQjkSjttRhhU4DYKXo5g5T",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "EyY2fKJ5Tf14ZA7eSZza89Lz2U9QiHqEUjnqMasebDoT",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "DFjBPvvRUtRryJVdE4sLfFkLBqPAKU3dDizssGFqpcxi",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3657,6 +3699,20 @@
     },
     {
       "config": "8XB9bXiQ3gMDQ6Qctx6YT3AXwP2jkWF6XDmznpES7koZ",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "HNPoX8kWmKYNBXULAZmhqGociNQLnsHCax87yRAaBgP2",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "4Nx4BbJGZbEYqfzKqxVk1ZkyB5T8SHJvbcGmb1Lxw9DM",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3671,13 +3727,6 @@
     },
     {
       "config": "5RKqDdjozqUhw3NfLR1h5MnQkG3BiJ8zHTF4q3UbTPXC",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "HNPoX8kWmKYNBXULAZmhqGociNQLnsHCax87yRAaBgP2",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3705,14 +3754,7 @@
       "listing": true
     },
     {
-      "config": "DHtCTJpscdqBE5gioBN3xx4zZE9Pk8okHh1YsRY1ANXQ",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "EawUwZPpq5Yc6rdWBT22YiYPPzPPGnGsi8HEo3obXWnM",
+      "config": "3Ucrbxi9wr1VgWSTmn23y7jcrEkGzsmh1tWAYRURBrga",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3726,7 +3768,7 @@
       "listing": true
     },
     {
-      "config": "3Ucrbxi9wr1VgWSTmn23y7jcrEkGzsmh1tWAYRURBrga",
+      "config": "F7wrcVE8WN78q8nQA85t1xrzSNfa8bnfLqV8h9HyQqiD",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3740,7 +3782,14 @@
       "listing": true
     },
     {
-      "config": "F7wrcVE8WN78q8nQA85t1xrzSNfa8bnfLqV8h9HyQqiD",
+      "config": "CWXDsegGm97ZeT5Lu5rezsE9c98zdHURHDnHVGdFKm9d",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "DHtCTJpscdqBE5gioBN3xx4zZE9Pk8okHh1YsRY1ANXQ",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3754,21 +3803,7 @@
       "listing": true
     },
     {
-      "config": "CWXDsegGm97ZeT5Lu5rezsE9c98zdHURHDnHVGdFKm9d",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "DVeSAZxzXZGYg7girYCadqPAG35hgfmy7pQjdqYhA8Hd",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "3vGZLdHPKanF8uaqi2oSrqVg49d732GePHm5FoyyxgHT",
+      "config": "EawUwZPpq5Yc6rdWBT22YiYPPzPPGnGsi8HEo3obXWnM",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3782,14 +3817,7 @@
       "listing": true
     },
     {
-      "config": "9K5kJL1rHzZFo3QwBwHoS3GXhpcJCHT81g2ekfBGHCrq",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "8GXbWJzJ1iQz4YcGBfAGeiYuJZnS6ZAvYH4BcGDXGNNj",
+      "config": "3vGZLdHPKanF8uaqi2oSrqVg49d732GePHm5FoyyxgHT",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3803,13 +3831,6 @@
       "listing": true
     },
     {
-      "config": "DR6jofP7p4frjhbWH9bZfBqxQwHhK5mLTcstC8633Wyo",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "7NX2xz8wSfwK7PgbJJWont1P52r82DbSpAX4Rr2QdpXh",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -3817,14 +3838,28 @@
       "listing": true
     },
     {
-      "config": "BGZ95kWxgcKhqLREtd2Gqz5qo9x7stz3wsfMagNezUry",
+      "config": "DR6jofP7p4frjhbWH9bZfBqxQwHhK5mLTcstC8633Wyo",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "2DfhjS1izibnGAv8j8rW4SUFZtJV9UckcvcPQdq5S9pU",
+      "config": "DVeSAZxzXZGYg7girYCadqPAG35hgfmy7pQjdqYhA8Hd",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "8GXbWJzJ1iQz4YcGBfAGeiYuJZnS6ZAvYH4BcGDXGNNj",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "9K5kJL1rHzZFo3QwBwHoS3GXhpcJCHT81g2ekfBGHCrq",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3838,21 +3873,14 @@
       "listing": true
     },
     {
-      "config": "BM3MZMK3ynj5GvtgBfJFCdLep1nLxfvkv1Mdo58XD28t",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "9dL7AjV3uBqVC6Vo3tqUchcy9fgvwXhh3tiPh85oXq9x",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "BF42piMj6wkakHzAfvug2DSCzcWjj8zujCjLk9FcNg1g",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "BGZ95kWxgcKhqLREtd2Gqz5qo9x7stz3wsfMagNezUry",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3866,6 +3894,13 @@
       "listing": true
     },
     {
+      "config": "BM3MZMK3ynj5GvtgBfJFCdLep1nLxfvkv1Mdo58XD28t",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "HY5USt1u31uYHqy2NkVCVdXP24v5gRQ8Hd72sX4Z7ZvZ",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -3873,7 +3908,14 @@
       "listing": true
     },
     {
-      "config": "ENEiiKXVbnML5QrKHwisfKYFcrSzCc7YDg8TXzNr7Liy",
+      "config": "2DfhjS1izibnGAv8j8rW4SUFZtJV9UckcvcPQdq5S9pU",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "9dL7AjV3uBqVC6Vo3tqUchcy9fgvwXhh3tiPh85oXq9x",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3887,6 +3929,20 @@
       "listing": true
     },
     {
+      "config": "5AiBtDrwna3zCAErbkSdfBvGWSEDAfFP7y6HztwskCaE",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "EMR2bso5BLDhcopQikTf7m8f5yhrQLzVhjEZf8cL2Vok",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "38sf84qQDDEK4ej2PfzkvY5J8Spk4QFAtTYyt7vhEwQc",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -3894,14 +3950,14 @@
       "listing": true
     },
     {
-      "config": "B2KztUc93ok2SeDngkX6ahvz3jKrjmej5ESGJR1fNsd",
+      "config": "ENEiiKXVbnML5QrKHwisfKYFcrSzCc7YDg8TXzNr7Liy",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "5AiBtDrwna3zCAErbkSdfBvGWSEDAfFP7y6HztwskCaE",
+      "config": "B2KztUc93ok2SeDngkX6ahvz3jKrjmej5ESGJR1fNsd",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3922,14 +3978,7 @@
       "listing": true
     },
     {
-      "config": "EMR2bso5BLDhcopQikTf7m8f5yhrQLzVhjEZf8cL2Vok",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "GceKuYTAkrM9oZJ9hTRBVbEcmp8ewMpt7ATvwAJe6n1h",
+      "config": "AC5s2TEVak6cesxgNtwpWupnXS3FjkYy3x4zUGxWD7eE",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3943,21 +3992,21 @@
       "listing": true
     },
     {
+      "config": "D6ZcA7NDDuyhSQs9deLv6NvQBnoH4QcEBw4733VJAYFa",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "GceKuYTAkrM9oZJ9hTRBVbEcmp8ewMpt7ATvwAJe6n1h",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "BbbkRW8sw2pUDMAvRADjKrMSgHBQxmDqoF9EeMcF7mVx",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "AC5s2TEVak6cesxgNtwpWupnXS3FjkYy3x4zUGxWD7eE",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "2Thwo9uXzFG4qtxbesWeFm428oAZLA6Fnf7mcSX4Gkfk",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3971,14 +4020,35 @@
       "listing": true
     },
     {
-      "config": "D6ZcA7NDDuyhSQs9deLv6NvQBnoH4QcEBw4733VJAYFa",
+      "config": "2HkQ4Y3XVUL8LmtQVRwNMg2MEuyDdKcGHFmEqWEY7AtK",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "2HkQ4Y3XVUL8LmtQVRwNMg2MEuyDdKcGHFmEqWEY7AtK",
+      "config": "2Thwo9uXzFG4qtxbesWeFm428oAZLA6Fnf7mcSX4Gkfk",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "78vZrtdBi4EHDdHFU396HY9E1YPy1cbLZ95ub3VRSGkX",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "AraUxKsSdAHiUEhqCL8ofmL248w1ckrjdQDSQ77R3qMS",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "64VoiJVcsQGXaY4fQGs3a47nCggg5iwvnuCbzyeWYnqf",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -3999,7 +4069,7 @@
       "listing": true
     },
     {
-      "config": "AraUxKsSdAHiUEhqCL8ofmL248w1ckrjdQDSQ77R3qMS",
+      "config": "32ZEZJuEfH5h2b2Ri7vmRmyYkhEVoHB8u5qiEaraX15q",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4013,35 +4083,7 @@
       "listing": true
     },
     {
-      "config": "64VoiJVcsQGXaY4fQGs3a47nCggg5iwvnuCbzyeWYnqf",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "32ZEZJuEfH5h2b2Ri7vmRmyYkhEVoHB8u5qiEaraX15q",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "HZB37sKeGXrvmjSxbawCQWewwu9aU2nXcxXwtXSoE6R2",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "78vZrtdBi4EHDdHFU396HY9E1YPy1cbLZ95ub3VRSGkX",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "EsWBFBqRGJq5EYLsPTsGx22KzynZRWmNZWrWtWeZ7vZx",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4055,35 +4097,7 @@
       "listing": true
     },
     {
-      "config": "6qENpEZiMED4p7eEszZRTbUqGKG2ERB8y77UReWx8vcc",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "5wCHx6ULwysCJU7eh78iEGFk7m22kRxg75vYgHw7eQWz",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "98hPPHWvH4oCnquA9CAg7yTbAsswS7sb5XCpy4rh9kCS",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "CqSc3gj5adSiW9pCaqbWQpAAWLGAzc4rFG7YLftKUYo2",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "12WsDHVDVxkKrQux83Pchhe7L47xTRkMeG8utVHvAT9r",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4097,21 +4111,42 @@
       "listing": true
     },
     {
+      "config": "5wCHx6ULwysCJU7eh78iEGFk7m22kRxg75vYgHw7eQWz",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "12WsDHVDVxkKrQux83Pchhe7L47xTRkMeG8utVHvAT9r",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "6qENpEZiMED4p7eEszZRTbUqGKG2ERB8y77UReWx8vcc",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "CqSc3gj5adSiW9pCaqbWQpAAWLGAzc4rFG7YLftKUYo2",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "EsWBFBqRGJq5EYLsPTsGx22KzynZRWmNZWrWtWeZ7vZx",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "32JxY5oJ1WDWneGnYbdGbKB4rn1SHYjzUuRLYurD311c",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "2GqcyZMX7voLn1THo8wuSLhe7ATsxyZdeXJWcmVo1bRF",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "Eox3pb71ze4yY4VMBdzCM8dDaDwvcc6KRsNPWsdVxyBR",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4125,14 +4160,7 @@
       "listing": true
     },
     {
-      "config": "76Qk2eYEpE5wVEcLd3bDgZAR5dtNbeTp3vB9K5Jdbyv2",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "HEaPNEJn7wcpWFSee8tDN8rzBqkProppHRWQ5mzPdQUw",
+      "config": "2GqcyZMX7voLn1THo8wuSLhe7ATsxyZdeXJWcmVo1bRF",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4153,21 +4181,21 @@
       "listing": true
     },
     {
-      "config": "E1XwmYj69ws2NZesyATi8FRf7q8BfucisxF5Ut27z8yK",
+      "config": "HEaPNEJn7wcpWFSee8tDN8rzBqkProppHRWQ5mzPdQUw",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "4tNur4zbDWCYUJh4zBsPZ76Teb4733iCqvaafzcfwtUa",
+      "config": "76Qk2eYEpE5wVEcLd3bDgZAR5dtNbeTp3vB9K5Jdbyv2",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "J13xeaq7TcjX4mwX1Yj95cDhfwFdAg3Pg6Qm5JbRNJta",
+      "config": "Eox3pb71ze4yY4VMBdzCM8dDaDwvcc6KRsNPWsdVxyBR",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4181,7 +4209,7 @@
       "listing": true
     },
     {
-      "config": "CUScGCjm3w92PaQUashawsX1Dn7WB9J1LEs9zDkCaQXp",
+      "config": "BU5PQJRiAtguBi595PG5oEXxjsLcvvw9jqGHF5jGwJ1y",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4202,21 +4230,28 @@
       "listing": true
     },
     {
-      "config": "BU5PQJRiAtguBi595PG5oEXxjsLcvvw9jqGHF5jGwJ1y",
+      "config": "J13xeaq7TcjX4mwX1Yj95cDhfwFdAg3Pg6Qm5JbRNJta",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "8bbrMRhCEUfy5TtNrYLhQhKtM2skVbsx12enwFXpKtBE",
+      "config": "4tNur4zbDWCYUJh4zBsPZ76Teb4733iCqvaafzcfwtUa",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "5caf2h8DtJV8X435g7F9adicHvQtiNvHC3pt55HtAaxR",
+      "config": "E1XwmYj69ws2NZesyATi8FRf7q8BfucisxF5Ut27z8yK",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "CUScGCjm3w92PaQUashawsX1Dn7WB9J1LEs9zDkCaQXp",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4230,28 +4265,7 @@
       "listing": true
     },
     {
-      "config": "29YWpRAQUUABLdLnC8qvvAkfB8QF5GLs1ySNAk1PrN8f",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "3vkQd352C78voZumdvxxfBub1arasaBrMJP4VXsEy29M",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "6Cu3C3NxUHgdfK78eBEdBz1CpaxaEUyUFA2VA7Vn2YqS",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "EEPBQhKntdp1vqxv59ad7ZZnk8PwNQbED7z59yxEpg69",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4265,21 +4279,35 @@
       "listing": true
     },
     {
-      "config": "2E3ZmALaDBLcQuj8XYXu3vb3gfERqFYNQyMEUs5DeDJF",
+      "config": "EEPBQhKntdp1vqxv59ad7ZZnk8PwNQbED7z59yxEpg69",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "9Dez4ZFT7WBHz6G9grgQ5bSwmXy1xk6QQRX2HogFqfun",
+      "config": "5caf2h8DtJV8X435g7F9adicHvQtiNvHC3pt55HtAaxR",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "6qvbNMUsxwbbbwFsXrDK5KSr7KWXi81A49kmvCRPU2CK",
+      "config": "8bbrMRhCEUfy5TtNrYLhQhKtM2skVbsx12enwFXpKtBE",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "6Cu3C3NxUHgdfK78eBEdBz1CpaxaEUyUFA2VA7Vn2YqS",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "29YWpRAQUUABLdLnC8qvvAkfB8QF5GLs1ySNAk1PrN8f",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4287,6 +4315,13 @@
     },
     {
       "config": "EiVBs19hadXCHCeo4AM6HtAL7TJV8Qiwy51VEvcX9jTa",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "9Dez4ZFT7WBHz6G9grgQ5bSwmXy1xk6QQRX2HogFqfun",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4307,13 +4342,6 @@
       "listing": true
     },
     {
-      "config": "EmaDtZGeEwneT1b4AoSJvuzihnW3caEg1wZtJ4YqiQLk",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "E61HwS2NHPJEdBn32k42gpXcofxuUgjWuhdb3vxUCNL6",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -4321,14 +4349,28 @@
       "listing": true
     },
     {
-      "config": "D3mWywzPNd22YZ4mAQWBUWrCFBiKyxpFd1CYriioFdGP",
+      "config": "2E3ZmALaDBLcQuj8XYXu3vb3gfERqFYNQyMEUs5DeDJF",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
     },
     {
-      "config": "4jem82ADLVrdwk6VJywZdN8xXJAzJswojALEvHDHu6Va",
+      "config": "EmaDtZGeEwneT1b4AoSJvuzihnW3caEg1wZtJ4YqiQLk",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "6qvbNMUsxwbbbwFsXrDK5KSr7KWXi81A49kmvCRPU2CK",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "2QYvpxrAfW3T1xfGXDBZ5qg4st3tHakSprtu6hj9Wkki",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4336,20 +4378,6 @@
     },
     {
       "config": "E5evy329Fw9EqVo7VcczJp42qVfJa9TMBQYffTGsZQeC",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "HGJENyasGZmk5N5m8EZbKerov6tkHGGYkN8YHzf5UdjA",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "3r1kGa3YosG4KRA78oyZtBjNpHtQ4wGmnweUnCaEgZxj",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4370,7 +4398,35 @@
       "listing": true
     },
     {
-      "config": "2QYvpxrAfW3T1xfGXDBZ5qg4st3tHakSprtu6hj9Wkki",
+      "config": "4jem82ADLVrdwk6VJywZdN8xXJAzJswojALEvHDHu6Va",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "HGJENyasGZmk5N5m8EZbKerov6tkHGGYkN8YHzf5UdjA",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "D3mWywzPNd22YZ4mAQWBUWrCFBiKyxpFd1CYriioFdGP",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "3r1kGa3YosG4KRA78oyZtBjNpHtQ4wGmnweUnCaEgZxj",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "2vN49s59EaMaxcDYzSNVqQ2ZuittfqUy2b9pzaZdfipW",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4391,7 +4447,7 @@
       "listing": true
     },
     {
-      "config": "2vN49s59EaMaxcDYzSNVqQ2ZuittfqUy2b9pzaZdfipW",
+      "config": "DiyHCyU8vBQ3kw55PaTqPC2JveddrWnCDK9NsFZs4Yfj",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4412,7 +4468,7 @@
       "listing": true
     },
     {
-      "config": "DiyHCyU8vBQ3kw55PaTqPC2JveddrWnCDK9NsFZs4Yfj",
+      "config": "8hW3FbyeSwWHag65ZfAuxQjCXX9382LBNv9H6JXf1XZp",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4426,7 +4482,21 @@
       "listing": true
     },
     {
-      "config": "8hW3FbyeSwWHag65ZfAuxQjCXX9382LBNv9H6JXf1XZp",
+      "config": "CFbn5YBenTJtgkXMgaa24ko5EM26XywSgybbLZ5HCAdY",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "4Qn9eKTtivxGGTDz7rGyLe4YK1JTGAEhjKBdFzEVuoLd",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "Hrhc93gQLFFNxxmUuRcKyMGUbqfcVRw8RKsMwCPChJ7v",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4434,6 +4504,13 @@
     },
     {
       "config": "Wn4C1U9stTXz2Y2pG61Smui5CXeiftTJQJ1cVRjwyy8",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "F4Bj59JySn5b1LvfDfpPSftZq56fn8eyFaVrxx8ZGAZJ",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4454,42 +4531,7 @@
       "listing": true
     },
     {
-      "config": "F4Bj59JySn5b1LvfDfpPSftZq56fn8eyFaVrxx8ZGAZJ",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "4Qn9eKTtivxGGTDz7rGyLe4YK1JTGAEhjKBdFzEVuoLd",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "GwJrPXtBCc36hNwt4jUvvPngFqysbUqAF69sqDb8R1Pj",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "Hrhc93gQLFFNxxmUuRcKyMGUbqfcVRw8RKsMwCPChJ7v",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "CFbn5YBenTJtgkXMgaa24ko5EM26XywSgybbLZ5HCAdY",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "7gFk6QSVaSqMDF3h333Awp1TyhmMNSu2N5JbsWRqYPuu",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4503,13 +4545,6 @@
       "listing": true
     },
     {
-      "config": "AdykVrWNb1EfQJmPqWbiPJjzyLThFGzTrREenMVJfFht",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
       "config": "AodSFQZ7F8KGby3ugLVDUuMnQowAcsZ8zNuQjTqmb9w8",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -4517,14 +4552,7 @@
       "listing": true
     },
     {
-      "config": "TRD1NRT4xzv6baVbu1Q84oeoCa4nADjAsjqJtde1Bpc",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "8a9ZDSa4tDbBixyCqBUz3zJJHV6356gcD81EyMhMUY93",
+      "config": "AdykVrWNb1EfQJmPqWbiPJjzyLThFGzTrREenMVJfFht",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4538,6 +4566,27 @@
       "listing": true
     },
     {
+      "config": "7gFk6QSVaSqMDF3h333Awp1TyhmMNSu2N5JbsWRqYPuu",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "8a9ZDSa4tDbBixyCqBUz3zJJHV6356gcD81EyMhMUY93",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "TRD1NRT4xzv6baVbu1Q84oeoCa4nADjAsjqJtde1Bpc",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "7fxcAxrdPMhj4FiGpc39gv3doJFvo1YznvoGXddM9gQ3",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -4545,21 +4594,7 @@
       "listing": true
     },
     {
-      "config": "FHkv5zxK4Hb3P42vZWAHT4hMx2vEr436AKYgRBzt3mxq",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "2jUvgcrS4ZBykFAKjFAFyeGh3t9L99UAqRwpgTEFJRtP",
-      "graduatedPools": 1,
-      "multiplier": 1.0010601489731599,
-      "threshold": 0.001,
-      "listing": true
-    },
-    {
-      "config": "7VCVVcKWbawBdEkfwt62PSC7XkhoALYM7fLkGTojnhhg",
+      "config": "3E47YjdH3njYZHwECD4cWCzN6rNrHdTozQ7o7mURuiDL",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
@@ -4580,6 +4615,13 @@
       "listing": true
     },
     {
+      "config": "7VCVVcKWbawBdEkfwt62PSC7XkhoALYM7fLkGTojnhhg",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
       "config": "9FSBCWtWAXh2FCwU3z61EHBpLcw9dx2A9jFaThHgBNen",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
@@ -4587,11 +4629,25 @@
       "listing": true
     },
     {
-      "config": "3E47YjdH3njYZHwECD4cWCzN6rNrHdTozQ7o7mURuiDL",
+      "config": "2jUvgcrS4ZBykFAKjFAFyeGh3t9L99UAqRwpgTEFJRtP",
       "graduatedPools": 1,
       "multiplier": 1.0010601489731599,
       "threshold": 0.001,
       "listing": true
+    },
+    {
+      "config": "FHkv5zxK4Hb3P42vZWAHT4hMx2vEr436AKYgRBzt3mxq",
+      "graduatedPools": 1,
+      "multiplier": 1.0010601489731599,
+      "threshold": 0.001,
+      "listing": true
+    },
+    {
+      "config": "zdyPSDd3mktKPmk4xQqWvkrooiJwKjiMdxMvcX7ZXpy",
+      "graduatedPools": 1,
+      "multiplier": 6.612244897959118,
+      "threshold": 60,
+      "listing": false
     },
     {
       "config": "5STUdUgxMxLCrK9LNSvSQb3jTh3ShQ7N1kGTw9o9tqTa",
@@ -4608,11 +4664,11 @@
       "listing": false
     },
     {
-      "config": "zdyPSDd3mktKPmk4xQqWvkrooiJwKjiMdxMvcX7ZXpy",
+      "config": "2HiK9U58TaPEbP1ATmcXNyMMykyEc4qqmDFmjkC7ES2G",
       "graduatedPools": 1,
-      "multiplier": 6.612244897959118,
-      "threshold": 60,
-      "listing": false
+      "multiplier": 1.0053274169629933,
+      "threshold": 0.08,
+      "listing": true
     },
     {
       "config": "HR6berGN7SJu9YZs31NzuzWG87eiZiqFeHHXqHuRXAiE",
@@ -4620,13 +4676,6 @@
       "multiplier": 2.0707912020396377,
       "threshold": 0.828427124,
       "listing": false
-    },
-    {
-      "config": "2HiK9U58TaPEbP1ATmcXNyMMykyEc4qqmDFmjkC7ES2G",
-      "graduatedPools": 1,
-      "multiplier": 1.0053274169629933,
-      "threshold": 0.08,
-      "listing": true
     },
     {
       "config": "AMyjGtcTgLcVreaziVvPr1Y3uZkneSDssoSRB7yB37gA",
