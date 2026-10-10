@@ -16,6 +16,7 @@ import launch from '../mainnet-launch.json'
 import verify from '../mainnet-verify.json'
 import poolStateBundled from '../mainnet-pool-state.json'
 import { useLive } from './lib/live'
+import { exposed, useOutcomes } from './lib/outcomes'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -421,6 +422,9 @@ export default function App() {
   const chosen = PRESETS.find((p) => p.id === selected)!
   const scan = useLive('graduated-configs.json', scanBundled)
   const grads = scan.classification.all
+  const outcomes = useOutcomes()
+  const hit = exposed(outcomes)
+  const control = outcomes.byClass.locked
   // older published copies have no safety block; the hero then leaves that sentence out
   const safety = (scan.classification as { safety?: typeof scanBundled.classification.safety }).safety
   const pct = { n: (x: number) => x.toLocaleString('en-US'), of: (x: number, t: number) => `${Math.round((x / t) * 100)}%` }
@@ -454,7 +458,8 @@ export default function App() {
               {safety && (
                 <>
                   {pct.n(safety.lpMostlyWithdrawable)} ({pct.of(safety.lpMostlyWithdrawable, grads.graduations)}) came from configs that leave half or more of the graduation LP
-                  withdrawable by the launchpad or creator, with no vesting.{' '}
+                  withdrawable by the launchpad or creator. Since then, {pct.of(hit.lostHalfOrMore, hit.graduations)} of those pools have lost half or more of the liquidity
+                  they graduated with; on configs that lock all of it, {pct.of(control.lostHalfOrMore, control.graduations)}.{' '}
                 </>
               )}
               {pct.n(grads.listings)} ({pct.of(grads.listings, grads.graduations)}) were direct listings, not price discovery: price moves 1.25x or less, or graduation needs under 0.01 of

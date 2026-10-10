@@ -3,9 +3,10 @@
 Pre-launch checks and launch-curve data for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc). Live: https://curvebook-kappa.vercel.app
 
 A DBC config fixes, for every pool launched on it, the curve, the fees, who can mint, and how much of the
-graduation liquidity stays locked. In the 2026-10-10 scan of 1,790 mainnet graduations, 916 (51%) came from configs
-that leave half or more of the graduation LP withdrawable by the launchpad or creator with no vesting, and 61% were
-direct listings rather than price discovery. None of it is visible without decoding the config account.
+graduation liquidity stays locked. In the 2026-10-10 scan of 1,792 mainnet graduations, 1,103 (62%) came from configs
+that leave half or more of the graduation LP withdrawable by the launchpad or creator. 71% of those pools have since
+lost half or more of the liquidity they graduated with, against 2% of pools on configs that lock all of it
+([what happened to the liquidity](#what-happened-to-the-liquidity)). None of it is visible without decoding the config account.
 
 curvebook decodes it: the [Inspector](#config-inspector) in the browser and [`scripts/check.ts`](#pre-launch-check-cli-and-ci)
 in a terminal or CI flag what matters to a buyer. Four [presets](#presets) that pass every check are live on mainnet
@@ -171,6 +172,26 @@ RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDR
 `npm test` on the new files and commits them. The deployed site reads the latest committed copy at runtime
 (`src/lib/live.ts`) and keeps its bundled copy when that is newer or GitHub is unreachable.
 
+## What happened to the liquidity
+
+`scripts/lp-outcomes.ts` (read-only, daily in `data.yml`) takes every graduation from the scan and compares the liquidity
+its migration put into the DAMM pool with the pool's liquidity today: the DAMM v2 pool account (liquidity at migration
+from the DAMM events in the migration transaction), or the DAMM v1 LP supply (LP minted at migration; withdrawing burns
+LP). It reads the pool, not the positions, so liquidity moved between positions is not a withdrawal; liquidity added
+since hides withdrawals, so losses are a lower bound. Result on 2026-10-10 ([lp-outcomes.json](lp-outcomes.json)):
+
+| Config leaves | Graduations | Lost half or more of their graduation liquidity |
+|---|---|---|
+| 50%+ of LP withdrawable, no vesting | 917 | 607 (66%) |
+| 50%+ of LP withdrawable, with a vesting schedule | 186 | 176 (95%) |
+| 100% of LP permanently locked (control) | 675 | 14 (2%) |
+
+Checked by hand: two pools on config `36VxV18i…` minted 309.46B LP at migration and have 33.9B left (11%, the locked
+share); two on `CSsWETyM…` have 3.2% left (3% locked). DAMM v2 pool `BtERBHLy…` graduated at 13:50:08 UTC on 2026-10-10
+and `removeAllLiquidity` ran at 13:53:31. The control is not perfect: 14 pools on fully locked configs, nearly all on a
+few older DAMM v1 configs, also lost liquidity; they are reported, not dropped. `npm test` fails if the control's loss
+rate goes above 10%.
+
 ## Pre-launch check (CLI and CI)
 
 The Inspector's risk flags (`src/lib/risk.ts`) run from a terminal too, so a launchpad can gate its own configs in CI
@@ -179,7 +200,7 @@ and a trader can check one before buying. Read-only; every flag comes from the c
 | Flag | Severity | Rule |
 |---|---|---|
 | Mint authority kept | red | token authority option 3 or 4: a wallet can mint after launch |
-| Graduation LP not permanently locked | red at 50%+ with no vesting, else warn | partner + creator liquidity percentage that becomes a withdrawable DAMM position |
+| Graduation LP not permanently locked | red at 50%+, else warn | partner + creator liquidity percentage that becomes a withdrawable DAMM position; a vesting schedule does not downgrade it (pools on vesting configs lost their LP as often) |
 | Trading fee that never decays | red at 10%+, warn at 3%+ | fee after any fee schedule has finished |
 | Supply vesting to the creator | warn at 20%+, info at 1%+ | locked vesting amount / supply |
 | Migration fee | warn at 10%+ | share of the raise taken at graduation |

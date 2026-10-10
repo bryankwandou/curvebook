@@ -429,3 +429,15 @@ td.bad {
   color: #e5484d;
   font-weight: 600;
 }
+
+.method {
+  margin-top: 16px;
+}
+.method summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.method td.hl {
+  font-weight: 700;
+  color: var(--accent);
+}

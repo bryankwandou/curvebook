@@ -11,6 +11,7 @@ import {
   DAMM_V2_MIGRATION_FEE_ADDRESS,
   DYNAMIC_BONDING_CURVE_PROGRAM_ID,
   DynamicBondingCurveIdl,
+  createDammV2Program,
   createDbcProgram,
 } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import { Connection, PublicKey, type ConfirmedSignatureInfo } from '@solana/web3.js'
@@ -63,7 +64,57 @@ for (const a of [...DAMM_V2_MIGRATION_FEE_ADDRESS, ...DAMM_V1_MIGRATION_FEE_ADDR
 }
 console.log(`${sigs.size} successful transactions on the migration configs`)
 
-const graduations: { config: string; pool: string; time: number; signature: string }[] = []
+// what each migration put where, for scripts/lp-outcomes.ts: per-position DAMM v2 liquidity from the DAMM events in the
+// migration transaction, or the DAMM v1 LP mint and the LP amount minted at migration
+interface Migration {
+  kind: 'damm_v2' | 'damm_v1'
+  dammPool?: string
+  positions?: { position: string; liquidity: string; permanentLocked: string }[]
+  lpMint?: string
+  lpMinted?: string
+}
+const MIGRATE_V2 = Buffer.from(DynamicBondingCurveIdl.instructions.find((i) => i.name === 'migration_damm_v2')!.discriminator).toString('hex')
+const DAMM_V2 = 'cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG'
+const dammCoder = (createDammV2Program(connection) as any).coder
+function migrationDetails(tx: any, keys: string[], ix: { accounts: number[] }, v2: boolean): Migration {
+  if (!v2) {
+    const lpAccount = keys[ix.accounts[19]]
+    const bal = tx.meta.postTokenBalances?.find((b: any) => keys[b.accountIndex] === lpAccount)
+    return { kind: 'damm_v1', dammPool: keys[ix.accounts[4]], lpMint: keys[ix.accounts[6]], lpMinted: bal?.uiTokenAmount.amount }
+  }
+  const liquidity = new Map<string, bigint>()
+  const locked = new Map<string, bigint>()
+  let current = ''
+  for (const inner of tx.meta.innerInstructions ?? [])
+    for (const ii of inner.instructions) {
+      if (keys[ii.programIdIndex] !== DAMM_V2) continue
+      const data = Buffer.from(bs58.decode(ii.data))
+      if (data.length < 16) continue
+      let e: { name: string; data: any } | null = null
+      try {
+        e = dammCoder.events.decode(data.subarray(8).toString('base64'))
+      } catch {
+        continue
+      }
+      if (!e) continue
+      const add = (m: Map<string, bigint>, k: string, v: { toString(): string }) => m.set(k, (m.get(k) ?? 0n) + BigInt(v.toString()))
+      if (e.name === 'evtCreatePosition') current = e.data.position.toBase58()
+      else if (e.name === 'evtInitializePool') add(liquidity, current, e.data.liquidity)
+      else if (e.name === 'evtLiquidityChange' && e.data.changeType === 0) add(liquidity, e.data.position.toBase58(), e.data.liquidityDelta)
+      else if (e.name === 'evtPermanentLockPosition') add(locked, e.data.position.toBase58(), e.data.lockLiquidityAmount)
+    }
+  return {
+    kind: 'damm_v2',
+    dammPool: keys[ix.accounts[4]],
+    positions: [keys[ix.accounts[7]], keys[ix.accounts[10]]].map((p) => ({
+      position: p,
+      liquidity: (liquidity.get(p) ?? 0n).toString(),
+      permanentLocked: (locked.get(p) ?? 0n).toString(),
+    })),
+  }
+}
+
+const graduations: ({ config: string; pool: string; time: number; signature: string } & Migration)[] = []
 const list = [...sigs.values()]
 for (let i = 0; i < list.length; i += CONCURRENCY) {
   await Promise.all(
@@ -75,12 +126,14 @@ for (let i = 0; i < list.length; i += CONCURRENCY) {
       const keys: string[] = [...m.accountKeys, ...tx.meta.loadedAddresses.writable, ...tx.meta.loadedAddresses.readonly]
       for (const ix of m.instructions as { programIdIndex: number; accounts: number[]; data: string }[]) {
         if (keys[ix.programIdIndex] !== DYNAMIC_BONDING_CURVE_PROGRAM_ID.toBase58()) continue
-        if (!MIGRATE.includes(Buffer.from(bs58.decode(ix.data).subarray(0, 8)).toString('hex'))) continue
+        const disc = Buffer.from(bs58.decode(ix.data).subarray(0, 8)).toString('hex')
+        if (!MIGRATE.includes(disc)) continue
         graduations.push({
           config: keys[ix.accounts[2]],
           pool: keys[ix.accounts[0]],
           time: s.blockTime ?? 0,
           signature: s.signature,
+          ...migrationDetails(tx, keys, ix, disc === MIGRATE_V2),
         })
       }
     }),
@@ -161,12 +214,13 @@ const safety = (() => {
   for (const r of ranked) {
     const d = decoded.get(r.config)
     if (!d) continue
-    if (d.lpUnlockedPct >= 50 && !d.lpVesting) lpMostlyWithdrawable += r.pools.size
+    // vesting is not counted as protection: in lp-outcomes.json, pools on vesting configs lost liquidity as often
+    if (d.lpUnlockedPct >= 50) lpMostlyWithdrawable += r.pools.size
     if (d.lpUnlockedPct === 0) lpAllLocked += r.pools.size
     if (d.mintAuthority) mintAuthorityKept += r.pools.size
   }
   return {
-    rule: 'lpMostlyWithdrawable = 50% or more of the graduation LP is not permanently locked and has no vesting schedule; lpAllLocked = 100% permanently locked; mintAuthorityKept = token authority option 3 or 4',
+    rule: 'lpMostlyWithdrawable = 50% or more of the graduation LP is not permanently locked (vesting or not); lpAllLocked = 100% permanently locked; mintAuthorityKept = token authority option 3 or 4',
     lpMostlyWithdrawable,
     lpAllLocked,
     mintAuthorityKept,
@@ -236,6 +290,10 @@ const out = {
   allConfigs: perConfig,
 }
 writeFileSync(new URL('../graduated-configs.json', import.meta.url), JSON.stringify(out, null, 2) + '\n')
+// one row per graduated pool with what its migration created; input of scripts/lp-outcomes.ts (not bundled into the site)
+const perPool = new Map<string, (typeof graduations)[number]>()
+for (const g of graduations.sort((a, b) => a.time - b.time)) if (!perPool.has(g.pool)) perPool.set(g.pool, g)
+writeFileSync(new URL('../graduated-pools.json', import.meta.url), JSON.stringify({ ranAt: out.ranAt, pools: [...perPool.values()] }) + '\n')
 
 // daily snapshot of the same sample. Not a daily graduation count: the busiest migration config fills
 // PER_ADDRESS signatures in about an hour, so coveredSince records how far back the sample is complete.
