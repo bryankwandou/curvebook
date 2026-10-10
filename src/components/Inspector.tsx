@@ -18,7 +18,13 @@ interface ScanRow {
   lpLockedPct: number
   closest: string
 }
-const scan = scanJson as unknown as { graduatedPools: number; distinctConfigs: number; window: { from: string; to: string }; configs: ScanRow[] }
+const scan = scanJson as unknown as {
+  graduatedPools: number
+  distinctConfigs: number
+  window: { from: string; to: string }
+  classification: { all: { graduations: number; listings: number; undecoded: number } }
+  configs: ScanRow[]
+}
 
 const short = (k: string) => `${k.slice(0, 4)}…${k.slice(-4)}`
 const sol = (kind: string, id: string) => `https://solscan.io/${kind}/${id}`
@@ -154,9 +160,11 @@ export function Inspector() {
 
       <h3>Which configs actually graduate</h3>
       <p className="lede">
-        <code>scripts/scan-graduations.ts</code> reads the last DBC graduations on mainnet (every migration passes one of Meteora's DAMM migration configs) and groups
-        them by DBC config: {scan.graduatedPools} graduated pools across {scan.distinctConfigs} configs between {scan.window.from.slice(0, 16).replace('T', ' ')} and{' '}
-        {scan.window.to.slice(0, 16).replace('T', ' ')} UTC. Click a row to inspect it.
+        <code>scripts/scan-graduations.ts</code> takes the latest 200 transactions on each of Meteora's DAMM migration configs (every DBC graduation passes one),
+        finds the DBC config named by each migrate instruction, and decodes every config: {scan.graduatedPools.toLocaleString('en-US')} graduated pools across{' '}
+        {scan.distinctConfigs} configs, {scan.window.from.slice(0, 10)} to {scan.window.to.slice(0, 10)}. {scan.classification.all.listings.toLocaleString('en-US')} of them came from
+        configs where price moves 1.25x or less or that graduate on under 0.01 of the quote token ({scan.classification.all.undecoded} could not be decoded). Busy
+        migration configs cover days and quiet ones months, so this is a sample, not a time series. Top configs below; Click a row to inspect it.
       </p>
       <div className="panel scroll-x">
         <table className="pools">
