@@ -174,7 +174,7 @@ for (const r of ranked.slice(0, TOP)) {
       migration: x.migration,
       lpLockedPct: x.lpLockedPct,
       // a preset only counts as close when the curve shapes are near; otherwise say there is none
-      closest: x.closest.gap < 0.5 ? x.closest.name : 'none',
+      closest: x.closest.gap < 0.25 ? x.closest.name : 'none',
       closestGap: x.closest.gap,
     })
   } catch (e) {
