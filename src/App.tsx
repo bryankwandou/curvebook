@@ -1,5 +1,6 @@
 import scanBundled from '../graduated-configs.json'
 import { Inspector } from './components/Inspector'
+import { ApiDocs } from './components/ApiDocs'
 import { useMemo, useState } from 'react'
 import { PROTOCOL_POOL_CREATION_FEE_PERCENT } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
@@ -441,6 +442,7 @@ export default function App() {
         <nav>
           <a href="#presets">Presets</a>
           <a href="#inspect">Inspector</a>
+          <a href="#api">API</a>
           <a href="#builder">Builder</a>
           <a href="#proof">On-chain</a>
           <a href="https://github.com/bryankwandou/curvebook">GitHub</a>
@@ -513,6 +515,7 @@ export default function App() {
 
         <Detail p={chosen} />
         <Inspector />
+        <ApiDocs />
         <Builder />
         <MainnetProof />
         <DevnetProof />

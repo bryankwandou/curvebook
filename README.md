@@ -231,6 +231,31 @@ and `removeAllLiquidity` ran at 13:53:31. The control is not perfect: 14 pools o
 few older DAMM v1 configs, also lost liquidity; they are reported, not dropped. `npm test` fails if the control's loss
 rate goes above 10%.
 
+## API for terminals and launchpads
+
+The Inspector's report is also a public, read-only HTTP API (CORS open), so a trading terminal or launchpad can show it
+next to every token it lists:
+
+```bash
+curl "https://curvebook-kappa.vercel.app/api/check?address=<token | DBC pool | config>"
+```
+
+It returns `verdict` (`red` when the graduation liquidity is half gone or any red flag is set, `warn`, `ok`), the
+`flags`, the pool `status` (on the curve, or graduated and how much liquidity is gone), the curve and fee summary, and
+a `reportUrl`. Unknown addresses get a 404 with the reason. Responses are CDN-cached for five minutes per address.
+
+`/api/badge?address=...` returns an SVG badge ("curvebook | LP 89% gone", "no red flags", ...), cached for ten minutes:
+
+```html
+<a href="https://curvebook-kappa.vercel.app/?config=<address>#inspect">
+  <img src="https://curvebook-kappa.vercel.app/api/badge?address=<address>" alt="curvebook check">
+</a>
+```
+
+Both are the same report as `scripts/check.ts` (`src/lib/report.ts`). The sources are `api-src/`; `npm run build:api`
+bundles them with esbuild into self-contained functions that are deployed next to `api/rpc.js`. `scripts/smoke.mjs`
+checks the deployed endpoints against known cases every day in `data.yml`.
+
 ## Pre-launch check (CLI and CI)
 
 The Inspector's risk flags (`src/lib/risk.ts`) run from a terminal too, so a launchpad can gate its own configs in CI
