@@ -88,7 +88,8 @@ Pool [4ikgpisQ…](https://solscan.io/account/4ikgpisQo83h3wBwtaqW8mhRuHbjM9L2eg
 mint [9yVLMokY…](https://solscan.io/token/9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FKPxZZ6gfS),
 [createPool tx](https://solscan.io/tx/5ieP6wibq9FN1vC5fGXwAFrZkKBEjeHQ27ZFnMSyeg6p2PBQ8vDL5WhZnnAwZHYfjTKFKsZcjHjN8KH1dsrZw3Pu),
 [buy tx](https://solscan.io/tx/2UtVTgnBaEh59h3Cz72VCYo9EvwN3idg7CvptUoPXd6gsPF88vedSFMHrgNyvSLichGkxHmK9VjKfFLW86DwURSn).
-Curve progress 2.08%, total cost 0.0421 SOL ([mainnet-launch.json](mainnet-launch.json)).
+Curve progress 2.08% right after our buy, total cost 0.0421 SOL ([mainnet-launch.json](mainnet-launch.json)).
+Within seconds a third-party wallet bought and sold on the pool, so the live curve reads lower. Those trades paid 0.016 SOL in fees to the preset author. `npx tsx scripts/pool-state.ts` reads the pool back ([mainnet-pool-state.json](mainnet-pool-state.json)).
 
 ### Read-back check
 

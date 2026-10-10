@@ -11,6 +11,7 @@ import fuzz from '../fuzz-report.json'
 import sim from '../mainnet-sim.json'
 import launch from '../mainnet-launch.json'
 import verify from '../mainnet-verify.json'
+import poolState from '../mainnet-pool-state.json'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -273,7 +274,10 @@ function MainnetProof() {
       <h3>Real launch on mainnet</h3>
       <p className="lede">
         {launch.ranAt.slice(0, 10)}: a CBK token launched on the live {launch.preset} config with <code>scripts/mainnet-launch.ts</code>, then a {launch.buySol} SOL buy.
-        Curve progress after the buy: {(launch.curveProgress * 100).toFixed(2)}%.{' '}
+        Curve progress right after our buy: {(launch.curveProgress * 100).toFixed(2)}%. Within seconds another wallet
+        (not ours) bought and sold on the pool, so at the {poolState.ranAt.slice(0, 16).replace('T', ' ')} UTC read-back the curve stood at{' '}
+        {(poolState.curveProgress * 100).toFixed(4)}% and the pool had paid {poolState.fees.presetAuthorClaimableSol.toFixed(4)} SOL in trading fees to the preset author
+        (<code>scripts/pool-state.ts</code>, <code>mainnet-pool-state.json</code>).{' '}
         <code>scripts/verify-mainnet.ts</code> reads every config back from mainnet and checks it against its preset:{' '}
         {verify.configs.reduce((n: number, c: { checks: number }) => n + c.checks, 0)} checks,{' '}
         {verify.configs.reduce((n: number, c: { failed: unknown[] }) => n + c.failed.length, 0)} failures.
