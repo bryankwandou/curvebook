@@ -246,9 +246,16 @@ and a trader can check one before buying. Read-only; every flag comes from the c
 | Listing, not price discovery | info | price moves 1.25x or less, or graduates on under 0.01 quote |
 
 ```bash
-npx tsx scripts/check.ts <config> [<config> ...]        # report; exit 1 on a red flag
+npx tsx scripts/check.ts <config|pool|token> [...]      # report; exit 1 on a red flag
 npx tsx scripts/check.ts --fail-on warn --json <config>  # stricter, machine-readable
 ```
+
+A token or DBC pool is resolved to the config that governs it (`src/lib/target.ts`). For one that already graduated,
+the check also finds the migration transaction among the pool's latest signatures, reads it with the same parser as
+the daily study (`src/lib/migration.ts`), and compares the liquidity the migration put into the DAMM pool with the
+pool today: 50% or more gone is a red flag. The site's Inspector does the same in the browser; public RPCs keep little
+transaction history, so those two reads go through `api/rpc.js`, which only serves DBC-owned accounts' signatures and
+transactions that call the DBC program.
 
 On the four curvebook presets it reports no flags. Run on the eight most-graduated mainnet configs on 2026-10-10,
 six were red: 89–97% of their graduation LP is withdrawable.

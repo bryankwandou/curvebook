@@ -1,8 +1,10 @@
 import { useConnection } from '@solana/wallet-adapter-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import deployed from '../deployed.json'
 import scanJson from '../../graduated-configs.json'
+import { feedConnection } from '../lib/actions'
 import { inspectConfig, type Inspection } from '../lib/inspect'
+import { poolStatus, resolveTarget, type PoolStatus, type Target } from '../lib/target'
 import { PRESETS } from '../lib/presets'
 import { fmt, presetStats } from '../lib/stats'
 import { CurveChart, type Series } from './CurveChart'
@@ -38,6 +40,13 @@ type Scan = {
 const scanBundled = scanJson as unknown as Scan
 
 const short = (k: string) => `${k.slice(0, 4)}…${k.slice(-4)}`
+// examples that show each case: our own token (still on the curve), a pool whose LP was pulled 3 minutes after
+// graduating, and a pool on a config that locks all LP
+const EXAMPLES: [string, string][] = [
+  ['CBK, our token (on the curve)', '9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FKPxZZ6gfS'],
+  ['Graduated, LP pulled', 'USTdxXk3BZTAX43TjAbrS4Hnb1iVVyvGeqtkvLzLPGJ'],
+  ['Graduated, LP locked', '75qK2pbYCbA85pnHh14q1r24UBpN3xFGNPVwNB5DQrus'],
+]
 const sol = (kind: string, id: string) => `https://solscan.io/${kind}/${id}`
 
 export function Inspector() {
@@ -48,6 +57,10 @@ export function Inspector() {
   const [error, setError] = useState('')
   const [result, setResult] = useState<Inspection | null>(null)
   const [copied, setCopied] = useState(false)
+  const [target, setTarget] = useState<Target | null>(null)
+  const [status, setStatus] = useState<PoolStatus | null | 'loading' | 'error'>(null)
+  // a slower lookup from an earlier click must not overwrite the current one
+  const runId = useRef(0)
 
   // ?config=<address> opens the site on that config's report, so a report can be shared as a link
   useEffect(() => {
@@ -66,13 +79,29 @@ export function Inspector() {
     history.replaceState(null, '', `?config=${encodeURIComponent(a)}#inspect`)
     setBusy(true)
     setError('')
+    setStatus(null)
+    const id = ++runId.current
     try {
-      setResult(await inspectConfig(connection, a))
+      const feed = feedConnection(connection)
+      const t = await resolveTarget(connection, feed, a)
+      const r = await inspectConfig(connection, t.config)
+      if (id !== runId.current) return
+      setTarget(t)
+      setResult(r)
+      if (t.pool) {
+        setStatus('loading')
+        poolStatus(connection, t, feed).then(
+          (st) => id === runId.current && setStatus(st),
+          () => id === runId.current && setStatus('error'),
+        )
+      }
     } catch (e) {
+      if (id !== runId.current) return
       setResult(null)
+      setTarget(null)
       setError((e as Error).message)
     } finally {
-      setBusy(false)
+      if (id === runId.current) setBusy(false)
     }
   }
 
@@ -90,11 +119,12 @@ export function Inspector() {
 
   return (
     <section className="detail" id="inspect">
-      <p className="eyebrow">Config inspector · mainnet · read-only</p>
-      <h2>Read any DBC config before you launch on it</h2>
+      <p className="eyebrow">Inspector · mainnet · read-only</p>
+      <h2>Check a DBC token or config before you buy or launch</h2>
       <p className="lede">
-        Paste the config address of any launchpad on Meteora DBC. curvebook reads the account from mainnet, walks its curve with the SDK math, decodes the fee schedule,
-        migration and LP lock, and finds the closest curvebook preset. Nothing is signed.
+        Paste a token address, its DBC pool, or a launchpad's config. curvebook finds the config that governs the pool, reads it from mainnet, walks its curve with the SDK
+        math and decodes the fee schedule, migration and LP lock. For a token that already graduated it also reads the migration transaction and the DAMM pool today, to
+        show how much of the liquidity it graduated with is still there. Nothing is signed.
       </p>
       <form
         className="inspect-form"
@@ -103,29 +133,38 @@ export function Inspector() {
           if (address.trim()) run(address)
         }}
       >
-        <input value={address} onChange={(e) => setAddress(e.target.value)} placeholder="DBC config address" spellCheck={false} aria-label="DBC config address" />
+        <input value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Token, DBC pool or config address" spellCheck={false} aria-label="Token, DBC pool or config address" />
         <button className="primary" disabled={busy || !address.trim()}>
-          {busy ? 'Reading…' : 'Inspect'}
+          {busy ? 'Reading…' : 'Check'}
         </button>
       </form>
       <div className="chips">
-        <span className="hint">Try:</span>
+        <span className="hint">Try a token:</span>
+        {EXAMPLES.map(([label, a]) => (
+          <button key={a} type="button" onClick={() => run(a)}>
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="chips">
+        <span className="hint">or a config:</span>
         {Object.entries(deployed).map(([id, d]) => (
           <button key={id} type="button" onClick={() => run(d.config)}>
             {PRESETS.find((p) => p.id === id)?.name}
           </button>
         ))}
-        {scan.configs.slice(0, 3).map((c, i) => (
+        {scan.configs.slice(0, 1).map((c, i) => (
           <button key={c.config} type="button" onClick={() => run(c.config)}>
             #{i + 1} most graduated
           </button>
         ))}
       </div>
       {error && <pre className="status err">{error}</pre>}
+      {result && target && target.kind !== 'config' && <TokenPanel target={target} status={status} />}
       {result && (
         <div className="panel flags" aria-label="Risk flags">
           <p className="eyebrow">
-            Before you buy ·{' '}
+            {target && target.kind !== 'config' ? 'Its config' : 'Before you buy'} ·{' '}
             {result.flags.some((f) => f.severity === 'red')
               ? 'red flags on this config'
               : result.flags.some((f) => f.severity === 'warn')
@@ -278,5 +317,45 @@ export function Inspector() {
       <OutcomesTable />
       <Methodology rows={scan.allConfigs} sample={scan.classification.sample} window={scan.window} />
     </section>
+  )
+}
+
+function TokenPanel({ target, status }: { target: Target; status: PoolStatus | null | 'loading' | 'error' }) {
+  const g = status && typeof status === 'object' ? status.graduation : undefined
+  const gone = g?.gonePct ?? null
+  return (
+    <div className="panel flags" aria-label="This token">
+      <p className="eyebrow">This token</p>
+      <p className="hint">
+        {target.baseMint && (
+          <>
+            Token <a href={sol('token', target.baseMint)}>{short(target.baseMint)}</a> ·{' '}
+          </>
+        )}
+        DBC pool <a href={sol('account', target.pool!)}>{short(target.pool!)}</a> · config <a href={sol('account', target.config)}>{short(target.config)}</a>
+      </p>
+      {status === 'loading' && <p className="hint">Reading the pool and its graduation…</p>}
+      {status === 'error' && <p className="hint">Could not read this pool's graduation right now. The config checks below still apply.</p>}
+      {status && typeof status === 'object' && !status.migrated && (
+        <p>
+          Still on the bonding curve: {(status.progress * 100).toFixed(2)}% of the way to graduation. The checks below say what happens to its liquidity when it
+          graduates.
+        </p>
+      )}
+      {status && typeof status === 'object' && status.migrated && !g && (
+        <p className="hint">Graduated, but its migration transaction is not among the pool's 25 most recent, so the liquidity check is skipped.</p>
+      )}
+      {g && (
+        <ul>
+          <li className={`flag ${gone === null ? 'info' : gone >= 50 ? 'red' : gone >= 10 ? 'warn' : 'info'}`}>
+            <b>{gone === null ? 'Liquidity today could not be read' : `${gone >= 10 ? Math.round(gone) : +gone.toFixed(1)}% of the liquidity it graduated with is gone`}</b>{' '}
+            Graduated {new Date(g.time * 1000).toISOString().slice(0, 16).replace('T', ' ')} UTC to DAMM {g.kind === 'damm_v2' ? 'v2' : 'v1'} pool{' '}
+            <a href={sol('account', g.dammPool)}>{short(g.dammPool)}</a> (<a href={sol('tx', g.signature)}>migration</a>).{' '}
+            {g.lockedNowPct !== undefined && `Today ${+g.lockedNowPct.toFixed(1)}% of the pool's liquidity is permanently locked. `}
+            Liquidity added since by anyone offsets the loss, so the real loss is at least this much.
+          </li>
+        </ul>
+      )}
+    </div>
   )
 }
