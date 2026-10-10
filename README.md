@@ -81,7 +81,19 @@ Created 2026-10-05 by `scripts/deploy-configs.ts`. Each is a DBC config account 
 | long-curve | [6aHuAvXw…](https://solscan.io/account/6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93) | [tx](https://solscan.io/tx/4BAY6KjyytTGNsuoirHwNHz6Aq1DLaZKbvFHAsLiP298PsuWcy4TbP6ey7x4bXtdLd264BDTyEsM5PD4PoDTL1sT) |
 | stock-pair-usdc | [4i2iNBaH…](https://solscan.io/account/4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU) | [tx](https://solscan.io/tx/2kx3rPKoDfyi7qTceiFB94mpYHMtxfh85aRYhFiDgRq6VLqJqPUC9VzmvM4QhN73kCHQh1g2mggH669Y425JEws) |
 
-No mainnet token has been launched on them yet.
+### First real launch (2026-10-10)
+
+`scripts/mainnet-launch.ts` (dry run by default, `SEND=1` to send) launched CBK on flat-fair and bought 0.01 SOL of it.
+Pool [4ikgpisQ…](https://solscan.io/account/4ikgpisQo83h3wBwtaqW8mhRuHbjM9L2egv9Fq7XY1zd),
+mint [9yVLMokY…](https://solscan.io/token/9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FKPxZZ6gfS),
+[createPool tx](https://solscan.io/tx/5ieP6wibq9FN1vC5fGXwAFrZkKBEjeHQ27ZFnMSyeg6p2PBQ8vDL5WhZnnAwZHYfjTKFKsZcjHjN8KH1dsrZw3Pu),
+[buy tx](https://solscan.io/tx/2UtVTgnBaEh59h3Cz72VCYo9EvwN3idg7CvptUoPXd6gsPF88vedSFMHrgNyvSLichGkxHmK9VjKfFLW86DwURSn).
+Curve progress 2.08%, total cost 0.0421 SOL ([mainnet-launch.json](mainnet-launch.json)).
+
+### Read-back check
+
+`npx tsx scripts/verify-mainnet.ts` reads each config account from mainnet (read-only) and compares it field by field with its preset:
+4 configs, 80 checks, 0 failures ([mainnet-verify.json](mainnet-verify.json)).
 
 ### Launch + first buy, simulated on mainnet
 

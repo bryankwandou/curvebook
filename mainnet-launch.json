@@ -1,0 +1,13 @@
+{
+  "cluster": "mainnet-beta",
+  "ranAt": "2026-10-10T02:38:37.943Z",
+  "preset": "flat-fair",
+  "config": "7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK",
+  "pool": "4ikgpisQo83h3wBwtaqW8mhRuHbjM9L2egv9Fq7XY1zd",
+  "mint": "9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FKPxZZ6gfS",
+  "createPool": "5ieP6wibq9FN1vC5fGXwAFrZkKBEjeHQ27ZFnMSyeg6p2PBQ8vDL5WhZnnAwZHYfjTKFKsZcjHjN8KH1dsrZw3Pu",
+  "buy": "2UtVTgnBaEh59h3Cz72VCYo9EvwN3idg7CvptUoPXd6gsPF88vedSFMHrgNyvSLichGkxHmK9VjKfFLW86DwURSn",
+  "buySol": 0.01,
+  "curveProgress": 0.020807883407631598,
+  "spentSol": 0.04208508
+}

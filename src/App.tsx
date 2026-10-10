@@ -9,6 +9,8 @@ import { ForkButton, LaunchForm, PoolFeed } from './components/Actions'
 import proof from '../devnet-proof.json'
 import fuzz from '../fuzz-report.json'
 import sim from '../mainnet-sim.json'
+import launch from '../mainnet-launch.json'
+import verify from '../mainnet-verify.json'
 import './App.css'
 
 const COLORS: Record<string, string> = {
@@ -265,6 +267,24 @@ function MainnetProof() {
                 </tr>
               ) : null
             })}
+          </tbody>
+        </table>
+      </div>
+      <h3>Real launch on mainnet</h3>
+      <p className="lede">
+        {launch.ranAt.slice(0, 10)}: a CBK token launched on the live {launch.preset} config with <code>scripts/mainnet-launch.ts</code>, then a {launch.buySol} SOL buy.
+        Curve progress after the buy: {(launch.curveProgress * 100).toFixed(2)}%.{' '}
+        <code>scripts/verify-mainnet.ts</code> reads every config back from mainnet and checks it against its preset:{' '}
+        {verify.configs.reduce((n: number, c: { checks: number }) => n + c.checks, 0)} checks,{' '}
+        {verify.configs.reduce((n: number, c: { failed: unknown[] }) => n + c.failed.length, 0)} failures.
+      </p>
+      <div className="panel">
+        <table className="pools">
+          <tbody>
+            <tr><td>Pool</td><td><a href={mn('account', launch.pool)}>{launch.pool.slice(0, 8)}…</a></td></tr>
+            <tr><td>Mint</td><td><a href={mn('token', launch.mint)}>{launch.mint.slice(0, 8)}…</a></td></tr>
+            <tr><td>createPool tx</td><td><a href={mn('tx', launch.createPool)}>{launch.createPool.slice(0, 8)}…</a></td></tr>
+            <tr><td>Buy tx</td><td><a href={mn('tx', launch.buy)}>{launch.buy.slice(0, 8)}…</a></td></tr>
           </tbody>
         </table>
       </div>
