@@ -65,6 +65,12 @@ test('lp-outcomes.json: classes add up, and the control (all LP locked) mostly s
   for (const c of classes) assert.ok(c.lostHalfOrMore <= c.graduations)
   // if pools on fully locked configs lose liquidity often, the measurement is broken, not the pools
   assert.ok(o.byClass.locked.lostHalfOrMore <= o.byClass.locked.graduations * 0.1, `control: ${o.byClass.locked.lostHalfOrMore} of ${o.byClass.locked.graduations}`)
+  // pull times: every timed pool is counted once, and the windows nest
+  const p = o.pulls
+  assert.equal(p.found + p.later, p.pools)
+  assert.ok(p.within10Minutes <= p.withinHour && p.withinHour <= p.withinDay && p.withinDay <= p.found)
+  assert.ok(p.pools <= o.byKind.damm_v2.graduations)
+  for (const c of o.byConfig) assert.ok(c.lostHalfOrMore <= c.graduations && o.byClass[c.cls], c.config)
 })
 
 // 3. on-chain proof files agree with each other

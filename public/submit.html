@@ -41,22 +41,22 @@ const F = [
 curvebook: paste any DBC config, see what its curve, fees and LP lock really do. Or launch on presets built for price discovery, live on mainnet.
 
 https://curvebook-kappa.vercel.app/demo`, 'Post this on X with the button, then paste the tweet URL into Tweet Link above. Attach demo.mp4 for an inline video if you can.', 'x'],
-  ['Tweet 2: the liquidity finding (not a form field)', `62% of 1,792 @MeteoraAG DBC graduations came from configs leaving most of the LP withdrawable.
+  ['Tweet 2: the liquidity finding (not a form field)', `61% of 1,784 @MeteoraAG DBC graduations came from configs leaving most of the LP withdrawable.
 
-71% of those pools have since lost half or more of their liquidity. Fully locked configs: 2%.
+71% of those pools lost half or more of their liquidity. Fully locked: 2%.
 
-One pool was emptied 3 min after graduating.
+At least 86 pools lost it within 10 min of graduating.
 
-Check a config: https://curvebook-kappa.vercel.app`, 'Post it, then reply to your first tweet with its link so both stay together.', 'x'],
-  ['Post for the Meteora dev Discord / Telegram (not a form field)', `Built a free, read-only pre-launch check for DBC configs: https://curvebook-kappa.vercel.app
+Check a token: https://curvebook-kappa.vercel.app`, 'Post it, then reply to your first tweet with its link so both stay together.', 'x'],
+  ['Post for the Meteora dev Discord / Telegram (not a form field)', `Built a free, read-only check for DBC tokens and configs: https://curvebook-kappa.vercel.app
 
-Paste a config address and it flags mint authority, LP that is not permanently locked, fees that never decay, creator vesting and sniper advantage. Same check from a terminal or CI: npx tsx scripts/check.ts <config> (exit 1 on a red flag). Repo: https://github.com/bryankwandou/curvebook
+Paste a token, DBC pool or config address and it flags mint authority, LP that is not permanently locked, fees that never decay, creator vesting and sniper advantage; for a graduated token it shows how much of the graduation liquidity is gone. Same report as JSON for terminals (GET /api/check?address=...) and from CI: npx tsx scripts/check.ts <config> (exit 1 on a red flag). Repo: https://github.com/bryankwandou/curvebook
 
-Data behind it: of 1,792 recent graduations, 62% were on configs leaving most of the LP withdrawable, and 71% of those pools have since lost half their liquidity (2% on fully locked configs). Method and control are on the site.
+Data behind it: of 1,784 recent graduations, 61% were on configs leaving most of the LP withdrawable, and 71% of those pools have since lost half their liquidity (2% on fully locked configs). In at least 86 DAMM v2 pools it left within 10 minutes of graduating. Method and control are on the site.
 
 If you run a launchpad on DBC, I'd value 2 minutes: run it on your config and tell me what it gets wrong or misses.`, 'Discord: discord.com/channels/841152225564950528/864859354335412224 · Telegram: t.me/meteora_dev (both from the listing). Answer replies yourself; their feedback is the traction.'],
   ['Project Name', 'curvebook'],
-  ['Project Description', `We decoded the config behind 1,792 recent DBC graduations on mainnet. 1,103 of them (62%) came from configs that leave half or more of the graduation LP withdrawable by the launchpad or creator. We then checked each pool's DAMM liquidity today: 71% of those have since lost half or more of the liquidity they graduated with. On configs that lock all LP, 2%. One pool had all of its liquidity removed 3 minutes 23 seconds after graduating. None of this is visible without decoding the config account.
+  ['Project Description', `We decoded the config behind 1,784 recent DBC graduations on mainnet. 1,095 of them (61%) came from configs that leave half or more of the graduation LP withdrawable by the launchpad or creator. We then checked each pool's DAMM liquidity today: 71% of those have since lost half or more of the liquidity they graduated with. On configs that lock all LP, 2%. In at least 86 DAMM v2 pools the liquidity was removed within 10 minutes of graduating (median 2.7 minutes where we found the removal); one had all of it removed 3 minutes 23 seconds after graduating. None of this is visible without decoding the config account.
 
 curvebook is a check for DBC tokens and configs. Paste a token, its pool, or a launchpad's config: it finds the config, reads it from mainnet, walks the curve with the SDK math, and flags what matters to a buyer: mint authority kept, LP not permanently locked, fees that never decay, supply vesting to the creator, migration fees, and how far ahead early buyers are at graduation. For a token that already graduated it reads the migration transaction and the DAMM pool today and shows how much of the liquidity is gone. The same report is a free JSON API and an SVG badge for trading terminals and launchpads (/api/check, /api/badge, CORS open), and a CLI that exits 1 on a red flag, so a launchpad can gate its configs in CI. Every report has a shareable link.
 

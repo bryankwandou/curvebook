@@ -3,13 +3,15 @@
 Pre-launch checks and launch-curve data for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc). Live: https://curvebook-kappa.vercel.app
 
 A DBC config fixes, for every pool launched on it, the curve, the fees, who can mint, and how much of the
-graduation liquidity stays locked. In the 2026-10-10 scan of 1,792 mainnet graduations, 1,103 (62%) came from configs
+graduation liquidity stays locked. In the 2026-10-10 scan of 1,784 mainnet graduations, 1,095 (61%) came from configs
 that leave half or more of the graduation LP withdrawable by the launchpad or creator. 71% of those pools have since
 lost half or more of the liquidity they graduated with, against 2% of pools on configs that lock all of it
-([what happened to the liquidity](#what-happened-to-the-liquidity)). None of it is visible without decoding the config account.
+([what happened to the liquidity](#what-happened-to-the-liquidity)). In at least 86 DAMM v2 pools it was removed within
+10 minutes of graduating. None of it is visible without decoding the config account.
 
-curvebook decodes it: the [Inspector](#config-inspector) in the browser and [`scripts/check.ts`](#pre-launch-check-cli-and-ci)
-in a terminal or CI flag what matters to a buyer. Four [presets](#presets) that pass every check are live on mainnet
+curvebook decodes it for any token, DBC pool or config: the [Inspector](#config-inspector) in the browser, a
+[JSON API and badge](#api-for-terminals-and-launchpads) for trading terminals, and [`scripts/check.ts`](#pre-launch-check-cli-and-ci)
+in a terminal or CI flag what matters to a buyer, and for a graduated token show how much of its liquidity is gone. Four [presets](#presets) that pass every check are live on mainnet
 for launchpads that want a clean starting point.
 
 ## Presets
@@ -221,8 +223,9 @@ since hides withdrawals, so losses are a lower bound. Result on 2026-10-10 ([lp-
 
 | Config leaves | Graduations | Lost half or more of their graduation liquidity |
 |---|---|---|
-| 50%+ of LP withdrawable, no vesting | 917 | 607 (66%) |
-| 50%+ of LP withdrawable, with a vesting schedule | 186 | 176 (95%) |
+| 50%+ of LP withdrawable, no vesting | 918 | 609 (66%) |
+| 50%+ of LP withdrawable, with a vesting schedule | 177 | 172 (97%) |
+| 1–49% of LP withdrawable | 1 | 0 |
 | 100% of LP permanently locked (control) | 675 | 14 (2%) |
 
 Checked by hand: two pools on config `36VxV18i…` minted 309.46B LP at migration and have 33.9B left (11%, the locked
@@ -230,6 +233,16 @@ share); two on `CSsWETyM…` have 3.2% left (3% locked). DAMM v2 pool `BtERBHLy�
 and `removeAllLiquidity` ran at 13:53:31. The control is not perfect: 14 pools on fully locked configs, nearly all on a
 few older DAMM v1 configs, also lost liquidity; they are reported, not dropped. `npm test` fails if the control's loss
 rate goes above 10%.
+
+**How soon.** For the 229 DAMM v2 pools that lost half or more, the script walks the DAMM pool's transactions from the
+migration forward and finds the first `removeLiquidity` or `removeAllLiquidity` (outer or CPI; the pool, so a removal
+from a split-off position is still caught). In 105 it is among the first 40 transactions: median 2.7 minutes after
+graduating, 86 within 10 minutes, 97 within the hour. The other 124 were removed later than their 40th transaction, so
+"at least 86 within 10 minutes" is a lower bound. DAMM v1 pools are not timed.
+
+**Per config.** `byConfig` in the same file lists the 25 configs with the most graduations. A withdrawable LP is a
+permission, not a verdict: `9q4yEJsV…` leaves it withdrawable and none of its 57 pools lost half, while `CSsWETyM…`
+lost half or more in all 197.
 
 ## API for terminals and launchpads
 
