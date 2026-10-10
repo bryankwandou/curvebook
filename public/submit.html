@@ -36,16 +36,15 @@ const SITE = 'https://curvebook-kappa.vercel.app'
 const F = [
   ['Link to Your Submission', SITE + '/demo', 'Demo video page, with links to the app, the on-chain run and GitHub.'],
   ['Tweet Link', '', 'Optional. Leave empty, or paste your own announcement tweet.'],
-  ['Tweet text (not a form field)', `curvebook: a preset marketplace for @MeteoraAG Dynamic Bonding Curve configs.
+  ['Tweet text (not a form field)', `517 of the last 1,792 @MeteoraAG DBC graduations were direct listings: price moved 1.2x or less.
 
-4 launch curves live on Solana mainnet (flat fair, anti-snipe, long curve, USDC stock pair), first token launched on one.
+curvebook: paste any DBC config, see what its curve, fees and LP lock really do. Or launch on presets built for price discovery, live on mainnet.
 
-Pick a curve. Launch on it. Or fork it.
 https://curvebook-kappa.vercel.app/demo`, 'Post this on X with the button, then paste the tweet URL into Tweet Link above. Attach demo.mp4 for an inline video if you can.', 'x'],
   ['Project Name', 'curvebook'],
-  ['Project Description', `Live on Solana mainnet: 4 preset DBC configs, and a first token launched on one of them.
+  ['Project Description', `We read the latest 1,792 DBC graduations on mainnet: 517 came from configs that move price 1.2x or less or graduate at under 0.01 SOL. Those are direct listings, not price discovery.
 
-curvebook is a preset marketplace and inspector for Meteora Dynamic Bonding Curve configs. Most launchpads copy one pump-style curve. curvebook packages full configs (curve shape, fee schedule, quote token, graduation threshold, LP lock, DAMM v2 migration) as presets you can compare on one chart and launch on in one transaction.
+curvebook shows what a launch curve actually does before you launch on it. The Config Inspector reads any DBC config from mainnet and decodes its curve, fees, migration and LP lock. Then curvebook offers presets tuned for real price discovery, live on mainnet. It packages full configs (curve shape, fee schedule, quote token, graduation threshold, LP lock, DAMM v2 migration) as presets you can compare on one chart and launch on in one transaction.
 
 Presets:
 - Flat Fair Launch (SOL): equal liquidity in all 16 segments, 5x from open to graduation.
@@ -55,9 +54,9 @@ Presets:
 
 Pay-to-use uses DBC's own fee-claimer: launching on a preset pays its author the pool-creation fee and a share of trading fees. A launchpad can also deploy the same curve under its own wallet with one createConfig. The Builder tunes every parameter and checks it with the SDK validator.
 
-Config Inspector: paste any DBC config address and the site reads it from mainnet, decodes curve, fees, migration and LP lock, and names the closest preset. A scan of the latest 1,792 mainnet graduations ranks the configs that actually graduate.
-
 What you can check:
+- 4 preset configs live on mainnet and a first token launched on one
+- graduation scan: every config named by the migrate instruction itself; top 8 re-verified on-chain
 - 80/80 read-back checks of the 4 live configs (scripts/verify-mainnet.ts)
 - first mainnet launch plus a 0.01 SOL buy; a third-party wallet traded the pool within seconds and paid the preset author 0.016 SOL in fees
 - full lifecycle on devnet: buy to 100%, migrateToDammV2, DAMM v2 pool with both LP positions 100% permanently locked
