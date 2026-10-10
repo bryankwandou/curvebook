@@ -6,17 +6,10 @@
 //   npx tsx scripts/scan-graduations.ts        (PER_ADDRESS=100 signatures per migration config, RPC=... optional)
 //   RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDRESS=200 npx tsx scripts/scan-graduations.ts
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-import {
-  DAMM_V1_MIGRATION_FEE_ADDRESS,
-  DAMM_V2_MIGRATION_FEE_ADDRESS,
-  DYNAMIC_BONDING_CURVE_PROGRAM_ID,
-  DynamicBondingCurveIdl,
-  createDammV2Program,
-  createDbcProgram,
-} from '@meteora-ag/dynamic-bonding-curve-sdk'
+import { DAMM_V1_MIGRATION_FEE_ADDRESS, DAMM_V2_MIGRATION_FEE_ADDRESS, createDbcProgram } from '@meteora-ag/dynamic-bonding-curve-sdk'
 import { Connection, PublicKey, type ConfirmedSignatureInfo } from '@solana/web3.js'
-import bs58 from 'bs58'
 import { inspectConfig } from '../src/lib/inspect'
+import { findMigrations, rawTransaction, type Migration } from '../src/lib/migration'
 
 const RPC = process.env.RPC ?? 'https://api.mainnet-beta.solana.com'
 const connection = new Connection(RPC, 'confirmed')
@@ -25,10 +18,6 @@ const TOP = 8
 // the public RPC rate-limits getTransaction hard (1 at a time, 700 ms apart); a private RPC can take CONCURRENCY=8 DELAY=100
 const CONCURRENCY = Number(process.env.CONCURRENCY ?? 1)
 const DELAY = Number(process.env.DELAY ?? 700)
-// 8-byte instruction discriminators of the two migrate instructions, from the program IDL
-const MIGRATE = DynamicBondingCurveIdl.instructions
-  .filter((i) => i.name === 'migration_damm_v2' || i.name === 'migrate_meteora_damm')
-  .map((i) => Buffer.from(i.discriminator).toString('hex'))
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 async function retry<T>(f: () => Promise<T>): Promise<T> {
@@ -42,18 +31,6 @@ async function retry<T>(f: () => Promise<T>): Promise<T> {
   }
 }
 
-async function rawTransaction(signature: string) {
-  const res = await fetch(RPC, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'getTransaction', params: [signature, { encoding: 'json', maxSupportedTransactionVersion: 1, commitment: 'confirmed' }] }),
-  })
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  const body = await res.json()
-  if (body.error) throw new Error(body.error.message)
-  return body.result
-}
-
 const sigs = new Map<string, ConfirmedSignatureInfo>()
 // the sample is complete from coveredSince on: every migration config that hit the PER_ADDRESS limit reaches back at least that far
 let coveredSince = 0
@@ -64,78 +41,14 @@ for (const a of [...DAMM_V2_MIGRATION_FEE_ADDRESS, ...DAMM_V1_MIGRATION_FEE_ADDR
 }
 console.log(`${sigs.size} successful transactions on the migration configs`)
 
-// what each migration put where, for scripts/lp-outcomes.ts: per-position DAMM v2 liquidity from the DAMM events in the
-// migration transaction, or the DAMM v1 LP mint and the LP amount minted at migration
-interface Migration {
-  kind: 'damm_v2' | 'damm_v1'
-  dammPool?: string
-  positions?: { position: string; liquidity: string; permanentLocked: string }[]
-  lpMint?: string
-  lpMinted?: string
-}
-const MIGRATE_V2 = Buffer.from(DynamicBondingCurveIdl.instructions.find((i) => i.name === 'migration_damm_v2')!.discriminator).toString('hex')
-const DAMM_V2 = 'cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG'
-const dammCoder = (createDammV2Program(connection) as any).coder
-function migrationDetails(tx: any, keys: string[], ix: { accounts: number[] }, v2: boolean): Migration {
-  if (!v2) {
-    const lpAccount = keys[ix.accounts[19]]
-    const bal = tx.meta.postTokenBalances?.find((b: any) => keys[b.accountIndex] === lpAccount)
-    return { kind: 'damm_v1', dammPool: keys[ix.accounts[4]], lpMint: keys[ix.accounts[6]], lpMinted: bal?.uiTokenAmount.amount }
-  }
-  const liquidity = new Map<string, bigint>()
-  const locked = new Map<string, bigint>()
-  let current = ''
-  for (const inner of tx.meta.innerInstructions ?? [])
-    for (const ii of inner.instructions) {
-      if (keys[ii.programIdIndex] !== DAMM_V2) continue
-      const data = Buffer.from(bs58.decode(ii.data))
-      if (data.length < 16) continue
-      let e: { name: string; data: any } | null = null
-      try {
-        e = dammCoder.events.decode(data.subarray(8).toString('base64'))
-      } catch {
-        continue
-      }
-      if (!e) continue
-      const add = (m: Map<string, bigint>, k: string, v: { toString(): string }) => m.set(k, (m.get(k) ?? 0n) + BigInt(v.toString()))
-      if (e.name === 'evtCreatePosition') current = e.data.position.toBase58()
-      else if (e.name === 'evtInitializePool') add(liquidity, current, e.data.liquidity)
-      else if (e.name === 'evtLiquidityChange' && e.data.changeType === 0) add(liquidity, e.data.position.toBase58(), e.data.liquidityDelta)
-      else if (e.name === 'evtPermanentLockPosition') add(locked, e.data.position.toBase58(), e.data.lockLiquidityAmount)
-    }
-  return {
-    kind: 'damm_v2',
-    dammPool: keys[ix.accounts[4]],
-    positions: [keys[ix.accounts[7]], keys[ix.accounts[10]]].map((p) => ({
-      position: p,
-      liquidity: (liquidity.get(p) ?? 0n).toString(),
-      permanentLocked: (locked.get(p) ?? 0n).toString(),
-    })),
-  }
-}
-
-const graduations: ({ config: string; pool: string; time: number; signature: string } & Migration)[] = []
+// what each migration put where (src/lib/migration.ts, shared with the site): input of scripts/lp-outcomes.ts
+const graduations: ({ time: number; signature: string } & Migration)[] = []
 const list = [...sigs.values()]
 for (let i = 0; i < list.length; i += CONCURRENCY) {
   await Promise.all(
     list.slice(i, i + CONCURRENCY).map(async (s) => {
-      // raw JSON-RPC: version-agnostic, so transactions in formats web3.js 1.x cannot parse are still read
-      const tx = await retry(() => rawTransaction(s.signature))
-      if (!tx?.meta) return
-      const m = tx.transaction.message
-      const keys: string[] = [...m.accountKeys, ...tx.meta.loadedAddresses.writable, ...tx.meta.loadedAddresses.readonly]
-      for (const ix of m.instructions as { programIdIndex: number; accounts: number[]; data: string }[]) {
-        if (keys[ix.programIdIndex] !== DYNAMIC_BONDING_CURVE_PROGRAM_ID.toBase58()) continue
-        const disc = Buffer.from(bs58.decode(ix.data).subarray(0, 8)).toString('hex')
-        if (!MIGRATE.includes(disc)) continue
-        graduations.push({
-          config: keys[ix.accounts[2]],
-          pool: keys[ix.accounts[0]],
-          time: s.blockTime ?? 0,
-          signature: s.signature,
-          ...migrationDetails(tx, keys, ix, disc === MIGRATE_V2),
-        })
-      }
+      const tx = await retry(() => rawTransaction(RPC, s.signature))
+      for (const m of findMigrations(tx, connection)) graduations.push({ ...m, time: s.blockTime ?? 0, signature: s.signature })
     }),
   )
   await sleep(DELAY)
