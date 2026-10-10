@@ -1,5 +1,5 @@
 import { useConnection } from '@solana/wallet-adapter-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import deployed from '../deployed.json'
 import scanJson from '../../graduated-configs.json'
 import { inspectConfig, type Inspection } from '../lib/inspect'
@@ -25,7 +25,10 @@ type Scan = {
   graduatedPools: number
   distinctConfigs: number
   window: { from: string; to: string }
-  classification: { all: { graduations: number; listings: number; undecoded: number } }
+  classification: {
+    all: { graduations: number; listings: number; undecoded: number }
+    safety?: { lpMostlyWithdrawable: number; lpAllLocked: number; mintAuthorityKept: number }
+  }
   configs: ScanRow[]
 }
 const scanBundled = scanJson as unknown as Scan
@@ -40,9 +43,23 @@ export function Inspector() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState<Inspection | null>(null)
+  const [copied, setCopied] = useState(false)
+
+  // ?config=<address> opens the site on that config's report, so a report can be shared as a link
+  useEffect(() => {
+    const a = new URLSearchParams(location.search).get('config')
+    if (a) {
+      run(a)
+      document.getElementById('inspect')?.scrollIntoView()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   async function run(a: string) {
+    a = a.trim()
     setAddress(a)
+    setCopied(false)
+    history.replaceState(null, '', `?config=${encodeURIComponent(a)}#inspect`)
     setBusy(true)
     setError('')
     try {
@@ -102,8 +119,46 @@ export function Inspector() {
       </div>
       {error && <pre className="status err">{error}</pre>}
       {result && (
+        <div className="panel flags" aria-label="Risk flags">
+          <p className="eyebrow">
+            Before you buy ·{' '}
+            {result.flags.some((f) => f.severity === 'red')
+              ? 'red flags on this config'
+              : result.flags.some((f) => f.severity === 'warn')
+                ? 'warnings, no red flags'
+                : 'no red flags'}
+          </p>
+          {result.flags.length ? (
+            <ul>
+              {result.flags.map((f) => (
+                <li key={f.title} className={`flag ${f.severity}`}>
+                  <b>{f.title}</b> {f.detail}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="hint">Mint authority revoked, LP 100% permanently locked, no high fee, no creator vesting, no strong sniper advantage.</p>
+          )}
+          <p className="hint">
+            Same checks from a terminal or CI: <code>npx tsx scripts/check.ts {short(result.address)}</code>
+          </p>
+        </div>
+      )}
+      {result && (
         <div className="detail-grid">
           <div className="panel">
+            <p className="hint">
+              Report for <a href={sol('account', result.address)}>{short(result.address)}</a> ·{' '}
+              <button
+                type="button"
+                className="link"
+                onClick={() => {
+                  navigator.clipboard.writeText(`${location.origin}/?config=${result.address}#inspect`).then(() => setCopied(true), () => {})
+                }}
+              >
+                {copied ? 'link copied' : 'copy link to this report'}
+              </button>
+            </p>
             <CurveChart series={chart} />
             <ul className="legend">
               {chart.map((s) => (
@@ -168,7 +223,9 @@ export function Inspector() {
         <code>scripts/scan-graduations.ts</code> takes the latest 200 transactions on each of Meteora's DAMM migration configs (every DBC graduation passes one),
         finds the DBC config named by each migrate instruction, and decodes every config: {scan.graduatedPools.toLocaleString('en-US')} graduated pools across{' '}
         {scan.distinctConfigs} configs, {scan.window.from.slice(0, 10)} to {scan.window.to.slice(0, 10)}. {scan.classification.all.listings.toLocaleString('en-US')} of them came from
-        configs where price moves 1.25x or less or that graduate on under 0.01 of the quote token ({scan.classification.all.undecoded} could not be decoded). Busy
+        configs where price moves 1.25x or less or that graduate on under 0.01 of the quote token ({scan.classification.all.undecoded} could not be decoded).
+        {scan.classification.safety &&
+          ` ${scan.classification.safety.lpMostlyWithdrawable.toLocaleString('en-US')} came from configs that leave half or more of the graduation LP withdrawable with no vesting; ${scan.classification.safety.lpAllLocked.toLocaleString('en-US')} from configs that lock all of it.`} Busy
         migration configs cover days and quiet ones months, so this is a sample, not a time series. The scan reruns daily in GitHub Actions; this copy is from {scan.ranAt.slice(0, 10)}. Top configs below; click a row to inspect it.
       </p>
       <div className="panel scroll-x">
@@ -207,7 +264,7 @@ export function Inspector() {
                 <td>{fmt(c.multiplier, 1)}x</td>
                 <td>{c.earlyBuyerMultiple.toFixed(1)}x</td>
                 <td>{c.fee}</td>
-                <td>{c.lpLockedPct}%</td>
+                <td className={c.lpLockedPct <= 50 ? 'bad' : undefined}>{c.lpLockedPct}%</td>
                 <td>{c.closestGap < 0.25 ? c.closest : 'none close'}</td>
               </tr>
             ))}

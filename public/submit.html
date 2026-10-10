@@ -35,40 +35,36 @@
 const SITE = 'https://curvebook-kappa.vercel.app'
 const F = [
   ['Link to Your Submission', SITE + '/demo', 'Demo video page, with links to the app, the on-chain run and GitHub.'],
-  ['Tweet Link', '', 'Optional. Leave empty, or paste your own announcement tweet.'],
+  ['Tweet Link', 'https://x.com/nayrbryanGaming/status/2108845716999422019'],
   ['Tweet text (not a form field)', `62% of 1,787 @MeteoraAG DBC graduations we decoded were direct listings: price moved 1.25x or less.
 
 curvebook: paste any DBC config, see what its curve, fees and LP lock really do. Or launch on presets built for price discovery, live on mainnet.
 
 https://curvebook-kappa.vercel.app/demo`, 'Post this on X with the button, then paste the tweet URL into Tweet Link above. Attach demo.mp4 for an inline video if you can.', 'x'],
   ['Project Name', 'curvebook'],
-  ['Project Description', `We read 1,787 DBC graduations on mainnet and decoded every config behind them: 1,111 (62%) came from configs where price moves 1.25x or less, or that graduate on under 0.01 of the quote token. Those are direct listings, not price discovery.
+  ['Project Description', `We decoded the config behind 1,790 recent DBC graduations on mainnet. 916 of them (51%) came from configs that leave half or more of the graduation LP withdrawable by the launchpad or creator, with no vesting. Only 675 (38%) lock all of it. 61% were direct listings: price moves 1.25x or less, or graduation needs under 0.01 of the quote token. None of it is visible without decoding the config account.
 
-curvebook shows what a launch curve actually does before you launch on it. The Config Inspector reads any DBC config from mainnet and decodes its curve, fees, migration and LP lock. Then curvebook offers presets tuned for real price discovery, live on mainnet. It packages full configs (curve shape, fee schedule, quote token, graduation threshold, LP lock, DAMM v2 migration) as presets you can compare on one chart and launch on in one transaction.
+curvebook is a pre-launch check for DBC configs. Paste any config address and it reads the account from mainnet, walks the curve with the SDK math, and flags what matters to a buyer: mint authority kept, LP not permanently locked, fees that never decay, supply vesting to the creator, migration fees, and how far ahead early buyers are at graduation. The same checks run from a terminal (scripts/check.ts, exit 1 on a red flag), so a launchpad can gate its configs in CI. Every report has a shareable link.
 
-Presets:
-- Flat Fair Launch (SOL): equal liquidity in all 16 segments, 5x from open to graduation.
-- Early Discovery (SOL): thin bottom, 16x, anti-snipe fee from 25% down to 1% over 120 s.
-- Long Curve (SOL): deep bottom, 20x, 90% of supply sold on the curve.
-- Stock Pair (USDC): narrow 1.8x band at 0.3%, for tokenized equities.
+The scan reruns every day in GitHub Actions and the site reads the latest data, so the numbers above move.
 
-Pay-to-use uses DBC's own fee-claimer: launching on a preset pays its author the pool-creation fee and a share of trading fees. A launchpad can also deploy the same curve under its own wallet with one createConfig. The Builder tunes every parameter and checks it with the SDK validator.
+For launchpads that want a clean starting point, curvebook ships four configs that pass every check, each live on mainnet: Flat Fair (5x), Early Discovery (16x, anti-snipe fee 25% to 1% over 120 s), Long Curve (20x, 90% of supply on the curve), and a narrow USDC band (1.8x). All lock 100% of LP and migrate to DAMM v2. A launchpad can deploy any of them under its own wallet with one createConfig, or launch on ours, which pays the preset author through DBC's fee claimer.
 
-What you can check:
-- 4 preset configs live on mainnet and a first token launched on one
-- graduation scan: each config named by the migrate instruction itself; all 636 configs decoded; 22 of them re-checked on-chain by an independent script
-- 80/80 read-back checks of the 4 live configs (scripts/verify-mainnet.ts)
-- first mainnet launch plus a 0.01 SOL buy; a third-party wallet traded the pool within seconds and paid the preset author 0.016 SOL in fees
-- full lifecycle on devnet: buy to 100%, migrateToDammV2, DAMM v2 pool with both LP positions 100% permanently locked
-- 5,000 randomized curve tests, 0 failures`],
+How we know it works:
+- 4 configs live on mainnet, read back by scripts/verify-mainnet.ts: 80 checks, 0 failures
+- one token launched on mainnet on the Flat Fair config
+- the full lifecycle on devnet: buy to 100%, migrateToDammV2, both DAMM v2 LP positions permanently locked
+- the risk rules are unit-tested, and CI runs lint, build and tests on every push
+
+No users yet beyond us. That is the next step.`],
   ['Project Github Link', 'https://github.com/bryankwandou/curvebook'],
   ['Project Website', SITE],
-  ['Project X Link', '', 'Your X profile link.'],
+  ['Project X Link', 'https://x.com/nayrbryanGaming'],
   ['Link to your pitch deck or Loom/video presentation', SITE + '/demo'],
   ["Did you submit this project to the official Crypto World's Fair Hackathon on Colosseum? (Yes/No)", 'No', 'curvebook is not a Colosseum project. Do not link Commish here.'],
   ['Link to Colosseum project', '', 'Leave empty.'],
-  ["Link to your project's Colosseum profile", '', 'Optional: your own Colosseum profile link, or leave empty.'],
-  ['Anything Else?', `Repo is public. \`npx tsx scripts/verify-presets.ts\` re-runs the SDK validator and the mainnet createConfig simulation for every preset. \`scripts/devnet-proof.ts\` runs config → launch → buy on devnet; results are on ${SITE}/#proof and in devnet-proof.json. Mainnet configs (created by \`scripts/deploy-configs.ts\`): flat-fair 7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK, early-discovery FnKvUoL12VZacUE2k4EwhFXHn2xxhoG1wvQYsfgBSsLT, long-curve 6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93, stock-pair-usdc 4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU. \`N=5000 npx tsx scripts/fuzz-curves.ts\` reproduces the 5,000-case test (fuzz-report.json). \`npx tsx scripts/mainnet-sim.ts\` reproduces the mainnet simulation (mainnet-sim.json). Mainnet launch: \`scripts/mainnet-launch.ts\`, createPool tx 5ieP6wibq9FN1vC5fGXwAFrZkKBEjeHQ27ZFnMSyeg6p2PBQ8vDL5WhZnnAwZHYfjTKFKsZcjHjN8KH1dsrZw3Pu, buy tx 2UtVTgnBaEh59h3Cz72VCYo9EvwN3idg7CvptUoPXd6gsPF88vedSFMHrgNyvSLichGkxHmK9VjKfFLW86DwURSn (mainnet-launch.json). \`npx tsx scripts/verify-mainnet.ts\` re-reads all four configs from mainnet: 80 checks, 0 failures. Graduation: \`scripts/devnet-graduate.ts\` runs createConfig → createPool → buy to 100% → migrateToDammV2 on devnet and reads the DAMM v2 pool and LP positions back (devnet-graduation.json; DAMM v2 pool 5hiCfh8heVN8G14pJtHTU4pF3y5M46SeS81tB8y8qbSS, migrate tx 2Pt9y7zJXyNb94aLv7WRvR9DxjPsv4EhkTkTBLTTUfTNbQ6jhGTiGJSXc63Lu7HsHuXEPuJ3z8YqtfvAT9m4DCJB). Config Inspector: ${SITE}/#inspect reads any DBC config from mainnet in the browser (src/lib/inspect.ts). \`scripts/scan-graduations.ts\` takes the latest 200 transactions on each DAMM migration config, finds the DBC config named by each migrate instruction (IDL discriminator, account #2) and decodes all 636: 1,111 of 1,787 graduations (62%) came from listing-style configs (graduated-configs.json). Busy migration configs cover days and quiet ones months, so it is a sample, not a time series. Demo video (mp4): ${SITE}/x-demo.mp4`],
+  ["Link to your project's Colosseum profile", 'https://colosseum.com/arena/profiles/nayrbryanGaming'],
+  ['Anything Else?', `Repo is public. \`npx tsx scripts/verify-presets.ts\` re-runs the SDK validator and the mainnet createConfig simulation for every preset. \`scripts/devnet-proof.ts\` runs config → launch → buy on devnet; results are on ${SITE}/#proof and in devnet-proof.json. Mainnet configs (created by \`scripts/deploy-configs.ts\`): flat-fair 7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK, early-discovery FnKvUoL12VZacUE2k4EwhFXHn2xxhoG1wvQYsfgBSsLT, long-curve 6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93, stock-pair-usdc 4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU. \`N=5000 npx tsx scripts/fuzz-curves.ts\` reproduces the 5,000-case test (fuzz-report.json). \`npx tsx scripts/mainnet-sim.ts\` reproduces the mainnet simulation (mainnet-sim.json). Mainnet launch: \`scripts/mainnet-launch.ts\`, createPool tx 5ieP6wibq9FN1vC5fGXwAFrZkKBEjeHQ27ZFnMSyeg6p2PBQ8vDL5WhZnnAwZHYfjTKFKsZcjHjN8KH1dsrZw3Pu, buy tx 2UtVTgnBaEh59h3Cz72VCYo9EvwN3idg7CvptUoPXd6gsPF88vedSFMHrgNyvSLichGkxHmK9VjKfFLW86DwURSn (mainnet-launch.json). \`npx tsx scripts/verify-mainnet.ts\` re-reads all four configs from mainnet: 80 checks, 0 failures. Graduation: \`scripts/devnet-graduate.ts\` runs createConfig → createPool → buy to 100% → migrateToDammV2 on devnet and reads the DAMM v2 pool and LP positions back (devnet-graduation.json; DAMM v2 pool 5hiCfh8heVN8G14pJtHTU4pF3y5M46SeS81tB8y8qbSS, migrate tx 2Pt9y7zJXyNb94aLv7WRvR9DxjPsv4EhkTkTBLTTUfTNbQ6jhGTiGJSXc63Lu7HsHuXEPuJ3z8YqtfvAT9m4DCJB). Config Inspector: ${SITE}/#inspect reads any DBC config from mainnet in the browser (src/lib/inspect.ts). \`scripts/scan-graduations.ts\` takes the latest 200 transactions on each DAMM migration config, finds the DBC config named by each migrate instruction (IDL discriminator, account #2) and decodes every config (graduated-configs.json, refreshed daily by .github/workflows/data.yml; the latest numbers are on the site). Pre-launch check from a terminal or CI: npx tsx scripts/check.ts <config> (risk rules in src/lib/risk.ts, unit-tested in scripts/test.ts). Busy migration configs cover days and quiet ones months, so it is a sample, not a time series. Demo video (mp4): ${SITE}/x-demo.mp4`],
 ]
 const root = document.getElementById('fields')
 for (const [label, value, note] of F) {

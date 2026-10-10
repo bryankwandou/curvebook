@@ -1,12 +1,15 @@
 # curvebook
 
-Launch-curve presets for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc). Live: https://curvebook-kappa.vercel.app
-Pick a curve, launch a token on it, or deploy it as your own config inside your launchpad.
+Pre-launch checks and launch-curve data for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc). Live: https://curvebook-kappa.vercel.app
 
-A DBC config holds a lot of decisions: curve shape, fee schedule, quote token, graduation threshold,
-LP split and DAMM v2 migration. Most launchpads copy one pump-style curve and never touch them.
-curvebook packages tuned configs as presets you can compare side by side, and lets you adopt one
-in a single transaction.
+A DBC config fixes, for every pool launched on it, the curve, the fees, who can mint, and how much of the
+graduation liquidity stays locked. In the 2026-10-10 scan of 1,790 mainnet graduations, 916 (51%) came from configs
+that leave half or more of the graduation LP withdrawable by the launchpad or creator with no vesting, and 61% were
+direct listings rather than price discovery. None of it is visible without decoding the config account.
+
+curvebook decodes it: the [Inspector](#config-inspector) in the browser and [`scripts/check.ts`](#pre-launch-check-cli-and-ci)
+in a terminal or CI flag what matters to a buyer. Four [presets](#presets) that pass every check are live on mainnet
+for launchpads that want a clean starting point.
 
 ## Presets
 
@@ -167,6 +170,29 @@ RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDR
 `HELIUS_RPC` repo secret; it fails instead of passing when the secret is missing or the scan comes back short), runs
 `npm test` on the new files and commits them. The deployed site reads the latest committed copy at runtime
 (`src/lib/live.ts`) and keeps its bundled copy when that is newer or GitHub is unreachable.
+
+## Pre-launch check (CLI and CI)
+
+The Inspector's risk flags (`src/lib/risk.ts`) run from a terminal too, so a launchpad can gate its own configs in CI
+and a trader can check one before buying. Read-only; every flag comes from the config account and the curve walk:
+
+| Flag | Severity | Rule |
+|---|---|---|
+| Mint authority kept | red | token authority option 3 or 4: a wallet can mint after launch |
+| Graduation LP not permanently locked | red at 50%+ with no vesting, else warn | partner + creator liquidity percentage that becomes a withdrawable DAMM position |
+| Trading fee that never decays | red at 10%+, warn at 3%+ | fee after any fee schedule has finished |
+| Supply vesting to the creator | warn at 20%+, info at 1%+ | locked vesting amount / supply |
+| Migration fee | warn at 10%+ | share of the raise taken at graduation |
+| Early buyers up 30x+ at graduation | warn | graduation price / price at 10% of the raise |
+| Listing, not price discovery | info | price moves 1.25x or less, or graduates on under 0.01 quote |
+
+```bash
+npx tsx scripts/check.ts <config> [<config> ...]        # report; exit 1 on a red flag
+npx tsx scripts/check.ts --fail-on warn --json <config>  # stricter, machine-readable
+```
+
+On the four curvebook presets it reports no flags. Run on the eight most-graduated mainnet configs on 2026-10-10,
+six were red: 89–97% of their graduation LP is withdrawable.
 
 ## Tests
 
