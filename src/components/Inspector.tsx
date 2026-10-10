@@ -17,6 +17,7 @@ interface ScanRow {
   fee: string
   lpLockedPct: number
   closest: string
+  closestGap: number
 }
 const scan = scanJson as unknown as {
   graduatedPools: number
@@ -126,7 +127,7 @@ export function Inspector() {
               <div>
                 <dt>Graduates at</dt>
                 <dd>
-                  {fmt(result.threshold)} {result.quote}
+                  {result.threshold < 1 ? +result.threshold.toPrecision(2) : fmt(result.threshold)} {result.quote}
                 </dd>
               </div>
               <div>
@@ -149,7 +150,7 @@ export function Inspector() {
                 <tr>
                   <td>Closest preset</td>
                   <td>
-                    {result.closest.gap < 0.01 ? `${result.closest.name} (identical shape)` : result.closest.gap < 0.5 ? `${result.closest.name} (shape gap ${result.closest.gap.toFixed(2)})` : `none close (nearest: ${result.closest.name}, gap ${result.closest.gap.toFixed(1)})`}
+                    {result.closest.gap < 0.01 ? `${result.closest.name} (identical shape)` : result.closest.gap < 0.25 ? `${result.closest.name} (shape gap ${result.closest.gap.toFixed(2)})` : `none close (nearest: ${result.closest.name}, gap ${result.closest.gap.toFixed(1)})`}
                   </td>
                 </tr>
               </tbody>
@@ -197,13 +198,13 @@ export function Inspector() {
                   </a>
                 </td>
                 <td>
-                  {fmt(c.threshold)} {c.quote}
+                  {c.threshold < 1 ? +c.threshold.toPrecision(2) : fmt(c.threshold)} {c.quote}
                 </td>
                 <td>{fmt(c.multiplier, 1)}x</td>
                 <td>{c.earlyBuyerMultiple.toFixed(1)}x</td>
                 <td>{c.fee}</td>
                 <td>{c.lpLockedPct}%</td>
-                <td>{c.closest}</td>
+                <td>{c.closestGap < 0.25 ? c.closest : 'none close'}</td>
               </tr>
             ))}
           </tbody>
