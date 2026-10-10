@@ -413,9 +413,6 @@ function DevnetProof() {
   )
 }
 
-// pools from the scanned top configs that barely move price or graduate on dust: listings, not price discovery
-const nearFlat = scan.configs.filter((c) => c.multiplier <= 1.25 || c.threshold < 0.01).reduce((n, c) => n + c.graduatedPools, 0)
-
 export default function App() {
   const [selected, setSelected] = useState(PRESETS[1].id)
   const all = useMemo(() => PRESETS.map((p) => ({ p, r: presetStats(p) })), [])
@@ -446,9 +443,10 @@ export default function App() {
             <p className="eyebrow">Launch-curve data and presets for Meteora Dynamic Bonding Curve</p>
             <h1>Know what a launch curve does before you launch on it.</h1>
             <p className="lede">
-              Of the latest {scan.graduatedPools.toLocaleString('en-US')} DBC graduations on mainnet, {nearFlat.toLocaleString('en-US')} came from configs that move price{' '}
-              1.2x or less or graduate at under 0.01 SOL: direct listings, not price discovery. curvebook reads any DBC config from mainnet and shows what its curve,
-              fees and LP lock actually do, then offers presets tuned for real price discovery, each live on mainnet and checked against the program.
+              We read {scan.classification.all.graduations.toLocaleString('en-US')} DBC graduations on mainnet.{' '}
+              {scan.classification.all.listings.toLocaleString('en-US')} of them ({Math.round((scan.classification.all.listings / scan.classification.all.graduations) * 100)}%) came from
+              configs where price moves 1.25x or less, or that graduate on under 0.01 of the quote token: direct listings, not price discovery. curvebook reads any DBC
+              config from mainnet and shows what its curve, fees and LP lock actually do, then offers presets tuned for real price discovery, each live on mainnet and checked against the program.
             </p>
             <p className="lede">
               <a href="#inspect">Inspect a config</a> · <a href="#presets">Browse presets</a>

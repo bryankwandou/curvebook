@@ -11,8 +11,9 @@ import {
   DAMM_V2_MIGRATION_FEE_ADDRESS,
   DYNAMIC_BONDING_CURVE_PROGRAM_ID,
   DynamicBondingCurveIdl,
+  createDbcProgram,
 } from '@meteora-ag/dynamic-bonding-curve-sdk'
-import { Connection, type ConfirmedSignatureInfo } from '@solana/web3.js'
+import { Connection, PublicKey, type ConfirmedSignatureInfo } from '@solana/web3.js'
 import bs58 from 'bs58'
 import { inspectConfig } from '../src/lib/inspect'
 
@@ -95,6 +96,64 @@ const ranked = [...byConfig.entries()].map(([config, pools]) => ({ config, pools
 const totalPools = ranked.reduce((n, r) => n + r.pools.size, 0)
 const times = graduations.map((g) => g.time).filter(Boolean)
 
+// classify EVERY config, not just the top ones: price range from the stored sqrt prices (exact, no curve walk)
+// and graduation threshold in quote units. "Listing" = price moves 1.25x or less, or graduates on under 0.01 quote.
+const coder = createDbcProgram(connection).program.coder
+const decoded = new Map<string, { multiplier: number; threshold: number; quoteMint: string }>()
+for (let i = 0; i < ranked.length; i += 100) {
+  const keys = ranked.slice(i, i + 100).map((r) => new PublicKey(r.config))
+  const infos = await retry(() => connection.getMultipleAccountsInfo(keys))
+  infos.forEach((info, k) => {
+    if (!info) return
+    let c: any
+    try {
+      c = coder.accounts.decode('poolConfig', info.data)
+    } catch {
+      return // not a current-layout pool config: counted as undecoded below
+    }
+    const r = Number(c.migrationSqrtPrice.toString()) / Number(c.sqrtStartPrice.toString())
+    decoded.set(keys[k].toBase58(), { multiplier: r * r, threshold: Number(c.migrationQuoteThreshold.toString()), quoteMint: c.quoteMint.toBase58() })
+  })
+}
+const mints = [...new Set([...decoded.values()].map((d) => d.quoteMint))]
+const decimals = new Map<string, number>()
+for (let i = 0; i < mints.length; i += 100) {
+  const res = await retry(() => connection.getMultipleParsedAccounts(mints.slice(i, i + 100).map((m) => new PublicKey(m))))
+  res.value.forEach((v, k) => decimals.set(mints[i + k], (v?.data as any)?.parsed?.info?.decimals ?? 9))
+}
+const isListing = (cfg: string) => {
+  const d = decoded.get(cfg)
+  if (!d) return null
+  return d.multiplier <= 1.25 || d.threshold / 10 ** (decimals.get(d.quoteMint) ?? 9) < 0.01
+}
+const share = (since: number) => {
+  let total = 0
+  let listing = 0
+  let unknown = 0
+  for (const r of ranked)
+    for (const t of r.pools.values()) {
+      if (t < since) continue
+      total++
+      const l = isListing(r.config)
+      if (l === null) unknown++
+      else if (l) listing++
+    }
+  return { graduations: total, listings: listing, undecoded: unknown }
+}
+const perConfig = ranked.map((r) => {
+  const d = decoded.get(r.config)
+  return { config: r.config, graduatedPools: r.pools.size, multiplier: d?.multiplier ?? null, threshold: d ? d.threshold / 10 ** (decimals.get(d.quoteMint) ?? 9) : null, listing: isListing(r.config) }
+})
+const classification = {
+  rule: 'listing = price moves 1.25x or less from open to graduation, or the graduation threshold is under 0.01 of the quote token',
+  configsDecoded: decoded.size,
+  all: share(0),
+  // the sample is the latest signatures per migration config, so busy configs cover days and quiet ones months:
+  // only the whole-sample share is meaningful, not per-period shares
+  sample: 'latest PER_ADDRESS successful transactions on each DAMM v1/v2 migration-fee config',
+}
+console.log(JSON.stringify(classification))
+
 const configs = []
 for (const r of ranked.slice(0, TOP)) {
   try {
@@ -130,7 +189,9 @@ const out = {
   window: { from: new Date(Math.min(...times) * 1000).toISOString(), to: new Date(Math.max(...times) * 1000).toISOString() },
   graduatedPools: totalPools,
   distinctConfigs: ranked.length,
+  classification,
   configs,
+  allConfigs: perConfig,
 }
 writeFileSync(new URL('../graduated-configs.json', import.meta.url), JSON.stringify(out, null, 2) + '\n')
 console.log(`${totalPools} graduated pools across ${ranked.length} configs, ${out.window.from} → ${out.window.to}`)
