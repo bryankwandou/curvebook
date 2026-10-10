@@ -462,8 +462,8 @@ export default function App() {
                   they graduated with; on configs that lock all of it, {pct.of(control.lostHalfOrMore, control.graduations)}.{' '}
                 </>
               )}
-              {pct.n(grads.listings)} ({pct.of(grads.listings, grads.graduations)}) were direct listings, not price discovery: price moves 1.25x or less, or graduation needs under 0.01 of
-              the quote token.
+              By our thresholds (price moves 1.25x or less, or graduation needs under 0.01 of the quote token), {pct.of(grads.listings, grads.graduations)} were direct listings
+              rather than price discovery; that share depends on the thresholds, see <a href="#method">the method</a>.
             </p>
             <p className="lede">
               curvebook checks any DBC config from mainnet for mint authority, LP lock, fee traps, creator vesting and sniper advantage: in the browser, from a terminal, or

@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 // How the graduation numbers are made, and how much they move when the thresholds move. Computed in the browser
 // from the per-config rows of graduated-configs.json, so it always matches the numbers above it.
 export interface ConfigRow {
@@ -17,9 +19,19 @@ export function Methodology({ rows, sample, window }: { rows: ConfigRow[]; sampl
   const total = decoded.reduce((n, r) => n + r.graduatedPools, 0)
   const pct = (f: (r: ConfigRow) => boolean) => `${Math.round((decoded.filter(f).reduce((n, r) => n + r.graduatedPools, 0) / total) * 100)}%`
   const withLp = decoded.filter((r) => r.lpUnlockedPct !== undefined && r.lpUnlockedPct !== null)
+  // a link to #method opens the panel
+  const ref = useRef<HTMLDetailsElement>(null)
+  useEffect(() => {
+    const open = () => {
+      if (location.hash === '#method' && ref.current) ref.current.open = true
+    }
+    open()
+    addEventListener('hashchange', open)
+    return () => removeEventListener('hashchange', open)
+  }, [])
 
   return (
-    <details className="panel method">
+    <details className="panel method" id="method" ref={ref}>
       <summary>Method, sample and sensitivity</summary>
       <p>
         <b>Population.</b> Every DBC graduation calls one of Meteora's DAMM v1/v2 migration-fee configs, so their transactions are the stream of graduations. The sample is the{' '}
