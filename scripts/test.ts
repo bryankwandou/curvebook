@@ -101,7 +101,9 @@ test('risk flags: mint authority, withdrawable LP, never-decaying fee, vesting; 
     ({
       tokenUpdateAuthority: 1,
       partnerLiquidityPercentage: 0,
+      partnerPermanentLockedLiquidityPercentage: 100,
       creatorLiquidityPercentage: 0,
+      creatorPermanentLockedLiquidityPercentage: 0,
       partnerLiquidityVestingInfo: { isInitialized: 0 },
       creatorLiquidityVestingInfo: { isInitialized: 0 },
       lockedVestingConfig: { cliffUnlockAmount: new BN(0), amountPerPeriod: new BN(0), numberOfPeriod: new BN(0) },
@@ -113,10 +115,12 @@ test('risk flags: mint authority, withdrawable LP, never-decaying fee, vesting; 
   const titles = (o: Record<string, unknown>, b = {}) => riskFlags({ ...base, ...b, config: cfg(o) }).map((f) => `${f.severity}:${f.title}`)
   assert.deepEqual(titles({}), [])
   assert.ok(titles({ tokenUpdateAuthority: 3 })[0].startsWith('red:Mint authority'))
-  assert.ok(titles({ partnerLiquidityPercentage: 89 })[0].startsWith('red:89% of graduation LP'))
+  assert.ok(titles({ partnerLiquidityPercentage: 89, partnerPermanentLockedLiquidityPercentage: 11 })[0].startsWith('red:89% of graduation LP'))
   // vesting does not downgrade it: pools on vesting configs lost their LP as often (lp-outcomes.json)
-  assert.ok(titles({ partnerLiquidityPercentage: 89, partnerLiquidityVestingInfo: { isInitialized: 1 } })[0].startsWith('red:'))
-  assert.ok(titles({ partnerLiquidityPercentage: 20 })[0].startsWith('warn:20% of graduation LP'))
+  assert.ok(titles({ partnerLiquidityPercentage: 89, partnerPermanentLockedLiquidityPercentage: 11, partnerLiquidityVestingInfo: { isInitialized: 1 } })[0].startsWith('red:'))
+  // all LP in a vesting position, none permanently locked: every bit of it becomes withdrawable (the 2026-10-10 control bug)
+  assert.ok(titles({ partnerPermanentLockedLiquidityPercentage: 0, partnerLiquidityVestingInfo: { isInitialized: 1, vestingPercentage: 100 } })[0].startsWith('red:100% of graduation LP'))
+  assert.ok(titles({ partnerLiquidityPercentage: 20, partnerPermanentLockedLiquidityPercentage: 80 })[0].startsWith('warn:20% of graduation LP'))
   assert.ok(titles({}, { feeStartPct: 15, feeEndPct: 15 })[0].startsWith('red:15% trading fee'))
   assert.deepEqual(titles({}, { feeStartPct: 60, feeEndPct: 1 }).map((t) => t.split(':')[0]), ['info'])
   const vest = { cliffUnlockAmount: new BN(0), amountPerPeriod: new BN(25e6).mul(new BN(1e6)), numberOfPeriod: new BN(10) }

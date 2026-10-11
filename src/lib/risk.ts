@@ -35,14 +35,18 @@ export function riskFlags(r: RiskInput): Flag[] {
   else if (c.tokenUpdateAuthority === 0 || c.tokenUpdateAuthority === 2)
     add('info', 'Metadata can change', `Token authority option ${c.tokenUpdateAuthority} (${AUTHORITY[c.tokenUpdateAuthority]}): name and image can be edited after launch. Supply is fixed.`)
 
-  const unlocked = c.partnerLiquidityPercentage + c.creatorLiquidityPercentage
+  // the LP splits into withdrawable, vesting (withdrawable as it vests) and permanently locked shares; only the last stays
+  const vest = (v: { isInitialized: number; vestingPercentage?: number }) => (v.isInitialized ? (v.vestingPercentage ?? 0) : 0)
+  const partnerVest = vest(c.partnerLiquidityVestingInfo)
+  const creatorVest = vest(c.creatorLiquidityVestingInfo)
+  const unlocked = 100 - c.partnerPermanentLockedLiquidityPercentage - c.creatorPermanentLockedLiquidityPercentage
   if (unlocked > 0) {
-    const vesting = c.partnerLiquidityVestingInfo.isInitialized || c.creatorLiquidityVestingInfo.isInitialized
     // a vesting schedule does not downgrade it: on mainnet, pools on vesting configs lost their LP as often (lp-outcomes.json)
+    const part = (who: string, now: number, later: number) => `${who} ${now}%${later ? ` + ${later}% vesting` : ''}`
     add(
       unlocked >= 50 ? 'red' : 'warn',
       `${unlocked}% of graduation LP not permanently locked`,
-      `Partner ${c.partnerLiquidityPercentage}%, creator ${c.creatorLiquidityPercentage}% of the DAMM liquidity can be withdrawn after graduation${vesting ? ' (a vesting schedule covers part of it)' : ''}.`,
+      `${part('Partner', c.partnerLiquidityPercentage, partnerVest)}, ${part('creator', c.creatorLiquidityPercentage, creatorVest)} of the DAMM liquidity can be withdrawn after graduation.`,
     )
   }
 
