@@ -51,10 +51,16 @@ export function ApiDocs() {
           <pre className="code">{`<a href="${SITE}/?config=<address>#inspect">
   <img src="${SITE}/api/badge?address=<address>" alt="curvebook check">
 </a>`}</pre>
-          <h3>CI</h3>
-          <p className="hint">Gate your own configs before you deploy them: exit code 1 on a red flag (or on a warning with --fail-on warn).</p>
-          <pre className="code">{`git clone https://github.com/bryankwandou/curvebook && cd curvebook && npm ci
-RPC=<your mainnet RPC> npx tsx scripts/check.ts --fail-on warn <config>`}</pre>
+          <h3>GitHub Action</h3>
+          <p className="hint">Gate your configs before they go live: the job fails on a red flag (or on a warning with fail-on: warn). No install step.</p>
+          <pre className="code">{`- uses: bryankwandou/curvebook@v1
+  with:
+    addresses: <your DBC config>`}</pre>
+          <h3>Telegram</h3>
+          <p className="hint">
+            Send a token, pool or config to <a href="https://t.me/curvebook_check_bot">@curvebook_check_bot</a>, or add it to a group and use{' '}
+            <code>/check &lt;address&gt;</code>.
+          </p>
         </div>
       </div>
     </section>
