@@ -49,8 +49,10 @@ export function OutcomesTable() {
         </table>
       </div>
       <p className="hint">
-        The control is not perfect: {o.byClass.locked.lostHalfOrMore} pools on configs that lock everything still lost half their liquidity, almost all on a few older
-        DAMM v1 configs. We report them rather than drop them. One verified case: DAMM v2 pool{' '}
+        The control: {o.byClass.locked.lostHalfOrMore} of {o.byClass.locked.graduations.toLocaleString('en-US')} pools on configs that permanently lock all LP lost half
+        their liquidity; they are listed in <code>lp-outcomes.json</code> rather than dropped. Until 2026-10-11 this read 14 of 675: configs that put the LP in a
+        vesting position (withdrawable once it vests) were counted as locked. We fixed the classification, and the Inspector now flags vesting LP as withdrawable. One
+        verified case: DAMM v2 pool{' '}
         <a href="https://solscan.io/account/BtERBHLyp2iDFP7fjUZthzKofPiPPHLArsnL7LcKjvhU">BtERBH…</a> graduated at 13:50:08 UTC on 2026-10-10 and{' '}
         <code>removeAllLiquidity</code> ran at 13:53:31, on a config with a vesting schedule.
       </p>

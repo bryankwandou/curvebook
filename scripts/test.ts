@@ -63,8 +63,9 @@ test('lp-outcomes.json: classes add up, and the control (all LP locked) mostly s
   assert.equal(classes.reduce((n, c) => n + c.graduations, 0), o.measured)
   assert.equal(o.byKind.damm_v1.graduations + o.byKind.damm_v2.graduations, o.measured)
   for (const c of classes) assert.ok(c.lostHalfOrMore <= c.graduations)
-  // if pools on fully locked configs lose liquidity often, the measurement is broken, not the pools
-  assert.ok(o.byClass.locked.lostHalfOrMore <= o.byClass.locked.graduations * 0.1, `control: ${o.byClass.locked.lostHalfOrMore} of ${o.byClass.locked.graduations}`)
+  // if pools on fully locked configs lose liquidity, the measurement or the classification is broken, not the pools:
+  // a vesting-LP misclassification once put 14 of 675 here (2026-10-10); after the fix it is 2 of 653
+  assert.ok(o.byClass.locked.lostHalfOrMore <= o.byClass.locked.graduations * 0.02, `control: ${o.byClass.locked.lostHalfOrMore} of ${o.byClass.locked.graduations}`)
   // pull times: every timed pool is counted once, and the windows nest
   const p = o.pulls
   assert.equal(p.found + p.later, p.pools)
