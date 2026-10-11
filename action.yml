@@ -1,0 +1,30 @@
+name: curvebook DBC check
+description: Fail the job when a Meteora DBC config, pool or token has a red flag (withdrawable graduation LP, mint authority, fee traps).
+author: bryankwandou
+branding:
+  icon: shield
+  color: orange
+inputs:
+  addresses:
+    description: One or more config, DBC pool or token addresses, separated by spaces or new lines.
+    required: true
+  fail-on:
+    description: "red (default) fails on red flags only; warn also fails on warnings."
+    default: red
+  api:
+    description: API base URL.
+    default: https://curvebook-kappa.vercel.app
+outputs:
+  verdict:
+    description: Worst verdict across all addresses (ok, warn or red).
+    value: ${{ steps.check.outputs.verdict }}
+runs:
+  using: composite
+  steps:
+    - id: check
+      shell: bash
+      env:
+        ADDRESSES: ${{ inputs.addresses }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        API: ${{ inputs.api }}
+      run: node "${{ github.action_path }}/scripts/action-check.mjs"

@@ -1,0 +1,26 @@
+name: action-test
+on:
+  push:
+    paths: [action.yml, scripts/action-check.mjs, .github/workflows/action-test.yml]
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: The four live presets pass
+        uses: ./
+        with:
+          addresses: |
+            7Cybv7xUZn3JhvZfGQF9h9s7bLWQhNNcqs1yQVGPprPK
+            FnKvUoL12VZacUE2k4EwhFXHn2xxhoG1wvQYsfgBSsLT
+            6aHuAvXw3BYgR5Wrht8neBPXpmGQej7YWhBK9gbDyf93
+            4i2iNBaHyJbbZL5q3TVRudzySRbf8NV3BmhscAiQTEhU
+      - name: A config leaving 89% of the LP withdrawable fails
+        id: red
+        continue-on-error: true
+        uses: ./
+        with:
+          addresses: GEi2PKrdDMGG2vmwcYLTrHfwnHszc8eLfPP2Q9j9JmLu
+      - name: Assert the red case failed
+        run: test "${{ steps.red.outcome }}" = failure && test "${{ steps.red.outputs.verdict }}" = red
