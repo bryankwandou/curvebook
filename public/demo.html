@@ -28,10 +28,12 @@
 <main>
   <p class="eyebrow">Meteora DBC track · Crypto World's Fair</p>
   <h1>curvebook: check a DBC token or config before you buy or launch</h1>
-  <p>We decoded the config behind every recent Meteora DBC graduation and followed each pool after it graduated. 61% came from configs that leave most of the graduation LP withdrawable by the launchpad or creator, and 71% of those pools have since lost half or more of the liquidity they graduated with. On configs that lock all LP: 2%. curvebook shows this for any token, pool or config before you buy, as a web inspector, a free JSON API and badge for trading terminals, and a CLI for launchpad CI. Four configs that pass every check are live on mainnet.</p>
+  <p>We decoded the configs behind 1,784 recent Meteora DBC graduations (2026-10-10 scan) and followed each pool after it graduated. 61% came from configs that leave most of the graduation LP withdrawable by the launchpad or creator, and 71% of those pools have since lost half or more of the liquidity they graduated with. On configs that lock all LP: 2%. Before graduation a token checker reads the DBC pool as locked; the config decides what happens at graduation, and curvebook reads it. It works for any token, pool or config, as a web check, a free JSON API and badge for trading terminals, and a CLI for launchpad CI. Four configs that pass every check are live on mainnet.</p>
   <video src="/demo.mp4" poster="/demo-poster.jpg" controls playsinline preload="metadata"></video>
   <div class="links">
     <a class="primary" href="/#inspect">Check a token</a>
+    <a href="/?config=USTdxXk3BZTAX43TjAbrS4Hnb1iVVyvGeqtkvLzLPGJ#inspect">Example: LP pulled</a>
+    <a href="/?config=2uH4eUFALeLcG1eZz4feAMkHU7LGxQBUnxwSWXRvazcJ#inspect">Example: still on the curve</a>
     <a href="/#api">API and badge</a>
     <a href="/#proof">Mainnet configs + tests</a>
     <a href="https://github.com/bryankwandou/curvebook">GitHub</a>

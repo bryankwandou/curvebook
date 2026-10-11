@@ -40,10 +40,12 @@ type Scan = {
 const scanBundled = scanJson as unknown as Scan
 
 const short = (k: string) => `${k.slice(0, 4)}…${k.slice(-4)}`
-// examples that show each case: our own token (still on the curve), a pool whose LP was pulled 3 minutes after
-// graduating, and a pool on a config that locks all LP
+// examples that show each case: our own token (still on the curve), a token still on the curve whose config leaves 89%
+// of the LP withdrawable at graduation, a pool whose LP was pulled 3 minutes after graduating, and a pool on a config
+// that locks all LP
 const EXAMPLES: [string, string][] = [
   ['CBK, our token (on the curve)', '9yVLMokYuoC2KWMESmD1XUY3jmFJmasEw4FKPxZZ6gfS'],
+  ['On the curve, LP not locked', '2uH4eUFALeLcG1eZz4feAMkHU7LGxQBUnxwSWXRvazcJ'],
   ['Graduated, LP pulled', 'USTdxXk3BZTAX43TjAbrS4Hnb1iVVyvGeqtkvLzLPGJ'],
   ['Graduated, LP locked', '75qK2pbYCbA85pnHh14q1r24UBpN3xFGNPVwNB5DQrus'],
 ]
@@ -127,7 +129,8 @@ export function Inspector() {
       <p className="lede">
         Paste a token address, its DBC pool, or a launchpad's config. curvebook finds the config that governs the pool, reads it from mainnet, walks its curve with the SDK
         math and decodes the fee schedule, migration and LP lock. For a token that already graduated it also reads the migration transaction and the DAMM pool today, to
-        show how much of the liquidity it graduated with is still there. Nothing is signed.
+        show how much of the liquidity it graduated with is still there. While a token is on its curve the DBC pool holds the liquidity, so a token checker can show it as
+        locked; what happens to the LP at graduation is set by the config, and that is what this reads. Nothing is signed.
       </p>
       <form
         className="inspect-form"

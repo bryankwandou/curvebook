@@ -208,6 +208,22 @@ It is read-only. The public RPC rate-limits it hard, so a private RPC is the pra
 RPC=https://mainnet.helius-rpc.com/?api-key=... CONCURRENCY=8 DELAY=100 PER_ADDRESS=200 npx tsx scripts/scan-graduations.ts
 ```
 
+### Why a token checker misses it before graduation
+
+While a token is on its curve, the DBC pool holds the liquidity, so a checker that reads the pool sees it as locked.
+What happens to the LP at graduation is set by the config. On 2026-10-11, token `2uH4eUFA…azcJ` was 1.2% along its
+curve. RugCheck's report listed no risks and its `meteora_dbc` market at `lpLockedPct: 100`; its config
+`GEi2PKrd…JmLu` lets the partner withdraw 89% of the DAMM LP after graduation, and 49 of the 50 graduations measured on
+that config lost half or more of their liquidity (`byConfig` in [lp-outcomes.json](lp-outcomes.json), 2026-10-11).
+Both reports can be re-run:
+
+```bash
+curl -s https://api.rugcheck.xyz/v1/tokens/2uH4eUFALeLcG1eZz4feAMkHU7LGxQBUnxwSWXRvazcJ/report
+curl -s "https://curvebook-kappa.vercel.app/api/check?address=2uH4eUFALeLcG1eZz4feAMkHU7LGxQBUnxwSWXRvazcJ"
+```
+
+The token may have moved along its curve since; the config, and so the flag, does not change.
+
 `.github/workflows/data.yml` reruns the scan and `scripts/pool-state.ts` every day (read-only, RPC from the
 `HELIUS_RPC` repo secret; it fails instead of passing when the secret is missing or the scan comes back short), runs
 `npm test` on the new files and commits them. The deployed site reads the latest committed copy at runtime

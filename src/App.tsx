@@ -456,7 +456,7 @@ export default function App() {
             <p className="eyebrow">Pre-launch checks and launch-curve data for Meteora Dynamic Bonding Curve</p>
             <h1>Know what a launch curve does before you launch or buy on it.</h1>
             <p className="lede">
-              We read {pct.n(grads.graduations)} DBC graduations on mainnet and decoded every config behind them.{' '}
+              We read {pct.n(grads.graduations)} recent DBC graduations on mainnet and decoded the configs behind them.{' '}
               {safety && (
                 <>
                   {pct.n(safety.lpMostlyWithdrawable)} ({pct.of(safety.lpMostlyWithdrawable, grads.graduations)}) came from configs that leave half or more of the graduation LP
