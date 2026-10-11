@@ -8,7 +8,7 @@ import { buildReport, headline, type Report } from '../src/lib/report'
 const ADDRESS = /[1-9A-HJ-NP-Za-km-z]{32,44}/
 const SITE = 'https://curvebook-kappa.vercel.app'
 const ICON = { red: '🔴', warn: '🟠', ok: '🟢' }
-const HELP = `Send a Meteora DBC token, pool or config address and I'll check it: LP lock at graduation, mint authority, fee traps, creator vesting, and for a graduated token how much of its liquidity is gone. In a group: /check <address>. Read-only, nothing is signed. ${SITE}`
+const HELP = `Send a Meteora DBC token, pool or config address and I'll check it: LP lock at graduation, mint authority, fee traps, creator vesting, and for a graduated token how much of its liquidity is gone. In a group: /check &lt;address&gt;. Read-only, nothing is signed. ${SITE}`
 
 const esc = (t: string) => t.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' })[c]!)
 
