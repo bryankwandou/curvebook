@@ -186,6 +186,31 @@ const byConfig = [...configRows.entries()]
   .slice(0, 25)
   .map(([config, rs]) => ({ config, graduations: rs.length, lostHalfOrMore: rs.filter((r) => gonePct(r) >= 50).length, kind: rs[0].kind, cls: rs[0].cls }))
 
+// robustness: a few busy configs can dominate a pooled share, so also count per config, split by DAMM version, and list
+// every control pool that lost half (each one is either a measurement error or a lock that did not hold)
+const withdrawableRows = rows.filter((r) => r.cls === 'open' || r.cls === 'vesting')
+const lost = (rs: Row[]) => rs.filter((r) => gonePct(r) >= 50).length
+const perConfig = [...new Set(withdrawableRows.map((r) => r.config))].map((c) => withdrawableRows.filter((r) => r.config === c))
+const robustness = {
+  withdrawable: {
+    configs: perConfig.length,
+    configsWhereMostLostHalf: perConfig.filter((rs) => lost(rs) * 2 > rs.length).length,
+    // mean of each config's own loss rate, so every config counts once however many pools it graduated
+    configWeightedLostHalfPct: perConfig.length ? Math.round((perConfig.reduce((n, rs) => n + lost(rs) / rs.length, 0) / perConfig.length) * 1000) / 10 : 0,
+    largestConfigShareOfPools: perConfig.length ? Math.round((Math.max(...perConfig.map((rs) => rs.length)) / withdrawableRows.length) * 1000) / 10 : 0,
+  },
+  byKind: Object.fromEntries(
+    (['damm_v2', 'damm_v1'] as const).map((k) => {
+      const w = withdrawableRows.filter((r) => r.kind === k)
+      const l = rows.filter((r) => r.cls === 'locked' && r.kind === k)
+      return [k, { withdrawable: { graduations: w.length, lostHalfOrMore: lost(w) }, locked: { graduations: l.length, lostHalfOrMore: lost(l) } }]
+    }),
+  ),
+  controlLostHalf: rows
+    .filter((r) => r.cls === 'locked' && gonePct(r) >= 50)
+    .map((r) => ({ pool: r.pool, config: r.config, kind: r.kind, gonePct: gonePct(r) })),
+}
+
 const classes: Class[] = ['open', 'vesting', 'partial', 'locked']
 const out = {
   cluster: 'mainnet-beta',
@@ -207,6 +232,7 @@ const out = {
   skipped: pools.length - rows.length,
   pulls,
   byConfig,
+  robustness,
 }
 writeFileSync(new URL('../lp-outcomes.json', import.meta.url), JSON.stringify(out, null, 2) + '\n')
 console.log(JSON.stringify(out.byClass, null, 2))
