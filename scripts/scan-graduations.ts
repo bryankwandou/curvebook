@@ -86,8 +86,9 @@ for (let i = 0; i < ranked.length; i += 100) {
       multiplier: r * r,
       threshold: Number(c.migrationQuoteThreshold.toString()),
       quoteMint: c.quoteMint.toBase58(),
-      // LP that is not permanently locked goes to the partner / creator as a position they can withdraw
-      lpUnlockedPct: c.partnerLiquidityPercentage + c.creatorLiquidityPercentage,
+      // LP that is not permanently locked goes to the partner / creator as a position they can withdraw, at once or
+      // after a vesting schedule (the vesting share is a separate percentage in the liquidity vesting info)
+      lpUnlockedPct: 100 - c.partnerPermanentLockedLiquidityPercentage - c.creatorPermanentLockedLiquidityPercentage,
       lpVesting: !!(c.partnerLiquidityVestingInfo?.isInitialized || c.creatorLiquidityVestingInfo?.isInitialized),
       // token authority options 3 and 4 keep the mint authority with the creator / partner
       mintAuthority: c.tokenUpdateAuthority === 3 || c.tokenUpdateAuthority === 4,
