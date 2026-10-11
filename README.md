@@ -285,6 +285,22 @@ Both are the same report as `scripts/check.ts` (`src/lib/report.ts`). The source
 bundles them with esbuild into self-contained functions that are deployed next to `api/rpc.js`. `scripts/smoke.mjs`
 checks the deployed endpoints against known cases every day in `data.yml`.
 
+## GitHub Action for launchpads
+
+A launchpad can block a config with a red flag before it goes live, with no install step (it calls the API above):
+
+```yaml
+- uses: bryankwandou/curvebook@v1
+  with:
+    addresses: |
+      <your DBC config address>
+    # fail-on: warn   # stricter: also fail on warnings
+```
+
+The job fails on a red flag, annotates each flag, writes a table to the job summary and sets the output `verdict`
+(`ok`, `warn` or `red`). `.github/workflows/action-test.yml` runs it on every change: the four live presets must pass
+and config `GEi2PKrd…` (89% of the LP withdrawable) must fail.
+
 ## Pre-launch check (CLI and CI)
 
 The Inspector's risk flags (`src/lib/risk.ts`) run from a terminal too, so a launchpad can gate its own configs in CI
