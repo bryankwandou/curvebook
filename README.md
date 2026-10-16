@@ -3,7 +3,7 @@
 Pre-launch checks and launch-curve data for [Meteora Dynamic Bonding Curve](https://docs.meteora.ag/developer-guides/dbc). Live: https://curvebook-kappa.vercel.app
 
 A DBC config fixes, for every pool launched on it, the curve, the fees, who can mint, and how much of the
-graduation liquidity stays locked. In the 2026-10-11 scan of 1,807 mainnet graduations, 1,141 (63%) came from configs
+graduation liquidity stays locked. In the 2026-10-11 scan ([frozen data](snapshots/2026-10-11); the live files refresh daily) of 1,807 mainnet graduations, 1,141 (63%) came from configs
 that leave half or more of the graduation LP withdrawable by the launchpad or creator. 69% of those pools have since
 lost half or more of the liquidity they graduated with, against 2 of 653 pools on configs that lock all of it; on DAMM v2
 alone, 42% against 0 of 466 ([what happened to the liquidity](#what-happened-to-the-liquidity)). In at least 96 DAMM v2
@@ -214,7 +214,7 @@ While a token is on its curve, the DBC pool holds the liquidity, so a checker th
 What happens to the LP at graduation is set by the config. On 2026-10-11, token `2uH4eUFA…azcJ` was 1.2% along its
 curve. RugCheck's report listed no risks and its `meteora_dbc` market at `lpLockedPct: 100`; its config
 `GEi2PKrd…JmLu` lets the partner withdraw 89% of the DAMM LP after graduation, and 49 of the 50 graduations measured on
-that config lost half or more of their liquidity (`byConfig` in [lp-outcomes.json](lp-outcomes.json), 2026-10-11).
+that config lost half or more of their liquidity (`byConfig` in [snapshots/2026-10-11/lp-outcomes.json](snapshots/2026-10-11/lp-outcomes.json)).
 Both reports can be re-run:
 
 ```bash
@@ -235,7 +235,7 @@ The token may have moved along its curve since; the config, and so the flag, doe
 its migration put into the DAMM pool with the pool's liquidity today: the DAMM v2 pool account (liquidity at migration
 from the DAMM events in the migration transaction), or the DAMM v1 LP supply (LP minted at migration; withdrawing burns
 LP). It reads the pool, not the positions, so liquidity moved between positions is not a withdrawal; liquidity added
-since hides withdrawals, so losses are a lower bound. Result on 2026-10-11 ([lp-outcomes.json](lp-outcomes.json)):
+since hides withdrawals, so losses are a lower bound. Result on 2026-10-11 ([snapshots/2026-10-11/lp-outcomes.json](snapshots/2026-10-11/lp-outcomes.json); the live [lp-outcomes.json](lp-outcomes.json) refreshes daily):
 
 | Config leaves | Graduations | Lost half or more of their graduation liquidity |
 |---|---|---|
