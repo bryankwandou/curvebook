@@ -74,6 +74,27 @@ test('lp-outcomes.json: classes add up, and the control (all LP locked) mostly s
   for (const c of o.byConfig) assert.ok(c.lostHalfOrMore <= c.graduations && o.byClass[c.cls], c.config)
 })
 
+// the submission quotes the frozen snapshot, not the daily files: every number in it must come from snapshots/2026-10-11
+test('submission numbers match snapshots/2026-10-11', () => {
+  const g = json('snapshots/2026-10-11/graduated-configs.json')
+  const o = json('snapshots/2026-10-11/lp-outcomes.json')
+  const html = readFileSync(new URL('../public/submit.html', import.meta.url), 'utf8')
+  const pct = (a: number, b: number) => `${Math.round((a * 100) / b)}%`
+  const w = o.byClass.open.graduations + o.byClass.vesting.graduations
+  const lost = o.byClass.open.lostHalfOrMore + o.byClass.vesting.lostHalfOrMore
+  const v2 = o.robustness.byKind.damm_v2
+  for (const n of [
+    `scan of ${g.graduatedPools.toLocaleString('en-US')} recent DBC graduations`,
+    `${pct(g.classification.safety.lpMostlyWithdrawable, g.graduatedPools)} graduated on configs`,
+    `${pct(lost, w)} of those pools`,
+    `${o.byClass.locked.lostHalfOrMore} of ${o.byClass.locked.graduations} did`,
+    `${pct(v2.withdrawable.lostHalfOrMore, v2.withdrawable.graduations)} against ${v2.locked.lostHalfOrMore} of ${v2.locked.graduations}`,
+    `spread over ${o.robustness.withdrawable.configs} configs`,
+    `at least ${o.pulls.within10Minutes} DAMM v2 pools`,
+  ])
+    assert.ok(html.includes(n), `submission does not say "${n}"`)
+})
+
 // 3. on-chain proof files agree with each other
 test('mainnet launch is on the flat-fair config that deployed.json lists', () => {
   assert.equal(json('mainnet-launch.json').config, json('src/deployed.json')['flat-fair'].config)
