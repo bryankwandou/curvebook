@@ -1,6 +1,6 @@
 {
   "rule": "listing = price moves 1.25x or less from open to graduation, or the graduation threshold is under 0.01 of the quote token",
-  "ranAt": "2026-10-15T08:23:24.685Z",
+  "ranAt": "2026-10-16T08:15:54.932Z",
   "days": [
     {
       "date": "2026-10-10",
@@ -96,6 +96,22 @@
       "undecoded": 5,
       "lpMostlyWithdrawable": 1067,
       "lpAllLocked": 693,
+      "mintAuthorityKept": 0
+    },
+    {
+      "date": "2026-10-16",
+      "ranAt": "2026-10-16T08:15:54.932Z",
+      "window": {
+        "from": "2025-05-18T16:52:27.000Z",
+        "to": "2026-10-16T08:09:37.000Z"
+      },
+      "coveredSince": "2026-10-16T04:52:22.000Z",
+      "configs": 604,
+      "graduations": 1758,
+      "listings": 1102,
+      "undecoded": 5,
+      "lpMostlyWithdrawable": 1050,
+      "lpAllLocked": 702,
       "mintAuthorityKept": 0
     }
   ]
