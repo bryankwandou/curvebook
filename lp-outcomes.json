@@ -1,8 +1,8 @@
 {
   "cluster": "mainnet-beta",
   "mode": "read-only (DAMM v2 pool accounts, DAMM v1 LP mint supply)",
-  "ranAt": "2026-11-05T11:17:39.813Z",
-  "scannedAt": "2026-11-05T10:59:39.177Z",
+  "ranAt": "2026-11-06T11:17:55.537Z",
+  "scannedAt": "2026-11-06T10:57:10.230Z",
   "method": "Per graduation, at pool level: liquidity the migration put in (DAMM v2 migration events, or DAMM v1 LP minted) vs the pool liquidity or LP supply today. Withdrawn = the drop, capped at the share the config left withdrawable. Later additions hide withdrawals, so it is a lower bound. Control: pools on configs that lock 100% must show no drop.",
   "classes": {
     "open": "config leaves 50% or more of the graduation LP not permanently locked, no vesting schedule",
@@ -11,37 +11,37 @@
     "locked": "config permanently locks 100% (control: should show no loss)"
   },
   "all": {
-    "graduations": 1766,
-    "pulled": 667,
-    "someWithdrawn": 791,
-    "meanWithdrawablePct": 56,
-    "meanWithdrawnPct": 40.7,
-    "lostHalfOrMore": 793,
-    "lostAny10Pct": 799,
-    "meanGonePct": 40.9,
-    "medianHoursSinceGraduation": 1406
+    "graduations": 1775,
+    "pulled": 666,
+    "someWithdrawn": 807,
+    "meanWithdrawablePct": 56.2,
+    "meanWithdrawnPct": 41.3,
+    "lostHalfOrMore": 809,
+    "lostAny10Pct": 815,
+    "meanGonePct": 41.5,
+    "medianHoursSinceGraduation": 1428
   },
   "byClass": {
     "open": {
-      "graduations": 893,
-      "pulled": 645,
-      "someWithdrawn": 645,
+      "graduations": 892,
+      "pulled": 644,
+      "someWithdrawn": 644,
       "meanWithdrawablePct": 89.9,
       "meanWithdrawnPct": 65.7,
-      "lostHalfOrMore": 645,
-      "lostAny10Pct": 645,
+      "lostHalfOrMore": 644,
+      "lostAny10Pct": 644,
       "meanGonePct": 65.8,
-      "medianHoursSinceGraduation": 1423
+      "medianHoursSinceGraduation": 1447
     },
     "vesting": {
-      "graduations": 187,
+      "graduations": 195,
       "pulled": 22,
-      "someWithdrawn": 146,
+      "someWithdrawn": 163,
       "meanWithdrawablePct": 100,
-      "meanWithdrawnPct": 70.8,
-      "lostHalfOrMore": 146,
-      "lostAny10Pct": 146,
-      "meanGonePct": 70.8,
+      "meanWithdrawnPct": 75.6,
+      "lostHalfOrMore": 163,
+      "lostAny10Pct": 163,
+      "meanGonePct": 75.6,
       "medianHoursSinceGraduation": 2
     },
     "partial": {
@@ -53,10 +53,10 @@
       "lostHalfOrMore": 0,
       "lostAny10Pct": 0,
       "meanGonePct": 0,
-      "medianHoursSinceGraduation": 10595
+      "medianHoursSinceGraduation": 10619
     },
     "locked": {
-      "graduations": 685,
+      "graduations": 687,
       "pulled": 0,
       "someWithdrawn": 0,
       "meanWithdrawablePct": 0,
@@ -64,20 +64,20 @@
       "lostHalfOrMore": 2,
       "lostAny10Pct": 8,
       "meanGonePct": 0.4,
-      "medianHoursSinceGraduation": 1689
+      "medianHoursSinceGraduation": 1713
     }
   },
   "byKind": {
     "damm_v2": {
-      "graduations": 963,
-      "pulled": 103,
-      "someWithdrawn": 227,
-      "meanWithdrawablePct": 44.7,
-      "meanWithdrawnPct": 21,
-      "lostHalfOrMore": 227,
-      "lostAny10Pct": 227,
-      "meanGonePct": 21,
-      "medianHoursSinceGraduation": 349
+      "graduations": 972,
+      "pulled": 102,
+      "someWithdrawn": 243,
+      "meanWithdrawablePct": 45,
+      "meanWithdrawnPct": 22.3,
+      "lostHalfOrMore": 243,
+      "lostAny10Pct": 243,
+      "meanGonePct": 22.3,
+      "medianHoursSinceGraduation": 372
     },
     "damm_v1": {
       "graduations": 803,
@@ -88,20 +88,20 @@
       "lostHalfOrMore": 566,
       "lostAny10Pct": 572,
       "meanGonePct": 64.8,
-      "medianHoursSinceGraduation": 5940
+      "medianHoursSinceGraduation": 5964
     }
   },
-  "measured": 1766,
-  "skipped": 12,
+  "measured": 1775,
+  "skipped": 15,
   "pulls": {
     "method": "DAMM v2 pools that lost half or more: the first removeLiquidity/removeAllLiquidity on the DAMM pool after the migration, among its first 40 transactions",
-    "pools": 227,
-    "found": 101,
-    "later": 126,
-    "medianMinutes": 7.9,
-    "within10Minutes": 53,
-    "withinHour": 90,
-    "withinDay": 96
+    "pools": 243,
+    "found": 109,
+    "later": 134,
+    "medianMinutes": 13.5,
+    "within10Minutes": 51,
+    "withinHour": 98,
+    "withinDay": 104
   },
   "byConfig": [
     {
@@ -210,20 +210,6 @@
       "cls": "locked"
     },
     {
-      "config": "2aKBNrpW1JTmL2k27XqjT97TCfSWvM2pMTPsgjTSF9mg",
-      "graduations": 14,
-      "lostHalfOrMore": 14,
-      "kind": "damm_v2",
-      "cls": "vesting"
-    },
-    {
-      "config": "5ehVLxWyHGKj1HhqqYoSnCmAZYdYDmNA4LYNz37YbHc6",
-      "graduations": 13,
-      "lostHalfOrMore": 12,
-      "kind": "damm_v2",
-      "cls": "vesting"
-    },
-    {
       "config": "aBxu8hnMEufxhpan9zarL26UVxHkbYmJ7Jhhjfc6hGc",
       "graduations": 11,
       "lostHalfOrMore": 11,
@@ -238,9 +224,9 @@
       "cls": "locked"
     },
     {
-      "config": "BbJ4yz55VgTNjHk6stNSoFjrpLHJuDV27SVWUQjQwhj5",
+      "config": "CaDBnXEGdbJ9bKBN8U4AbbvJ7BMY6KMrBTXDyShaonjd",
       "graduations": 10,
-      "lostHalfOrMore": 0,
+      "lostHalfOrMore": 10,
       "kind": "damm_v2",
       "cls": "vesting"
     },
@@ -252,9 +238,16 @@
       "cls": "open"
     },
     {
-      "config": "C9ZCKtnDP6oCzAmgnZxFmuEmMgnBHfTDQixSdzuLby8A",
+      "config": "8EaFKVWXM9TcGAfWzQ5wfTqebwYnofwgg5R85bf85bXv",
       "graduations": 9,
-      "lostHalfOrMore": 0,
+      "lostHalfOrMore": 9,
+      "kind": "damm_v2",
+      "cls": "vesting"
+    },
+    {
+      "config": "DMedLa5kjZb349WTqRUPKDpbqDronssqpNe7VrmqvQVq",
+      "graduations": 9,
+      "lostHalfOrMore": 8,
       "kind": "damm_v2",
       "cls": "vesting"
     },
@@ -266,35 +259,42 @@
       "cls": "vesting"
     },
     {
-      "config": "Gps9M6FbtK2oMV1E3fFPYyg25v8PQcHvoW6ueooqjihG",
+      "config": "F1H1HJFZcJLAzLnfduFDPL6je746y4mVeVKgSD5Tdnnr",
       "graduations": 8,
-      "lostHalfOrMore": 7,
+      "lostHalfOrMore": 8,
       "kind": "damm_v2",
       "cls": "vesting"
     },
     {
-      "config": "DV3XK5MGgSMQUwHp5qZyyAMyKCJSNyY774n6eUvCVFrP",
-      "graduations": 8,
-      "lostHalfOrMore": 7,
+      "config": "2ZqevqjW1N2jMSCCBHo4bjeFuaJ1EWZQBcgAYyaBrSZq",
+      "graduations": 7,
+      "lostHalfOrMore": 0,
       "kind": "damm_v2",
-      "cls": "vesting"
+      "cls": "locked"
+    },
+    {
+      "config": "4DkbzLZ58ZA477p9Aw4BzvxTNwP8sma94Sd1bfqcNw3J",
+      "graduations": 7,
+      "lostHalfOrMore": 0,
+      "kind": "damm_v2",
+      "cls": "locked"
     }
   ],
   "robustness": {
     "withdrawable": {
-      "configs": 224,
-      "configsWhereMostLostHalf": 120,
-      "configWeightedLostHalfPct": 53.6,
-      "largestConfigShareOfPools": 18.2
+      "configs": 225,
+      "configsWhereMostLostHalf": 122,
+      "configWeightedLostHalfPct": 53.9,
+      "largestConfigShareOfPools": 18.1
     },
     "byKind": {
       "damm_v2": {
         "withdrawable": {
-          "graduations": 464,
-          "lostHalfOrMore": 227
+          "graduations": 471,
+          "lostHalfOrMore": 243
         },
         "locked": {
-          "graduations": 498,
+          "graduations": 500,
           "lostHalfOrMore": 0
         }
       },
